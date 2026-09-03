@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Riding Assistant</string>
+    <string name="settings_title">Settings</string>
+    <string name="notification_listener_label">Riding Assistant Message Reader</string>
+
+    <string name="riding_mode_on">Riding Mode ON</string>
+    <string name="riding_mode_off">Riding Mode OFF</string>
+    <string name="status_idle">Idle</string>
+    <string name="status_listening_wake_word">Listening for \"Hey Assistant\"</string>
+    <string name="status_listening_command">Listening for command…</string>
+    <string name="status_processing">Processing…</string>
+    <string name="status_success">Done</string>
+    <string name="status_error">Sorry, that didn\'t work</string>
+
+    <string name="notification_channel_name">Riding Assistant Service</string>
+    <string name="notification_channel_description">Shows when Riding Mode is active and listening</string>
+    <string name="notification_title_listening">Riding Assistant is listening</string>
+    <string name="notification_title_paused">Riding Assistant paused</string>
+
+    <string name="permission_wizard_title">Let\'s get you set up</string>
+    <string name="permission_wizard_subtitle">Riding Assistant needs a few permissions to work hands-free while you ride.</string>
+    <string name="permission_grant">Grant</string>
+    <string name="permission_granted">Granted</string>
+    <string name="permission_continue">Continue</string>
+    <string name="permission_finish">Finish setup</string>
+    <string name="permission_open_settings">Open app settings</string>
+
+    <string name="perm_record_audio_title">Microphone</string>
+    <string name="perm_record_audio_desc">Needed to hear the wake word and your voice commands.</string>
+    <string name="perm_bluetooth_title">Bluetooth</string>
+    <string name="perm_bluetooth_desc">Needed to talk to your helmet earbuds and headset.</string>
+    <string name="perm_phone_state_title">Phone state</string>
+    <string name="perm_phone_state_desc">Needed to announce incoming calls by caller name.</string>
+    <string name="perm_notifications_title">Notifications</string>
+    <string name="perm_notifications_desc">Needed to show the persistent Riding Mode status notification.</string>
+    <string name="perm_notification_listener_title">Read messages</string>
+    <string name="perm_notification_listener_desc">Needed to read WhatsApp, SMS and Telegram messages aloud.</string>
+
+    <string name="debug_test_mic">Test microphone</string>
+    <string name="debug_test_speaker">Test speaker output</string>
+</resources>

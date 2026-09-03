@@ -1,0 +1,17 @@
+*.iml
+.gradle
+/local.properties
+.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+app/build
+*.hprof
+/app/release
+
+# Licensed, per-account wake word assets - see app/src/main/assets/porcupine/README.txt
+app/src/main/assets/porcupine/access_key.txt
+app/src/main/assets/porcupine/*.ppn

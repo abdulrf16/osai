@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="riding_primary">#1565C0</color>
+    <color name="riding_on_primary">#FFFFFF</color>
+    <color name="riding_success">#2E7D32</color>
+    <color name="riding_error">#C62828</color>
+    <color name="riding_listening">#F9A825</color>
+    <color name="riding_background">#0D1B2A</color>
+    <color name="riding_surface">#1B263B</color>
+    <color name="riding_on_surface">#E0E1DD</color>
+</resources>
