@@ -1,0 +1,17 @@
+{
+  "name": "osai-mcp-platform-dev",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local dev harness for the Osai MCP Control Center (client/ + function/ are the actual Catalyst-deployable units)",
+  "main": "local.js",
+  "scripts": {
+    "start": "node local.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

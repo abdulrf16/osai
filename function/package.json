@@ -1,0 +1,17 @@
+{
+	"name": "osai_mcp_api",
+	"version": "1.0.0",
+	"description": "Stateless serverless backend for the Osai MCP Control Center",
+	"main": "index.js",
+	"private": true,
+	"scripts": {
+		"start": "node ../local.js"
+	},
+	"dependencies": {
+		"express": "^4.19.2",
+		"cors": "^2.8.5"
+	},
+	"engines": {
+		"node": ">=18"
+	}
+}
