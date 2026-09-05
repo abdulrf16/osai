@@ -71,7 +71,7 @@ async function register(registrationEndpoint, redirectUri) {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
-			client_name: 'Osai MCP Control Center',
+			client_name: 'Inventory Bot MCP Control Center',
 			redirect_uris: [redirectUri],
 			grant_types: ['authorization_code', 'refresh_token'],
 			response_types: ['code'],

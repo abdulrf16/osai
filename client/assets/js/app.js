@@ -150,7 +150,7 @@
 
     els.refreshMailBtn.addEventListener('click', loadMailPanel);
     els.refreshInventoryBtn.addEventListener('click', loadInventoryPanel);
-    window.addEventListener('osai:mcp-list-changed', async () => {
+    window.addEventListener('inventorybot:mcp-list-changed', async () => {
       await Promise.all([loadMailPanel(), loadInventoryPanel()]);
     });
   }

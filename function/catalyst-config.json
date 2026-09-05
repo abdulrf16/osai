@@ -1,6 +1,6 @@
 {
 	"deployment": {
-		"name": "osai_mcp_api",
+		"name": "inventory_bot_api",
 		"stack": "node18",
 		"type": "advancedio",
 		"env_variables": {

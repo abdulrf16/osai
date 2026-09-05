@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Osai MCP Control Center - a Catalyst Advanced I/O function.
+ * Inventory Bot MCP Control Center - a Catalyst Advanced I/O function.
  *
  * An Advanced I/O function is handed the raw Node (req, res) pair, and an
  * Express app *is* a (req, res) handler, so `module.exports = app` is all

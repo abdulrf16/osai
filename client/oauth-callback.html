@@ -17,7 +17,7 @@
     const error = params.get('error');
 
     if (window.opener) {
-      window.opener.postMessage({ type: 'osai-oauth-callback', code, state, error }, window.location.origin);
+      window.opener.postMessage({ type: 'inventorybot-oauth-callback', code, state, error }, window.location.origin);
     }
     document.getElementById('msg').textContent = error ? `Connection failed: ${error}` : 'Connected. You can close this window.';
     setTimeout(() => window.close(), error ? 3000 : 1200);

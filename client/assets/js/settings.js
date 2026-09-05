@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const STORAGE_KEY = 'osai.settings.v1';
+  const STORAGE_KEY = 'inventorybot.settings.v1';
 
   function loadSettings() {
     try {
@@ -18,7 +18,7 @@
       provider: 'anthropic',
       modelName: '',
       apiKey: '',
-      apiBase: '', // advanced: override the default /server/osai_mcp_api path
+      apiBase: '', // advanced: override the default /server/inventory_bot_api path
       mcps: [] // { mcpId, name, url, role, accessToken, refreshToken, expiresAt, tokenEndpoint, clientId, clientSecret }
     };
   }
@@ -167,7 +167,7 @@
       els.mcpClientSecretInput.value = '';
       renderForm();
       renderTopStatus();
-      window.dispatchEvent(new CustomEvent('osai:mcp-list-changed'));
+      window.dispatchEvent(new CustomEvent('inventorybot:mcp-list-changed'));
     } catch (err) {
       alert(`Could not add MCP server: ${err.message}`);
     } finally {
@@ -180,7 +180,7 @@
     persist(state);
     renderForm();
     renderTopStatus();
-    window.dispatchEvent(new CustomEvent('osai:mcp-list-changed'));
+    window.dispatchEvent(new CustomEvent('inventorybot:mcp-list-changed'));
   }
 
   function handleSave() {

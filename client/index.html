@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Osai — MCP Control Center</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%237c9dff'/%3E%3Ctext x='12' y='17' font-size='14' font-family='sans-serif' font-weight='700' fill='%230b0f1e' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E" />
+<title>Inventory Bot — MCP Control Center</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%237c9dff'/%3E%3Ctext x='12' y='17' font-size='14' font-family='sans-serif' font-weight='700' fill='%230b0f1e' text-anchor='middle'%3EI%3C/text%3E%3C/svg%3E" />
 <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
@@ -16,8 +16,8 @@
 
 <header class="topbar glass">
   <div class="brand">
-    <span class="brand-mark">O</span>
-    <span class="brand-name">Osai</span>
+    <span class="brand-mark">I</span>
+    <span class="brand-name">Inventory Bot</span>
     <span class="brand-sub">MCP Control Center</span>
   </div>
   <div class="status-strip" id="statusStrip">
@@ -48,11 +48,11 @@
     </div>
     <div class="panel-body chat-body" id="chatMessages">
       <div class="chat-msg chat-msg-assistant">
-        <div class="bubble">Hi, I'm Osai. Connect a model and your MCP servers in settings, then ask me anything about your mail or inventory.</div>
+        <div class="bubble">Hi, I'm Inventory Bot. Connect a model and your MCP servers in settings, then ask me anything about your mail or inventory.</div>
       </div>
     </div>
     <form class="chat-input-row" id="chatForm">
-      <input type="text" id="chatInput" placeholder="Ask Osai..." autocomplete="off" />
+      <input type="text" id="chatInput" placeholder="Ask Inventory Bot..." autocomplete="off" />
       <button type="submit" class="send-btn" id="chatSendBtn">
         <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
       </button>
@@ -99,7 +99,7 @@
         <details class="advanced-fields">
           <summary>Advanced: backend URL</summary>
           <div class="field-row">
-            <label>API base (leave blank to use /server/osai_mcp_api)</label>
+            <label>API base (leave blank to use /server/inventory_bot_api)</label>
             <input type="text" id="apiBaseInput" placeholder="Optional" />
           </div>
         </details>

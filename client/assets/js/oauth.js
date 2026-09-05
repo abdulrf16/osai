@@ -25,7 +25,7 @@
 
   function openPopupAndWait(url, expectedState) {
     return new Promise((resolve, reject) => {
-      const popup = window.open(url, 'osai-oauth', 'width=520,height=680');
+      const popup = window.open(url, 'inventorybot-oauth', 'width=520,height=680');
       if (!popup) {
         reject(new Error('Popup blocked. Please allow popups for this site.'));
         return;
@@ -35,7 +35,7 @@
       const onMessage = (event) => {
         if (event.origin !== window.location.origin) return;
         const data = event.data;
-        if (!data || data.type !== 'osai-oauth-callback') return;
+        if (!data || data.type !== 'inventorybot-oauth-callback') return;
         settled = true;
         window.removeEventListener('message', onMessage);
         clearInterval(closeWatcher);

@@ -1,7 +1,7 @@
 {
-	"name": "osai_mcp_api",
+	"name": "inventory_bot_api",
 	"version": "1.0.0",
-	"description": "Stateless serverless backend for the Osai MCP Control Center",
+	"description": "Stateless serverless backend for the Inventory Bot MCP Control Center",
 	"main": "index.js",
 	"private": true,
 	"scripts": {

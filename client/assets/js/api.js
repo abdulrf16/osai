@@ -4,7 +4,7 @@
   // When the client and the function live in the same Catalyst project, the
   // function is reachable at this path on the same origin, so the user never
   // has to paste an invocation URL.
-  var DEFAULT_PATH = '/server/osai_mcp_api';
+  var DEFAULT_PATH = '/server/inventory_bot_api';
 
   function base() {
     var configured = (window.Settings && window.Settings.getApiBase && window.Settings.getApiBase()) || '';
