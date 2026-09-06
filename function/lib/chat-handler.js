@@ -55,6 +55,42 @@ matching an exact shape), follow that format exactly: no prose, headings, or
 markdown code fences around it, and nothing before or after it.
 `.trim();
 
+/**
+ * OpenAI-style tool calls carry their arguments as a JSON-encoded string.
+ * Cheaper/smaller models (common on OpenRouter and NVIDIA NIM) sometimes emit
+ * that string slightly malformed or with extra trailing content glued on -
+ * a raw JSON.parse on it throws and, uncaught, used to crash the entire
+ * request (chat and both dashboard panels alike, since they share this same
+ * code path). This recovers the leading balanced {...} object instead of
+ * failing outright; worst case it returns {}, which surfaces as a normal
+ * tool-call error the model can see and retry, not a hard crash.
+ */
+function parseToolArguments(raw) {
+  if (raw == null || raw === '') return {};
+  if (typeof raw === 'object') return raw;
+  try {
+    return JSON.parse(raw);
+  } catch (_) {
+    const start = raw.indexOf('{');
+    if (start === -1) return {};
+    let depth = 0;
+    for (let i = start; i < raw.length; i++) {
+      if (raw[i] === '{') depth++;
+      else if (raw[i] === '}') {
+        depth--;
+        if (depth === 0) {
+          try {
+            return JSON.parse(raw.slice(start, i + 1));
+          } catch (_) {
+            return {};
+          }
+        }
+      }
+    }
+    return {};
+  }
+}
+
 function sanitizeToolName(mcpName, originalName) {
   const safe = `${mcpName}__${originalName}`.replace(/[^a-zA-Z0-9_-]/g, '_');
   return safe.slice(0, 128);
@@ -359,7 +395,7 @@ class ChatHandler {
     const toolCalls = (message.tool_calls || []).map((tc) => ({
       id: tc.id,
       name: tc.function.name,
-      input: JSON.parse(tc.function.arguments || '{}')
+      input: parseToolArguments(tc.function.arguments)
     }));
 
     return {
