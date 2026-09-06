@@ -109,6 +109,9 @@ function sanitizeToolName(mcpName, originalName) {
  */
 async function readJsonResponse(response) {
   const text = await response.text();
+  if (!response.ok) {
+    throw new Error(`The model API returned HTTP ${response.status}: ${text.slice(0, 200) || response.statusText}`);
+  }
   try {
     return JSON.parse(text);
   } catch (_) {
@@ -124,6 +127,50 @@ async function readJsonResponse(response) {
     }
     throw new Error(`The model API returned a response that could not be parsed as JSON: "${text.slice(0, 200)}"`);
   }
+}
+
+/**
+ * Aggregates an OpenAI-style Server-Sent-Events chat-completion stream
+ * ("data: {...}\n\ndata: {...}\n\ndata: [DONE]\n\n") into one complete
+ * message. Some NIM-hosted models (large "thinking"/reasoning ones like
+ * nemotron-3-ultra in particular) only serve requests when stream:true is
+ * set - a non-streaming request to them returns an unrelated 404 - so this
+ * app always requests streaming and reassembles it here rather than
+ * requiring every model to support both modes. tool_calls arrive
+ * incrementally too (first chunk has id+name, later chunks append to
+ * `arguments`), keyed by `index`, so those are merged the same way content
+ * deltas are concatenated. A `reasoning_content` delta (the "thinking"
+ * trace some NIM models emit) is intentionally discarded - it's not part of
+ * the final answer and the tool loop has no use for it.
+ */
+function aggregateSseStream(text) {
+  let content = '';
+  const toolCallsByIndex = new Map();
+
+  for (const line of text.split(/\r?\n/)) {
+    if (!line.startsWith('data:')) continue;
+    const payload = line.slice(5).trim();
+    if (!payload || payload === '[DONE]') continue;
+    let chunk;
+    try {
+      chunk = JSON.parse(payload);
+    } catch (_) {
+      continue;
+    }
+    const delta = (chunk.choices && chunk.choices[0] && chunk.choices[0].delta) || {};
+    if (typeof delta.content === 'string') content += delta.content;
+    for (const tc of delta.tool_calls || []) {
+      const idx = tc.index != null ? tc.index : 0;
+      const existing = toolCallsByIndex.get(idx) || { id: null, name: null, arguments: '' };
+      if (tc.id) existing.id = tc.id;
+      if (tc.function && tc.function.name) existing.name = tc.function.name;
+      if (tc.function && typeof tc.function.arguments === 'string') existing.arguments += tc.function.arguments;
+      toolCallsByIndex.set(idx, existing);
+    }
+  }
+
+  const toolCalls = [...toolCallsByIndex.values()].filter((tc) => tc.name);
+  return { content, toolCalls };
 }
 
 /**
@@ -337,9 +384,15 @@ class ChatHandler {
       }];
     }
     if (provider === 'gemini') {
+      // Gemini's `contents[]` entries always carry `parts`, never a bare
+      // `content` field - that field name previously used here isn't part
+      // of Gemini's schema at all, which is exactly what the API rejected
+      // with "Unknown name 'content' at 'contents[N]'" once a tool call
+      // actually reached this point (schema sanitization was required
+      // first for the model to call a tool successfully at all).
       return [{
         role: 'function',
-        content: toolResults.map((r) => ({ name: r.name, response: r.output }))
+        parts: toolResults.map((r) => ({ functionResponse: { name: r.name, response: r.output } }))
       }];
     }
     // openrouter / nvidia (OpenAI-style): one "tool" message per tool call.
@@ -468,7 +521,12 @@ class ChatHandler {
     return {
       text,
       toolCalls,
-      assistantMessage: { role: 'assistant', content: text || JSON.stringify(parts) }
+      // Keep Gemini's own `parts` (which include real functionCall parts,
+      // not just text) instead of collapsing them into a string - the model
+      // needs to see its own prior function calls in native form on the next
+      // turn, immediately followed by our functionResponse part, for
+      // multi-turn function calling to work at all.
+      assistantMessage: { role: 'model', parts: parts.length ? parts : [{ text: text || '' }] }
     };
   }
 
@@ -497,17 +555,45 @@ class ChatHandler {
       },
       body: JSON.stringify({
         model: modelConfig.modelName || defaultModel,
-        stream: false,
+        // Requested unconditionally: some NIM-hosted models (large
+        // "thinking" ones especially) only serve requests when this is
+        // true and otherwise 404, while providers that don't stream just
+        // ignore the flag and return a normal single JSON body - both
+        // shapes are handled below.
+        stream: true,
         messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages],
         ...(tools.length ? { tools } : {})
       })
     });
 
-    const data = await readJsonResponse(response);
-    if (data.error) throw new Error((data.error.message || data.error) || 'API error');
+    const text = await response.text();
+    if (!response.ok) {
+      throw new Error(`The model API returned HTTP ${response.status}: ${text.slice(0, 200) || response.statusText}`);
+    }
 
-    const choice = data.choices && data.choices[0];
-    const message = (choice && choice.message) || {};
+    const trimmed = text.trim();
+    const isSse =
+      (response.headers.get('content-type') || '').includes('event-stream') || trimmed.startsWith('data:');
+
+    let message;
+    if (isSse) {
+      const { content, toolCalls: streamedToolCalls } = aggregateSseStream(text);
+      message = {
+        content,
+        tool_calls: streamedToolCalls.map((tc) => ({ id: tc.id, type: 'function', function: { name: tc.name, arguments: tc.arguments } }))
+      };
+    } else {
+      let data;
+      try {
+        data = JSON.parse(trimmed);
+      } catch (_) {
+        throw new Error(`The model API returned a response that could not be parsed as JSON: "${trimmed.slice(0, 200)}"`);
+      }
+      if (data.error) throw new Error((data.error.message || data.error) || 'API error');
+      const choice = data.choices && data.choices[0];
+      message = (choice && choice.message) || {};
+    }
+
     const toolCalls = (message.tool_calls || []).map((tc) => ({
       id: tc.id,
       name: tc.function.name,
