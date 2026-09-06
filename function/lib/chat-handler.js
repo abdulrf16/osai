@@ -201,7 +201,7 @@ class ChatHandler {
             toolResults.push({ id: call.id, name: call.name, output: { error: err.message } });
           }
         }
-        messages.push(this._formatToolResultsMessage(modelConfig.provider, toolResults));
+        messages.push(...this._formatToolResultsMessage(modelConfig.provider, toolResults));
         continue;
       }
 
@@ -211,28 +211,42 @@ class ChatHandler {
     throw new Error('Tool call loop exceeded maximum iterations without a final answer');
   }
 
+  /**
+   * Returns an array of messages to push (spread) onto the conversation.
+   * Anthropic and Gemini both accept every tool result bundled into a single
+   * message (a content-block array, or a parts array respectively). OpenAI's
+   * chat-completions schema does not: each tool call must get its own
+   * separate {role: "tool", tool_call_id, content: <string>} message, with
+   * tool_call_id at the top level and content as a plain string - not an
+   * array of objects. Bundling them into one message (as this used to do)
+   * is not valid OpenAI schema, so the model never actually saw real tool
+   * output on OpenRouter/NVIDIA and would fabricate a plausible-looking
+   * answer instead - which is what surfaced as errors like "user not found"
+   * with no real tool ever having reported that.
+   */
   _formatToolResultsMessage(provider, toolResults) {
     if (provider === 'anthropic') {
-      return {
+      return [{
         role: 'user',
         content: toolResults.map((r) => ({
           type: 'tool_result',
           tool_use_id: r.id,
           content: JSON.stringify(r.output)
         }))
-      };
+      }];
     }
     if (provider === 'gemini') {
-      return {
+      return [{
         role: 'function',
         content: toolResults.map((r) => ({ name: r.name, response: r.output }))
-      };
+      }];
     }
-    // openrouter (OpenAI-style)
-    return {
+    // openrouter / nvidia (OpenAI-style): one "tool" message per tool call.
+    return toolResults.map((r) => ({
       role: 'tool',
-      content: toolResults.map((r) => ({ tool_call_id: r.id, name: r.name, content: JSON.stringify(r.output) }))
-    };
+      tool_call_id: r.id,
+      content: JSON.stringify(r.output)
+    }));
   }
 
   async _callProvider(modelConfig, messages, rawTools) {
@@ -369,11 +383,6 @@ class ChatHandler {
       }
     }));
 
-    const orMessages = messages.map((m) => {
-      if (typeof m.content === 'string') return { role: m.role, content: m.content };
-      return m;
-    });
-
     const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
@@ -382,7 +391,7 @@ class ChatHandler {
       },
       body: JSON.stringify({
         model: modelConfig.modelName || defaultModel,
-        messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...orMessages],
+        messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages],
         ...(tools.length ? { tools } : {})
       })
     });
