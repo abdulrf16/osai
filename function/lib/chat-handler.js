@@ -97,6 +97,92 @@ function sanitizeToolName(mcpName, originalName) {
 }
 
 /**
+ * Defensively reads a model API's response body as JSON. A plain
+ * `response.json()` throws Node's raw V8 parser error ("Unexpected
+ * non-whitespace character after JSON at position N") straight to the user
+ * when the body isn't valid single-object JSON - which some OpenAI-compatible
+ * endpoints (NVIDIA NIM in particular) return for certain models even with
+ * stream:false requested, as newline-delimited SSE frames
+ * ("data: {...}\n\ndata: [DONE]\n\n") instead of one JSON object. Recovers
+ * the last real data frame in that case; otherwise surfaces a clear error
+ * with a snippet of the actual body instead of a cryptic parser position.
+ */
+async function readJsonResponse(response) {
+  const text = await response.text();
+  try {
+    return JSON.parse(text);
+  } catch (_) {
+    const dataLines = text.split(/\r?\n/).filter((l) => l.startsWith('data:'));
+    for (let i = dataLines.length - 1; i >= 0; i--) {
+      const payload = dataLines[i].slice(5).trim();
+      if (!payload || payload === '[DONE]') continue;
+      try {
+        return JSON.parse(payload);
+      } catch (_) {
+        continue;
+      }
+    }
+    throw new Error(`The model API returned a response that could not be parsed as JSON: "${text.slice(0, 200)}"`);
+  }
+}
+
+/**
+ * Gemini's function-calling schema is a strict, small subset of JSON Schema
+ * (roughly OpenAPI 3.0's Schema object) - it rejects unknown keywords like
+ * $schema, additionalProperties, exclusiveMinimum/Maximum, const, and it
+ * requires every `enum` array to contain only strings, never numbers. MCP
+ * servers (Zoho Mail's especially, with 200+ tools) commonly generate full
+ * JSON Schema with all of the above, which Gemini's API then rejects outright
+ * with one "Invalid value"/"Unknown name" error per offending field. This
+ * rebuilds each schema node from an allowlist of keys Gemini actually
+ * supports instead of passing the MCP's schema through unmodified, so an
+ * unsupported keyword we haven't seen yet can never leak through either.
+ */
+function sanitizeSchemaForGemini(schema, depth) {
+  depth = depth || 0;
+  if (!schema || typeof schema !== 'object' || Array.isArray(schema) || depth > 20) {
+    return { type: 'string' };
+  }
+
+  const out = {};
+  if (typeof schema.description === 'string') out.description = schema.description;
+
+  if (Array.isArray(schema.enum)) {
+    // Gemini only supports string enums - stringify values instead of
+    // dropping the constraint, since the model can still use it as a guide.
+    out.type = 'string';
+    out.enum = schema.enum.map((v) => String(v));
+  } else if (typeof schema.type === 'string') {
+    out.type = schema.type;
+  } else if (Array.isArray(schema.type)) {
+    out.type = schema.type.find((t) => t !== 'null') || 'string';
+  }
+
+  if (schema.properties && typeof schema.properties === 'object') {
+    out.type = out.type || 'object';
+    out.properties = {};
+    for (const [key, value] of Object.entries(schema.properties)) {
+      out.properties[key] = sanitizeSchemaForGemini(value, depth + 1);
+    }
+    if (Array.isArray(schema.required)) out.required = schema.required.filter((r) => typeof r === 'string');
+  }
+
+  if (schema.items) {
+    out.type = out.type || 'array';
+    out.items = sanitizeSchemaForGemini(Array.isArray(schema.items) ? schema.items[0] : schema.items, depth + 1);
+  }
+
+  const combinator = schema.anyOf || schema.oneOf || schema.allOf;
+  if (Array.isArray(combinator)) {
+    out.anyOf = combinator.map((s) => sanitizeSchemaForGemini(s, depth + 1));
+    delete out.type;
+  }
+
+  if (!out.type && !out.anyOf) out.type = 'string';
+  return out;
+}
+
+/**
  * Pulls a JSON value out of a structured-query response even when the model
  * ignored the "output nothing else" instruction and added a lead-in like
  * "Now I'll check..." or "Perfect! Here's the list:" before the JSON -
@@ -145,9 +231,7 @@ class ChatHandler {
    * @param {Array<{mcpId: string, name: string, url: string, accessToken?: string, tokenType?: string}>} mcpConfigs
    */
   async processMessage(userMessage, modelConfig, conversationHistory = [], mcpConfigs = []) {
-    if (!modelConfig || !modelConfig.provider || !modelConfig.apiKey) {
-      throw new Error('Model provider and API key are required');
-    }
+    this._validateModelConfig(modelConfig);
     const messages = [...conversationHistory, { role: 'user', content: userMessage }];
     const { text, messages: finalMessages } = await this._runToolLoop(modelConfig, messages, mcpConfigs);
     return { text, conversationHistory: finalMessages };
@@ -159,15 +243,32 @@ class ChatHandler {
    * is parsed rather than shown as a conversational reply.
    */
   async processStructuredQuery(instruction, modelConfig, mcpConfigs = []) {
-    if (!modelConfig || !modelConfig.provider || !modelConfig.apiKey) {
-      throw new Error('Model provider and API key are required');
-    }
+    this._validateModelConfig(modelConfig);
     const strictInstruction =
       `${instruction}\n\nCRITICAL: your entire final response must be nothing but that JSON - ` +
       'no lead-in sentence, no acknowledgement, no explanation, no markdown fences. ' +
       'It must start with [ or { and end with the matching ] or } and contain nothing else.';
     const { text } = await this._runToolLoop(modelConfig, [{ role: 'user', content: strictInstruction }], mcpConfigs);
     return parseJsonLoose(text);
+  }
+
+  /**
+   * The Custom provider covers any OpenAI-compatible endpoint, including
+   * free/local ones (Ollama, LM Studio, some Groq/Together free tiers) that
+   * don't require an API key at all - so apiKey is required for every
+   * built-in provider but optional for 'custom', where apiUrl is required
+   * instead.
+   */
+  _validateModelConfig(modelConfig) {
+    if (!modelConfig || !modelConfig.provider) {
+      throw new Error('A model provider is required.');
+    }
+    if (modelConfig.provider === 'custom') {
+      if (!modelConfig.apiUrl) throw new Error('A custom API URL is required for the Custom provider.');
+      if (!modelConfig.modelName) throw new Error('A model name is required for the Custom provider.');
+      return;
+    }
+    if (!modelConfig.apiKey) throw new Error('An API key is required for this model provider.');
   }
 
   async _runToolLoop(modelConfig, messages, mcpConfigs) {
@@ -262,6 +363,11 @@ class ChatHandler {
     if (modelConfig.provider === 'nvidia') {
       return this._callOpenAiCompatible(modelConfig, messages, rawTools, NVIDIA_API_URL, 'meta/llama-3.1-70b-instruct');
     }
+    if (modelConfig.provider === 'custom') {
+      if (!modelConfig.apiUrl) throw new Error('A custom API URL is required for the Custom provider.');
+      if (!modelConfig.modelName) throw new Error('A model name is required for the Custom provider.');
+      return this._callOpenAiCompatible(modelConfig, messages, rawTools, modelConfig.apiUrl, modelConfig.modelName);
+    }
     throw new Error(`Unsupported provider: ${modelConfig.provider}`);
   }
 
@@ -295,7 +401,7 @@ class ChatHandler {
       body: JSON.stringify(body)
     });
 
-    const data = await response.json();
+    const data = await readJsonResponse(response);
     if (data.error) throw new Error(data.error.message || 'Anthropic API error');
 
     const toolCalls = [];
@@ -322,7 +428,7 @@ class ChatHandler {
             functionDeclarations: rawTools.map((t) => ({
               name: sanitizeToolName(t.__mcpName, t.name),
               description: t.description || '',
-              parameters: t.inputSchema || { type: 'object', properties: {} }
+              parameters: sanitizeSchemaForGemini(t.inputSchema || { type: 'object', properties: {} })
             }))
           }
         ]
@@ -345,7 +451,7 @@ class ChatHandler {
       })
     });
 
-    const data = await response.json();
+    const data = await readJsonResponse(response);
     if (data.error) throw new Error(data.error.message || 'Gemini API error');
 
     const candidate = data.candidates && data.candidates[0];
@@ -387,17 +493,18 @@ class ChatHandler {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${modelConfig.apiKey}`
+        ...(modelConfig.apiKey ? { Authorization: `Bearer ${modelConfig.apiKey}` } : {})
       },
       body: JSON.stringify({
         model: modelConfig.modelName || defaultModel,
+        stream: false,
         messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages],
         ...(tools.length ? { tools } : {})
       })
     });
 
-    const data = await response.json();
-    if (data.error) throw new Error(data.error.message || 'API error');
+    const data = await readJsonResponse(response);
+    if (data.error) throw new Error((data.error.message || data.error) || 'API error');
 
     const choice = data.choices && data.choices[0];
     const message = (choice && choice.message) || {};

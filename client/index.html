@@ -93,14 +93,19 @@
             <option value="gemini">Gemini (Google)</option>
             <option value="openrouter">OpenRouter</option>
             <option value="nvidia">NVIDIA NIM</option>
+            <option value="custom">Custom (OpenAI-compatible)</option>
           </select>
+        </div>
+        <div class="field-row" id="customApiUrlRow" style="display:none">
+          <label>Custom API URL</label>
+          <input type="text" id="customApiUrlInput" placeholder="https://api.example.com/v1/chat/completions" />
         </div>
         <div class="field-row">
           <label>Model name</label>
           <input type="text" id="modelNameInput" placeholder="e.g. claude-sonnet-4-5-20250929" />
         </div>
         <div class="field-row">
-          <label>API key</label>
+          <label>API key<span id="apiKeyOptionalTag" style="display:none"> (optional for this provider)</span></label>
           <input type="password" id="apiKeyInput" placeholder="sk-..." />
         </div>
         <details class="advanced-fields">

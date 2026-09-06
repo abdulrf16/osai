@@ -57,7 +57,12 @@
 
   function requireModel() {
     const modelConfig = window.Settings.getModelConfig();
-    if (!modelConfig.apiKey || !modelConfig.modelName) return null;
+    if (!modelConfig.modelName) return null;
+    if (modelConfig.provider === 'custom') {
+      if (!modelConfig.apiUrl) return null;
+    } else if (!modelConfig.apiKey) {
+      return null;
+    }
     return modelConfig;
   }
 

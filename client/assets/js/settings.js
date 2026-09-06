@@ -19,6 +19,7 @@
       modelName: '',
       apiKey: '',
       apiBase: '', // advanced: override the default /server/inventory_bot_api path
+      customApiUrl: '', // only used when provider === 'custom'
       mcps: [] // { mcpId, name, url, role, accessToken, refreshToken, expiresAt, tokenEndpoint, clientId, clientSecret, resource }
     };
   }
@@ -41,6 +42,9 @@
     els.closeBtn = document.getElementById('closeSettingsBtn');
     els.saveBtn = document.getElementById('saveSettingsBtn');
     els.providerSelect = document.getElementById('providerSelect');
+    els.customApiUrlRow = document.getElementById('customApiUrlRow');
+    els.customApiUrlInput = document.getElementById('customApiUrlInput');
+    els.apiKeyOptionalTag = document.getElementById('apiKeyOptionalTag');
     els.modelNameInput = document.getElementById('modelNameInput');
     els.apiKeyInput = document.getElementById('apiKeyInput');
     els.apiBaseInput = document.getElementById('apiBaseInput');
@@ -69,11 +73,25 @@
     return state.mcps.find((m) => m.role === 'mail');
   }
 
+  /**
+   * The Custom provider is any OpenAI-compatible endpoint the user points at
+   * directly - free/local ones (Ollama, LM Studio, some free tiers) often
+   * don't require a key, so the URL field only makes sense for this provider
+   * and the API key field's "required" framing has to relax for it too.
+   */
+  function updateProviderFieldVisibility() {
+    const isCustom = els.providerSelect.value === 'custom';
+    els.customApiUrlRow.style.display = isCustom ? '' : 'none';
+    els.apiKeyOptionalTag.style.display = isCustom ? '' : 'none';
+  }
+
   function renderForm() {
     els.providerSelect.value = state.provider;
+    els.customApiUrlInput.value = state.customApiUrl || '';
     els.modelNameInput.value = state.modelName || '';
     els.apiKeyInput.value = state.apiKey || '';
     els.apiBaseInput.value = state.apiBase || '';
+    updateProviderFieldVisibility();
 
     const zohoMcp = getZohoMcp();
     if (!els.zohoMcpUrlInput.matches(':focus')) {
@@ -111,7 +129,9 @@
   function renderTopStatus() {
     els.mailStatusPill.dataset.state = state.mcps.some((m) => m.role === 'mail') ? 'on' : 'off';
     els.inventoryStatusPill.dataset.state = state.mcps.some((m) => m.role === 'inventory') ? 'on' : 'off';
-    const hasModel = !!(state.apiKey && state.modelName);
+    const hasModel = state.provider === 'custom'
+      ? !!(state.customApiUrl && state.modelName)
+      : !!(state.apiKey && state.modelName);
     els.modelStatusPill.dataset.state = hasModel ? 'on' : 'off';
     els.chatModelTag.textContent = hasModel ? `${state.provider} · ${state.modelName}` : 'No model configured';
   }
@@ -142,6 +162,7 @@
     state.modelName = els.modelNameInput.value.trim();
     state.apiKey = els.apiKeyInput.value.trim();
     state.apiBase = els.apiBaseInput.value.trim();
+    state.customApiUrl = els.customApiUrlInput.value.trim();
     persist(state);
   }
 
@@ -311,6 +332,7 @@
       if (e.target === els.overlay) closeModal();
     });
     els.saveBtn.addEventListener('click', handleSave);
+    els.providerSelect.addEventListener('change', updateProviderFieldVisibility);
     els.connectZohoBtn.addEventListener('click', handleConnectZoho);
     els.connectMcpBtn.addEventListener('click', handleConnectMcp);
     els.addMcpBtn.addEventListener('click', handleAddMcp);
@@ -324,7 +346,12 @@
     init,
     get: () => state,
     getApiBase: () => state.apiBase,
-    getModelConfig: () => ({ provider: state.provider, modelName: state.modelName, apiKey: state.apiKey }),
+    getModelConfig: () => ({
+      provider: state.provider,
+      modelName: state.modelName,
+      apiKey: state.apiKey,
+      ...(state.provider === 'custom' ? { apiUrl: state.customApiUrl } : {})
+    }),
     getMcps: () => state.mcps,
     getMcpsByRole: (role) => state.mcps.filter((m) => m.role === role),
     getMcpConfigsForChat: () =>

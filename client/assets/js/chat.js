@@ -45,8 +45,10 @@
     if (!text) return;
 
     const modelConfig = window.Settings.getModelConfig();
-    if (!modelConfig.apiKey || !modelConfig.modelName) {
-      appendBubble('assistant', 'Please configure a model provider, model name, and API key in settings first.');
+    const missingCustomUrl = modelConfig.provider === 'custom' && !modelConfig.apiUrl;
+    const missingApiKey = modelConfig.provider !== 'custom' && !modelConfig.apiKey;
+    if (!modelConfig.modelName || missingCustomUrl || missingApiKey) {
+      appendBubble('assistant', 'Please configure a model provider, model name, and API key (or custom API URL) in settings first.');
       return;
     }
 
