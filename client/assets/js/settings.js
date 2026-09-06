@@ -320,51 +320,6 @@
     });
   }
 
-  /**
-   * Refresh an expired access token using its refresh token.
-   * Returns true if the token was refreshed and state updated, false otherwise.
-   */
-  async function maybeRefreshToken(mcp) {
-    if (!mcp.expiresAt || !mcp.refreshToken || !mcp.tokenEndpoint) return false;
-
-    // Token is still valid for at least 5 minutes, don't refresh yet
-    if (Date.now() < mcp.expiresAt - 5 * 60 * 1000) return false;
-
-    console.log(`[Token] Refreshing token for MCP "${mcp.name}"`);
-    try {
-      const result = await window.Api.refreshOAuthToken({
-        tokenEndpoint: mcp.tokenEndpoint,
-        clientId: mcp.clientId,
-        clientSecret: mcp.clientSecret,
-        refreshToken: mcp.refreshToken,
-        resource: mcp.resource
-      });
-      if (result.ok) {
-        mcp.accessToken = result.accessToken;
-        if (result.refreshToken) mcp.refreshToken = result.refreshToken;
-        if (result.expiresAt) mcp.expiresAt = result.expiresAt;
-        persist(state);
-        console.log(`[Token] Successfully refreshed token for "${mcp.name}"`);
-        return true;
-      }
-    } catch (err) {
-      console.error(`[Token] Failed to refresh token for "${mcp.name}":`, err.message);
-    }
-    return false;
-  }
-
-  /**
-   * Ensure all MCPs have valid, non-expired access tokens before they're used.
-   * Silently refreshes any tokens that are expired or about to expire.
-   */
-  async function ensureValidTokens() {
-    for (const mcp of state.mcps) {
-      if (mcp.accessToken) {
-        await maybeRefreshToken(mcp);
-      }
-    }
-  }
-
   const Settings = {
     init,
     get: () => state,
@@ -372,10 +327,8 @@
     getModelConfig: () => ({ provider: state.provider, modelName: state.modelName, apiKey: state.apiKey }),
     getMcps: () => state.mcps,
     getMcpsByRole: (role) => state.mcps.filter((m) => m.role === role),
-    getMcpConfigsForChat: async () => {
-      await ensureValidTokens();
-      return state.mcps.map((m) => ({ mcpId: m.mcpId, name: m.name, url: m.url, accessToken: m.accessToken, tokenType: 'Bearer' }));
-    }
+    getMcpConfigsForChat: () =>
+      state.mcps.map((m) => ({ mcpId: m.mcpId, name: m.name, url: m.url, accessToken: m.accessToken, tokenType: 'Bearer' }))
   };
 
   window.Settings = Settings;

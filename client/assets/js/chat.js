@@ -57,7 +57,7 @@
     const thinkingEl = appendThinking();
 
     try {
-      const mcpConfigs = await window.Settings.getMcpConfigsForChat();
+      const mcpConfigs = window.Settings.getMcpConfigsForChat();
       const response = await window.Api.chat(text, modelConfig, conversationHistory, mcpConfigs);
       conversationHistory = response.conversationHistory;
       thinkingEl.remove();
