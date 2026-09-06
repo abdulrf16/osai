@@ -76,7 +76,9 @@
 
     renderEmptyState(els.mailList, 'Loading...');
     try {
-      const emails = await window.Api.dashboardQuery(MAIL_LIST_INSTRUCTION, modelConfig, mcps.map(toMcpConfig));
+      const refreshedMcps = await window.Settings.getMcpConfigsForChat();
+      const mailMcps = refreshedMcps.filter(m => mcps.some(mc => mc.mcpId === m.mcpId));
+      const emails = await window.Api.dashboardQuery(MAIL_LIST_INSTRUCTION, modelConfig, mailMcps);
       if (!Array.isArray(emails) || !emails.length) {
         renderEmptyState(els.mailList, 'No messages found.');
         return;
@@ -139,7 +141,9 @@
 
     renderEmptyState(els.inventoryList, 'Loading...');
     try {
-      const records = await window.Api.dashboardQuery(INVENTORY_LIST_INSTRUCTION, modelConfig, mcps.map(toMcpConfig));
+      const refreshedMcps = await window.Settings.getMcpConfigsForChat();
+      const invMcps = refreshedMcps.filter(m => mcps.some(mc => mc.mcpId === m.mcpId));
+      const records = await window.Api.dashboardQuery(INVENTORY_LIST_INSTRUCTION, modelConfig, invMcps);
       if (!Array.isArray(records) || !records.length) {
         renderEmptyState(els.inventoryList, 'No inventory records found.');
         return;
