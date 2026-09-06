@@ -145,6 +145,7 @@ async function readJsonResponse(response) {
  */
 function aggregateSseStream(text) {
   let content = '';
+  let reasoningContent = '';
   const toolCallsByIndex = new Map();
 
   for (const line of text.split(/\r?\n/)) {
@@ -159,6 +160,7 @@ function aggregateSseStream(text) {
     }
     const delta = (chunk.choices && chunk.choices[0] && chunk.choices[0].delta) || {};
     if (typeof delta.content === 'string') content += delta.content;
+    if (typeof delta.reasoning_content === 'string') reasoningContent += delta.reasoning_content;
     for (const tc of delta.tool_calls || []) {
       const idx = tc.index != null ? tc.index : 0;
       const existing = toolCallsByIndex.get(idx) || { id: null, name: null, arguments: '' };
@@ -170,7 +172,25 @@ function aggregateSseStream(text) {
   }
 
   const toolCalls = [...toolCallsByIndex.values()].filter((tc) => tc.name);
-  return { content, toolCalls };
+  return { content, reasoningContent, toolCalls };
+}
+
+/**
+ * "Thinking"/reasoning NIM models (nemotron-3-ultra among them) sometimes
+ * put their entire answer in the reasoning trace and leave the regular
+ * content empty, or embed the trace directly in content wrapped in
+ * <think>...</think> instead of using the separate reasoning_content field -
+ * behavior varies by model and isn't documented consistently. Left alone,
+ * this surfaces as a silent "(no response)" with no error at all, which is
+ * worse than showing the reasoning trace as a fallback. Strips a leading
+ * <think> block from content first; if what's left is empty, falls back to
+ * the separate reasoning trace, if any.
+ */
+function resolveFinalText(content, reasoningContent) {
+  const stripped = content.replace(/^\s*<think>[\s\S]*?<\/think>\s*/i, '').trim();
+  if (stripped) return stripped;
+  if (reasoningContent && reasoningContent.trim()) return reasoningContent.trim();
+  return content;
 }
 
 /**
@@ -390,8 +410,14 @@ class ChatHandler {
       // with "Unknown name 'content' at 'contents[N]'" once a tool call
       // actually reached this point (schema sanitization was required
       // first for the model to call a tool successfully at all).
+      //
+      // The role here is "user", not "function" - despite "function" being
+      // the role name other SDKs/older API versions use, the public
+      // generateContent REST endpoint rejects it outright ("Role 'function'
+      // is not supported"). Google's own multi-turn function-calling
+      // examples send the functionResponse part back with role "user".
       return [{
-        role: 'function',
+        role: 'user',
         parts: toolResults.map((r) => ({ functionResponse: { name: r.name, response: r.output } }))
       }];
     }
@@ -575,13 +601,12 @@ class ChatHandler {
     const isSse =
       (response.headers.get('content-type') || '').includes('event-stream') || trimmed.startsWith('data:');
 
-    let message;
+    let content, reasoningContent, rawToolCalls;
     if (isSse) {
-      const { content, toolCalls: streamedToolCalls } = aggregateSseStream(text);
-      message = {
-        content,
-        tool_calls: streamedToolCalls.map((tc) => ({ id: tc.id, type: 'function', function: { name: tc.name, arguments: tc.arguments } }))
-      };
+      const agg = aggregateSseStream(text);
+      content = agg.content;
+      reasoningContent = agg.reasoningContent;
+      rawToolCalls = agg.toolCalls.map((tc) => ({ id: tc.id, type: 'function', function: { name: tc.name, arguments: tc.arguments } }));
     } else {
       let data;
       try {
@@ -590,20 +615,29 @@ class ChatHandler {
         throw new Error(`The model API returned a response that could not be parsed as JSON: "${trimmed.slice(0, 200)}"`);
       }
       if (data.error) throw new Error((data.error.message || data.error) || 'API error');
-      const choice = data.choices && data.choices[0];
-      message = (choice && choice.message) || {};
+      const message = (data.choices && data.choices[0] && data.choices[0].message) || {};
+      content = message.content || '';
+      reasoningContent = message.reasoning_content || '';
+      rawToolCalls = message.tool_calls || [];
     }
 
-    const toolCalls = (message.tool_calls || []).map((tc) => ({
+    // Resolving here (rather than showing content as-is) matters for
+    // "thinking" models that leave regular content empty and put the whole
+    // answer in the reasoning trace instead - unresolved, that's a silent
+    // successful response with nothing in it ("(no response)" in the UI),
+    // with no error to explain why.
+    const resolvedText = resolveFinalText(content, reasoningContent);
+
+    const toolCalls = rawToolCalls.map((tc) => ({
       id: tc.id,
       name: tc.function.name,
       input: parseToolArguments(tc.function.arguments)
     }));
 
     return {
-      text: message.content || '',
+      text: resolvedText,
       toolCalls,
-      assistantMessage: { role: 'assistant', content: message.content || '', tool_calls: message.tool_calls }
+      assistantMessage: { role: 'assistant', content: resolvedText, tool_calls: rawToolCalls.length ? rawToolCalls : undefined }
     };
   }
 }
