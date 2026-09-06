@@ -42,16 +42,16 @@
       return data.result;
     },
 
-    async discoverOAuth(mcpUrl, redirectUri, clientId, clientSecret) {
-      return postJson('/api/oauth/discover', { mcpUrl, redirectUri, clientId, clientSecret });
+    async oauthStart(mcpUrl, redirectUri, clientId, clientSecret, clientName) {
+      return postJson('/api/oauth/start', { mcpUrl, redirectUri, clientId, clientSecret, clientName });
     },
 
-    async exchangeOAuthToken({ tokenEndpoint, clientId, clientSecret, code, codeVerifier, redirectUri }) {
-      return postJson('/api/oauth/token', { tokenEndpoint, clientId, clientSecret, code, codeVerifier, redirectUri });
+    async oauthCallback(pending, code) {
+      return postJson('/api/oauth/callback', { pending, code });
     },
 
-    async refreshOAuthToken({ tokenEndpoint, clientId, clientSecret, refreshToken }) {
-      return postJson('/api/oauth/refresh', { tokenEndpoint, clientId, clientSecret, refreshToken });
+    async refreshOAuthToken({ tokenEndpoint, clientId, clientSecret, refreshToken, resource }) {
+      return postJson('/api/oauth/refresh', { tokenEndpoint, clientId, clientSecret, refreshToken, resource });
     }
   };
 

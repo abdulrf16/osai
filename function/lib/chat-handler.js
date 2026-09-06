@@ -34,7 +34,7 @@ class ChatHandler {
       throw new Error('Model provider and API key are required');
     }
 
-    const rawTools = await getAllTools(mcpConfigs);
+    const { tools: rawTools, sessions } = await getAllTools(mcpConfigs);
     const nameMap = new Map(); // sanitized name -> { mcpConfig, originalName }
     const mcpById = new Map(mcpConfigs.map((m) => [m.mcpId, m]));
     for (const tool of rawTools) {
@@ -59,7 +59,8 @@ class ChatHandler {
             continue;
           }
           try {
-            const toolOutput = await executeTool(mapping.mcpConfig, mapping.originalName, call.input);
+            const sessionId = sessions.get(mapping.mcpConfig.mcpId);
+            const toolOutput = await executeTool(mapping.mcpConfig, mapping.originalName, call.input, sessionId);
             toolResults.push({ id: call.id, name: call.name, output: toolOutput });
           } catch (err) {
             toolResults.push({ id: call.id, name: call.name, output: { error: err.message } });

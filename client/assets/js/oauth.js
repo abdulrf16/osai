@@ -1,24 +1,6 @@
 (function () {
   'use strict';
 
-  function base64url(buffer) {
-    const bytes = new Uint8Array(buffer);
-    let str = '';
-    for (let i = 0; i < bytes.length; i++) str += String.fromCharCode(bytes[i]);
-    return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-  }
-
-  function randomBytes(len) {
-    const arr = new Uint8Array(len);
-    crypto.getRandomValues(arr);
-    return arr;
-  }
-
-  async function sha256(str) {
-    const data = new TextEncoder().encode(str);
-    return crypto.subtle.digest('SHA-256', data);
-  }
-
   function redirectUri() {
     return `${window.location.origin}/oauth-callback.html`;
   }
@@ -63,45 +45,27 @@
     /**
      * Runs the full MCP OAuth 2.1 + PKCE + Dynamic Client Registration flow
      * against whatever MCP server URL the user supplied - no per-provider
-     * setup needed. The PKCE code_verifier is generated and kept here in the
-     * browser and never sent anywhere except the final token exchange, so it
-     * never appears in a redirect URL (which would defeat PKCE).
+     * setup needed. Discovery, PKCE generation and authorize-URL construction
+     * all happen server-side (POST /api/oauth/start) so every MCP server goes
+     * through the exact same, already-verified request shape; this just opens
+     * the popup the server hands back and relays the resulting code.
      */
-    async connectMcp(mcpUrl, manualClientId, manualClientSecret) {
+    async connectMcp(mcpUrl, manualClientId, manualClientSecret, clientName) {
       const redirect = redirectUri();
-      const { authorizationEndpoint, tokenEndpoint, clientId, clientSecret } = await window.Api.discoverOAuth(
-        mcpUrl,
-        redirect,
-        manualClientId,
-        manualClientSecret
-      );
+      const started = await window.Api.oauthStart(mcpUrl, redirect, manualClientId, manualClientSecret, clientName);
 
-      const codeVerifier = base64url(randomBytes(32));
-      const codeChallenge = base64url(await sha256(codeVerifier));
-      const state = base64url(randomBytes(16));
+      const { code } = await openPopupAndWait(started.authorizeUrl, started.pending.state);
+      const result = await window.Api.oauthCallback(started.pending, code);
 
-      const params = new URLSearchParams({
-        response_type: 'code',
-        client_id: clientId,
-        redirect_uri: redirect,
-        state,
-        code_challenge: codeChallenge,
-        code_challenge_method: 'S256',
-        resource: mcpUrl
-      });
-      const authUrl = `${authorizationEndpoint}?${params.toString()}`;
-
-      const { code } = await openPopupAndWait(authUrl, state);
-      const tokenResult = await window.Api.exchangeOAuthToken({
-        tokenEndpoint,
-        clientId,
-        clientSecret,
-        code,
-        codeVerifier,
-        redirectUri: redirect
-      });
-
-      return { ...tokenResult, tokenEndpoint, clientId, clientSecret };
+      return {
+        accessToken: result.accessToken,
+        refreshToken: result.refreshToken,
+        expiresAt: result.expiresAt,
+        tokenEndpoint: result.tokenEndpoint,
+        clientId: result.clientId,
+        clientSecret: result.clientSecret,
+        resource: result.resource
+      };
     }
   };
 

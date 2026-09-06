@@ -103,52 +103,55 @@
             <input type="text" id="apiBaseInput" placeholder="Optional" />
           </div>
         </details>
+
+        <div class="mcp-zoho-block">
+          <div class="field-row">
+            <label>Zoho Mail</label>
+            <input type="text" id="zohoMcpUrlInput" placeholder="https://.../mcp (from Zoho Mail's MCP page)" />
+          </div>
+          <div class="field-row inline">
+            <span class="connect-status" id="zohoConnectStatus">Not connected</span>
+            <button class="mini-btn" id="connectZohoBtn">Connect via OAuth</button>
+          </div>
+        </div>
       </section>
 
       <section class="settings-section">
-        <h3>MCP servers</h3>
-        <p class="section-help">
-          Add any MCP server here - your Zoho Mail MCP URL (from Zoho Mail's MCP page), an Airtable
-          inventory MCP, or any other. Tag its role so the dashboard knows which panel it feeds.
-        </p>
-        <div id="mcpServerList" class="mcp-list"></div>
+        <details class="mcp-add-more">
+          <summary>+ Add more MCP servers</summary>
+          <p class="section-help">
+            Connect any other MCP server - an Airtable inventory MCP, another Zoho Mail MCP, or
+            anything else. Feeds the dashboard's right-hand panel. Only the name and URL are
+            required; leave the rest blank unless the server asks for them.
+          </p>
+          <div id="mcpServerList" class="mcp-list"></div>
 
-        <div class="field-row">
-          <label>Name</label>
-          <input type="text" id="mcpNameInput" placeholder="e.g. Zoho Mail, Airtable Inventory" />
-        </div>
-        <div class="field-row">
-          <label>Server URL</label>
-          <input type="text" id="mcpUrlInput" placeholder="https://.../mcp" />
-        </div>
-        <div class="field-row">
-          <label>Panel</label>
-          <select id="mcpRoleSelect">
-            <option value="mail">Mail (left panel)</option>
-            <option value="inventory">Inventory (right panel)</option>
-            <option value="other">Other (chat only)</option>
-          </select>
-        </div>
-        <div class="field-row">
-          <label>Access token (paste one, or use Connect via OAuth below)</label>
-          <input type="password" id="mcpTokenInput" placeholder="Optional if connecting via OAuth" />
-        </div>
-        <details class="advanced-fields">
-          <summary>Advanced: manual OAuth client (if the server doesn't support dynamic registration)</summary>
           <div class="field-row">
-            <label>Client ID</label>
-            <input type="text" id="mcpClientIdInput" placeholder="Optional" />
+            <label>Name</label>
+            <input type="text" id="mcpNameInput" placeholder="e.g. Airtable Inventory" />
           </div>
           <div class="field-row">
-            <label>Client secret</label>
+            <label>Server URL</label>
+            <input type="text" id="mcpUrlInput" placeholder="https://.../mcp" />
+          </div>
+          <div class="field-row">
+            <label>Access token (optional - paste one, or use Connect via OAuth below)</label>
+            <input type="password" id="mcpTokenInput" placeholder="Optional if connecting via OAuth" />
+          </div>
+          <div class="field-row">
+            <label>Client ID (optional)</label>
+            <input type="text" id="mcpClientIdInput" placeholder="Optional - only if the server needs it" />
+          </div>
+          <div class="field-row">
+            <label>Client secret (optional)</label>
             <input type="password" id="mcpClientSecretInput" placeholder="Optional" />
           </div>
+          <div class="field-row inline">
+            <span class="connect-status" id="mcpConnectStatus">Not connected</span>
+            <button class="mini-btn" id="connectMcpBtn">Connect via OAuth</button>
+          </div>
+          <button class="mini-btn full-width" id="addMcpBtn">Add MCP server</button>
         </details>
-        <div class="field-row inline">
-          <span class="connect-status" id="mcpConnectStatus">Not connected</span>
-          <button class="mini-btn" id="connectMcpBtn">Connect via OAuth</button>
-        </div>
-        <button class="mini-btn full-width" id="addMcpBtn">Add MCP server</button>
       </section>
 
       <button class="save-btn" id="saveSettingsBtn">Save</button>

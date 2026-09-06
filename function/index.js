@@ -20,7 +20,7 @@
 const express = require('express');
 const cors = require('cors');
 const { listTools, executeTool } = require('./lib/mcp-manager');
-const { prepareAuth, exchangeToken, refreshAccessToken } = require('./lib/oauth');
+const oauth = require('./lib/oauth');
 const { ChatHandler } = require('./lib/chat-handler');
 
 const app = express();
@@ -52,24 +52,132 @@ app.get('/health', (req, res) => {
 });
 
 // --- OAuth: generic MCP OAuth 2.1 + Dynamic Client Registration ---------
+//
+// Discovery, PKCE, dynamic client registration and authorize-URL construction
+// all happen here rather than in the browser: authorization servers (Zoho's
+// included) validate parameters like the RFC 8707 `resource` indicator
+// strictly, and building that URL by hand in JS drifted from what the
+// server actually expected. Keeping every step server-side means Zoho Mail,
+// Airtable, and any other MCP server all go through one verified code path.
 
-app.post('/api/oauth/discover', async (req, res) => {
+app.post('/api/oauth/start', async (req, res) => {
   try {
-    const { mcpUrl, redirectUri, clientId, clientSecret } = req.body;
+    const { mcpUrl, redirectUri, clientId, clientSecret, clientName } = req.body;
     if (!mcpUrl || !redirectUri) throw new Error('mcpUrl and redirectUri are required');
-    const manualClient = clientId ? { clientId, clientSecret } : undefined;
-    const result = await prepareAuth(mcpUrl, redirectUri, manualClient);
-    res.json({ ok: true, ...result });
+
+    // Best-effort unauthenticated probe: a 401 here often carries a
+    // WWW-Authenticate header pointing straight at the resource metadata,
+    // which is the most reliable discovery hint an MCP server can give.
+    let wwwAuthenticate = null;
+    try {
+      const probeRes = await oauth.fetchWithTimeout(
+        mcpUrl,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json, text/event-stream',
+            'MCP-Protocol-Version': '2025-06-18'
+          },
+          body: JSON.stringify({
+            jsonrpc: '2.0',
+            id: 0,
+            method: 'initialize',
+            params: { protocolVersion: '2025-06-18', capabilities: {}, clientInfo: { name: 'inventory-bot', version: '1.0.0' } }
+          })
+        },
+        8000
+      );
+      wwwAuthenticate = probeRes.headers.get('www-authenticate');
+    } catch (_) {
+      // Non-fatal - discovery still tries the standard well-known URLs.
+    }
+
+    const discovered = await oauth.discover(mcpUrl, wwwAuthenticate);
+    if (!discovered.ok) return fail(res, 502, discovered.error);
+
+    const resource = oauth.canonicalResource(mcpUrl);
+    const scope =
+      Array.isArray(discovered.scopesSupported) && discovered.scopesSupported.length
+        ? discovered.scopesSupported.join(' ')
+        : undefined;
+
+    let clientInfo;
+    if (clientId) {
+      clientInfo = { clientId, clientSecret: clientSecret || null };
+    } else {
+      const registration = await oauth.registerClient(discovered.registrationEndpoint, redirectUri, { clientName, scope });
+      if (!registration.ok) {
+        return fail(
+          res,
+          400,
+          registration.unsupported
+            ? 'This MCP server has no dynamic client registration endpoint. Provide a client ID manually, or paste an access token instead.'
+            : registration.error
+        );
+      }
+      clientInfo = registration;
+    }
+
+    const pkce = oauth.createPkcePair();
+    const state = oauth.randomState();
+
+    const authorizeUrl = oauth.buildAuthorizeUrl({
+      authorizationEndpoint: discovered.authorizationEndpoint,
+      clientId: clientInfo.clientId,
+      redirectUri,
+      codeChallenge: pkce.challenge,
+      state,
+      scope,
+      resource
+    });
+
+    res.json({
+      ok: true,
+      authorizeUrl,
+      pending: {
+        state,
+        codeVerifier: pkce.verifier,
+        resource,
+        redirectUri,
+        tokenEndpoint: discovered.tokenEndpoint,
+        clientId: clientInfo.clientId,
+        clientSecret: clientInfo.clientSecret || null
+      }
+    });
   } catch (err) {
     fail(res, 400, err.message);
   }
 });
 
-app.post('/api/oauth/token', async (req, res) => {
+app.post('/api/oauth/callback', async (req, res) => {
   try {
-    const { tokenEndpoint, clientId, clientSecret, code, codeVerifier, redirectUri } = req.body;
-    const result = await exchangeToken({ tokenEndpoint, clientId, clientSecret, code, codeVerifier, redirectUri });
-    res.json({ ok: true, ...result });
+    const { pending, code } = req.body;
+    if (!pending || !code) throw new Error('pending and code are required');
+
+    const result = await oauth.exchangeCode({
+      tokenEndpoint: pending.tokenEndpoint,
+      clientId: pending.clientId,
+      clientSecret: pending.clientSecret,
+      code,
+      codeVerifier: pending.codeVerifier,
+      redirectUri: pending.redirectUri,
+      resource: pending.resource
+    });
+    if (!result.ok) return fail(res, 400, result.error);
+
+    res.json({
+      ok: true,
+      accessToken: result.accessToken,
+      refreshToken: result.refreshToken,
+      expiresAt: result.expiresAt,
+      tokenType: result.tokenType,
+      // Echoed back so the browser can refresh later without re-running discovery.
+      tokenEndpoint: pending.tokenEndpoint,
+      clientId: pending.clientId,
+      clientSecret: pending.clientSecret,
+      resource: pending.resource
+    });
   } catch (err) {
     fail(res, 400, err.message);
   }
@@ -77,9 +185,10 @@ app.post('/api/oauth/token', async (req, res) => {
 
 app.post('/api/oauth/refresh', async (req, res) => {
   try {
-    const { tokenEndpoint, clientId, clientSecret, refreshToken } = req.body;
-    const result = await refreshAccessToken({ tokenEndpoint, clientId, clientSecret, refreshToken });
-    res.json({ ok: true, ...result });
+    const { tokenEndpoint, clientId, clientSecret, refreshToken, resource } = req.body;
+    const result = await oauth.refreshToken({ tokenEndpoint, clientId, clientSecret, refreshToken, resource });
+    if (!result.ok) return fail(res, 400, result.error);
+    res.json({ ok: true, accessToken: result.accessToken, refreshToken: result.refreshToken, expiresAt: result.expiresAt });
   } catch (err) {
     fail(res, 400, err.message);
   }
