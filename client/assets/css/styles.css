@@ -107,6 +107,8 @@ html, body {
   min-height: 0;
 }
 
+.panel-head-actions { display: flex; gap: 8px; }
+
 .panel-head {
   display: flex;
   align-items: center;
@@ -291,6 +293,10 @@ html, body {
   outline: none;
 }
 .field-row input:focus, .field-row select:focus { border-color: var(--accent); }
+/* Native <option> popups don't inherit the glass background, so a light
+   theme text color on the browser's default white popup makes every entry
+   but the hovered one invisible - force an explicit solid pair instead. */
+.field-row select option { background: #12162a; color: var(--text-primary); }
 
 .section-help { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; margin: 0 0 12px 0; }
 

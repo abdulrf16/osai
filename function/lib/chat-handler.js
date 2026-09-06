@@ -8,6 +8,7 @@ const ANTHROPIC_API_URL = process.env.OSAI_ANTHROPIC_URL || 'https://api.anthrop
 const ANTHROPIC_VERSION = '2023-06-01';
 const GEMINI_API_BASE = process.env.OSAI_GEMINI_BASE || 'https://generativelanguage.googleapis.com/v1beta/models';
 const OPENROUTER_API_URL = process.env.OSAI_OPENROUTER_URL || 'https://openrouter.ai/api/v1/chat/completions';
+const NVIDIA_API_URL = process.env.OSAI_NVIDIA_URL || 'https://integrate.api.nvidia.com/v1/chat/completions';
 
 /**
  * Without this, the model has no reason to look up an id it could fetch
@@ -59,17 +60,37 @@ function sanitizeToolName(mcpName, originalName) {
   return safe.slice(0, 128);
 }
 
-/** Strip an optional ```json fence before parsing a structured-query response. */
+/**
+ * Pulls a JSON value out of a structured-query response even when the model
+ * ignored the "output nothing else" instruction and added a lead-in like
+ * "Now I'll check..." or "Perfect! Here's the list:" before the JSON -
+ * weaker/cheaper models do this fairly often. Tries, in order: the raw text
+ * as-is, a ```json fenced block, then the widest [...]/{...} substring found
+ * anywhere in the text.
+ */
 function parseJsonLoose(text) {
   if (!text) throw new Error('The model returned no data.');
-  let cleaned = text.trim();
+  const cleaned = text.trim();
+
+  const candidates = [cleaned];
   const fenced = /```(?:json)?\s*([\s\S]*?)```/i.exec(cleaned);
-  if (fenced) cleaned = fenced[1].trim();
-  try {
-    return JSON.parse(cleaned);
-  } catch (err) {
-    throw new Error(`Could not parse a structured response: ${err.message}`);
+  if (fenced) candidates.push(fenced[1].trim());
+
+  const firstBracket = cleaned.search(/[[{]/);
+  if (firstBracket !== -1) {
+    const closeChar = cleaned[firstBracket] === '[' ? ']' : '}';
+    const lastClose = cleaned.lastIndexOf(closeChar);
+    if (lastClose > firstBracket) candidates.push(cleaned.slice(firstBracket, lastClose + 1));
   }
+
+  for (const candidate of candidates) {
+    try {
+      return JSON.parse(candidate);
+    } catch (_) {
+      // try the next candidate
+    }
+  }
+  throw new Error(`Could not parse a structured response. The model said: "${cleaned.slice(0, 160)}"`);
 }
 
 /**
@@ -105,7 +126,11 @@ class ChatHandler {
     if (!modelConfig || !modelConfig.provider || !modelConfig.apiKey) {
       throw new Error('Model provider and API key are required');
     }
-    const { text } = await this._runToolLoop(modelConfig, [{ role: 'user', content: instruction }], mcpConfigs);
+    const strictInstruction =
+      `${instruction}\n\nCRITICAL: your entire final response must be nothing but that JSON - ` +
+      'no lead-in sentence, no acknowledgement, no explanation, no markdown fences. ' +
+      'It must start with [ or { and end with the matching ] or } and contain nothing else.';
+    const { text } = await this._runToolLoop(modelConfig, [{ role: 'user', content: strictInstruction }], mcpConfigs);
     return parseJsonLoose(text);
   }
 
@@ -182,7 +207,10 @@ class ChatHandler {
       return this._callGemini(modelConfig, messages, rawTools);
     }
     if (modelConfig.provider === 'openrouter') {
-      return this._callOpenRouter(modelConfig, messages, rawTools);
+      return this._callOpenAiCompatible(modelConfig, messages, rawTools, OPENROUTER_API_URL, 'anthropic/claude-sonnet-4.5');
+    }
+    if (modelConfig.provider === 'nvidia') {
+      return this._callOpenAiCompatible(modelConfig, messages, rawTools, NVIDIA_API_URL, 'meta/llama-3.1-70b-instruct');
     }
     throw new Error(`Unsupported provider: ${modelConfig.provider}`);
   }
@@ -288,7 +316,14 @@ class ChatHandler {
     };
   }
 
-  async _callOpenRouter(modelConfig, messages, rawTools) {
+  /**
+   * OpenAI-compatible chat completions - OpenRouter and NVIDIA NIM
+   * (integrate.api.nvidia.com) both speak this exact schema, differing only
+   * in base URL and which models they host. Not every model NIM hosts
+   * supports tool calling; ones that don't will just answer in prose and the
+   * dashboard panels' JSON parsing will report that plainly.
+   */
+  async _callOpenAiCompatible(modelConfig, messages, rawTools, apiUrl, defaultModel) {
     const tools = rawTools.map((t) => ({
       type: 'function',
       function: {
@@ -303,21 +338,21 @@ class ChatHandler {
       return m;
     });
 
-    const response = await fetch(OPENROUTER_API_URL, {
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${modelConfig.apiKey}`
       },
       body: JSON.stringify({
-        model: modelConfig.modelName || 'anthropic/claude-sonnet-4.5',
+        model: modelConfig.modelName || defaultModel,
         messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...orMessages],
         ...(tools.length ? { tools } : {})
       })
     });
 
     const data = await response.json();
-    if (data.error) throw new Error(data.error.message || 'OpenRouter API error');
+    if (data.error) throw new Error(data.error.message || 'API error');
 
     const choice = data.choices && data.choices[0];
     const message = (choice && choice.message) || {};

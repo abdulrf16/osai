@@ -26,7 +26,9 @@
   function cacheEls() {
     els.mailList = document.getElementById('mailList');
     els.inventoryList = document.getElementById('inventoryList');
+    els.fetchMailBtn = document.getElementById('fetchMailBtn');
     els.refreshMailBtn = document.getElementById('refreshMailBtn');
+    els.fetchInventoryBtn = document.getElementById('fetchInventoryBtn');
     els.refreshInventoryBtn = document.getElementById('refreshInventoryBtn');
     els.mailStatusPill = document.getElementById('mailStatusPill');
     els.inventoryStatusPill = document.getElementById('inventoryStatusPill');
@@ -165,13 +167,13 @@
     await window.Settings.init();
     window.Chat.init();
 
-    await Promise.all([loadMailPanel(), loadInventoryPanel()]);
-
+    // Loading either panel spends model API credits (it runs the full tool
+    // loop), so nothing fetches automatically - only an explicit click does,
+    // whether that's on connect, on later reconnects, or on page load.
+    els.fetchMailBtn.addEventListener('click', loadMailPanel);
     els.refreshMailBtn.addEventListener('click', loadMailPanel);
+    els.fetchInventoryBtn.addEventListener('click', loadInventoryPanel);
     els.refreshInventoryBtn.addEventListener('click', loadInventoryPanel);
-    window.addEventListener('inventorybot:mcp-list-changed', async () => {
-      await Promise.all([loadMailPanel(), loadInventoryPanel()]);
-    });
 
     els.mailList.addEventListener('click', (e) => {
       const item = e.target.closest('[data-email-idx]');

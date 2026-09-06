@@ -34,10 +34,13 @@
   <section class="panel glass panel-mail" id="mailPanel">
     <div class="panel-head">
       <h2>Inbox</h2>
-      <button class="mini-btn" id="refreshMailBtn">Refresh</button>
+      <span class="panel-head-actions">
+        <button class="mini-btn" id="fetchMailBtn">Fetch</button>
+        <button class="mini-btn" id="refreshMailBtn">Refresh</button>
+      </span>
     </div>
     <div class="panel-body" id="mailList">
-      <div class="empty-state">Add a Mail-role MCP server in settings to see your inbox here.</div>
+      <div class="empty-state">Connect Zoho Mail, then click Fetch to load your inbox.</div>
     </div>
   </section>
 
@@ -62,10 +65,13 @@
   <section class="panel glass panel-inventory" id="inventoryPanel">
     <div class="panel-head">
       <h2>Inventory</h2>
-      <button class="mini-btn" id="refreshInventoryBtn">Refresh</button>
+      <span class="panel-head-actions">
+        <button class="mini-btn" id="fetchInventoryBtn">Fetch</button>
+        <button class="mini-btn" id="refreshInventoryBtn">Refresh</button>
+      </span>
     </div>
     <div class="panel-body" id="inventoryList">
-      <div class="empty-state">Add an Inventory-role MCP server (e.g. Airtable) in settings to see stock here.</div>
+      <div class="empty-state">Add an Inventory MCP server (e.g. Airtable), then click Fetch to load stock.</div>
     </div>
   </section>
 </main>
@@ -86,6 +92,7 @@
             <option value="anthropic">Claude (Anthropic)</option>
             <option value="gemini">Gemini (Google)</option>
             <option value="openrouter">OpenRouter</option>
+            <option value="nvidia">NVIDIA NIM</option>
           </select>
         </div>
         <div class="field-row">
