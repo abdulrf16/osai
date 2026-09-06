@@ -32,11 +32,6 @@
   }
 
   let state = loadSettings();
-  // Captured from the last "Connect via OAuth" click, awaiting the matching
-  // "Connect"/"Add MCP server" action. Kept separate for Zoho Mail (a single,
-  // predefined connection) and for the generic "+ Add more MCP servers" form.
-  let pendingZohoToken = null;
-  let pendingOAuthToken = null;
 
   const els = {};
 
@@ -88,10 +83,6 @@
       els.zohoConnectStatus.textContent = 'Connected';
       els.zohoConnectStatus.dataset.state = 'on';
       els.connectZohoBtn.textContent = 'Reconnect';
-    } else if (pendingZohoToken) {
-      els.zohoConnectStatus.textContent = 'Token ready — click Connect again to save';
-      els.zohoConnectStatus.dataset.state = 'on';
-      els.connectZohoBtn.textContent = 'Connect via OAuth';
     } else {
       els.zohoConnectStatus.textContent = 'Not connected';
       els.zohoConnectStatus.dataset.state = 'off';
@@ -113,8 +104,8 @@
       els.mcpServerList.appendChild(row);
     });
 
-    els.mcpConnectStatus.textContent = pendingOAuthToken ? 'Token ready — click "Add MCP server"' : 'Not connected';
-    els.mcpConnectStatus.dataset.state = pendingOAuthToken ? 'on' : 'off';
+    els.mcpConnectStatus.textContent = 'Not connected';
+    els.mcpConnectStatus.dataset.state = 'off';
   }
 
   function renderTopStatus() {
@@ -140,6 +131,14 @@
     else state.mcps.push(mcp);
   }
 
+  /**
+   * Both "Connect via OAuth" buttons navigate the whole page away to the
+   * provider's consent screen and back (see oauth.js) - the same approach
+   * the voice assistant app uses, rather than a popup. That means nothing
+   * after `OAuthFlow.begin()` resolves runs in the normal case; the result
+   * is picked up on the next page load by resumeOAuthIfReturning() below,
+   * tagged with `kind` so it knows which of these two flows it belongs to.
+   */
   async function handleConnectZoho() {
     const url = els.zohoMcpUrlInput.value.trim();
     if (!url) {
@@ -150,39 +149,19 @@
     els.connectZohoBtn.disabled = true;
     els.connectZohoBtn.textContent = 'Connecting...';
     try {
-      const result = await window.OAuthFlow.connectMcp(url, undefined, undefined, 'Inventory Bot for Zoho Mail');
-      const existing = getZohoMcp();
-      const mcp = {
-        mcpId: existing ? existing.mcpId : newId(),
-        name: 'Zoho Mail',
-        url,
-        role: 'mail',
-        accessToken: result.accessToken,
-        refreshToken: result.refreshToken,
-        expiresAt: result.expiresAt,
-        tokenEndpoint: result.tokenEndpoint,
-        clientId: result.clientId,
-        clientSecret: result.clientSecret,
-        resource: result.resource
-      };
-      upsertMcp(mcp);
-      persist(state);
-      pendingZohoToken = null;
-      renderForm();
-      renderTopStatus();
-      window.dispatchEvent(new CustomEvent('inventorybot:mcp-list-changed'));
+      await window.OAuthFlow.begin(url, undefined, undefined, 'Inventory Bot for Zoho Mail', 'zoho', { url });
     } catch (err) {
       alert(`Zoho Mail connection failed: ${err.message}`);
-    } finally {
       els.connectZohoBtn.disabled = false;
       renderForm();
     }
   }
 
   async function handleConnectMcp() {
+    const name = els.mcpNameInput.value.trim();
     const url = els.mcpUrlInput.value.trim();
-    if (!url) {
-      alert('Enter the MCP server URL first, then connect via OAuth.');
+    if (!name || !url) {
+      alert('Please provide both a name and a server URL, then connect via OAuth.');
       return;
     }
     const clientId = els.mcpClientIdInput.value.trim() || undefined;
@@ -191,25 +170,15 @@
     els.connectMcpBtn.disabled = true;
     els.connectMcpBtn.textContent = 'Connecting...';
     try {
-      const result = await window.OAuthFlow.connectMcp(url, clientId, clientSecret);
-      pendingOAuthToken = {
-        accessToken: result.accessToken,
-        refreshToken: result.refreshToken,
-        expiresAt: result.expiresAt,
-        tokenEndpoint: result.tokenEndpoint,
-        clientId: result.clientId,
-        clientSecret: result.clientSecret,
-        resource: result.resource
-      };
-      renderForm();
+      await window.OAuthFlow.begin(url, clientId, clientSecret, undefined, 'other', { name, url });
     } catch (err) {
       alert(`MCP connection failed: ${err.message}`);
-    } finally {
       els.connectMcpBtn.disabled = false;
       els.connectMcpBtn.textContent = 'Connect via OAuth';
     }
   }
 
+  /** Paste-a-token path: no redirect involved, so this finishes immediately. */
   async function handleAddMcp() {
     const name = els.mcpNameInput.value.trim();
     const url = els.mcpUrlInput.value.trim();
@@ -219,18 +188,19 @@
       alert('Please provide both a name and a server URL for the MCP.');
       return;
     }
-
-    const tokenInfo = pendingOAuthToken || (manualToken ? { accessToken: manualToken } : {});
+    if (!manualToken) {
+      alert('Paste an access token, or use "Connect via OAuth" instead.');
+      return;
+    }
 
     els.addMcpBtn.disabled = true;
     try {
       // Validate the connection now, rather than after the first chat message.
-      await window.Api.listMcpTools({ url, accessToken: tokenInfo.accessToken, tokenType: 'Bearer' });
+      await window.Api.listMcpTools({ url, accessToken: manualToken, tokenType: 'Bearer' });
 
-      const mcp = { mcpId: newId(), name, url, role: 'inventory', ...tokenInfo };
+      const mcp = { mcpId: newId(), name, url, role: 'inventory', accessToken: manualToken };
       state.mcps.push(mcp);
       persist(state);
-      pendingOAuthToken = null;
       els.mcpNameInput.value = '';
       els.mcpUrlInput.value = '';
       els.mcpTokenInput.value = '';
@@ -243,6 +213,60 @@
       alert(`Could not add MCP server: ${err.message}`);
     } finally {
       els.addMcpBtn.disabled = false;
+    }
+  }
+
+  /**
+   * On load, finish an OAuth round trip if we came back with a code. Must
+   * run before anything else touches settings state.
+   */
+  async function resumeOAuthIfReturning() {
+    if (!window.OAuthFlow.hasCallbackParams()) return;
+
+    try {
+      const result = await window.OAuthFlow.complete();
+      if (!result) return;
+
+      const { kind, extra, token } = result;
+      if (kind === 'zoho') {
+        const existing = getZohoMcp();
+        upsertMcp({
+          mcpId: existing ? existing.mcpId : newId(),
+          name: 'Zoho Mail',
+          url: extra.url,
+          role: 'mail',
+          accessToken: token.accessToken,
+          refreshToken: token.refreshToken,
+          expiresAt: token.expiresAt,
+          tokenEndpoint: token.tokenEndpoint,
+          clientId: token.clientId,
+          clientSecret: token.clientSecret,
+          resource: token.resource
+        });
+      } else if (kind === 'other') {
+        // Validate the connection now, rather than after the first chat message.
+        await window.Api.listMcpTools({ url: extra.url, accessToken: token.accessToken, tokenType: 'Bearer' });
+        state.mcps.push({
+          mcpId: newId(),
+          name: extra.name,
+          url: extra.url,
+          role: 'inventory',
+          accessToken: token.accessToken,
+          refreshToken: token.refreshToken,
+          expiresAt: token.expiresAt,
+          tokenEndpoint: token.tokenEndpoint,
+          clientId: token.clientId,
+          clientSecret: token.clientSecret,
+          resource: token.resource
+        });
+      }
+      persist(state);
+      renderTopStatus();
+      window.dispatchEvent(new CustomEvent('inventorybot:mcp-list-changed'));
+      openModal();
+    } catch (err) {
+      alert(`Authorization failed: ${err.message}`);
+      openModal();
     }
   }
 
@@ -264,9 +288,10 @@
     closeModal();
   }
 
-  function init() {
+  async function init() {
     cacheEls();
     renderTopStatus();
+    await resumeOAuthIfReturning();
 
     els.settingsBtn.addEventListener('click', openModal);
     els.closeBtn.addEventListener('click', closeModal);

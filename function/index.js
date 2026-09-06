@@ -106,7 +106,11 @@ app.post('/api/oauth/start', async (req, res) => {
     if (clientId) {
       clientInfo = { clientId, clientSecret: clientSecret || null };
     } else {
-      const registration = await oauth.registerClient(discovered.registrationEndpoint, redirectUri, { clientName, scope });
+      const registration = await oauth.registerClient(discovered.registrationEndpoint, redirectUri, {
+        clientName,
+        scope,
+        clientUri: new URL(redirectUri).origin
+      });
       if (!registration.ok) {
         return fail(
           res,

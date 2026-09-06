@@ -143,7 +143,7 @@
 
   async function init() {
     cacheEls();
-    window.Settings.init();
+    await window.Settings.init();
     window.Chat.init();
 
     await Promise.all([loadMailPanel(), loadInventoryPanel()]);
