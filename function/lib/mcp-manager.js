@@ -182,24 +182,18 @@ async function listTools(mcp) {
 async function getAllTools(mcps) {
 	const tools = [];
 	const sessions = new Map();
-	console.log(`[DEBUG] getAllTools: starting with ${mcps.length} MCPs`);
 	for (const mcp of mcps) {
-		console.log(`[DEBUG] getAllTools: processing MCP "${mcp.name}" (${mcp.mcpId}) at ${mcp.url}, hasToken=${!!mcp.accessToken}`);
 		try {
 			const sessionId = await openSession(mcp);
-			console.log(`[DEBUG] getAllTools: opened session for "${mcp.name}", sessionId=${sessionId}`);
 			sessions.set(mcp.mcpId, sessionId);
 			const result = await rpcCall(mcp, 'tools/list', {}, sessionId);
-			const toolCount = (result && result.tools && result.tools.length) || 0;
-			console.log(`[DEBUG] getAllTools: got ${toolCount} tools from "${mcp.name}"`);
 			for (const tool of (result && result.tools) || []) {
 				tools.push({ ...tool, __mcpId: mcp.mcpId, __mcpName: mcp.name });
 			}
 		} catch (err) {
-			console.error(`[DEBUG] getAllTools: Failed for MCP "${mcp.name}": ${err.message}`);
+			console.error(`Failed to list tools for MCP "${mcp.name}":`, err.message);
 		}
 	}
-	console.log(`[DEBUG] getAllTools: returning ${tools.length} total tools from ${sessions.size} sessions`);
 	return { tools, sessions };
 }
 

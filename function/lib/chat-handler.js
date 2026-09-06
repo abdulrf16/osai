@@ -70,13 +70,9 @@ function parseToolArguments(raw) {
   if (typeof raw === 'object') return raw;
   try {
     return JSON.parse(raw);
-  } catch (err) {
-    console.log(`[DEBUG] parseToolArguments: Failed to parse "${raw.slice(0, 100)}", attempting recovery: ${err.message}`);
+  } catch (_) {
     const start = raw.indexOf('{');
-    if (start === -1) {
-      console.log(`[DEBUG] parseToolArguments: No opening brace found, returning {}`);
-      return {};
-    }
+    if (start === -1) return {};
     let depth = 0;
     for (let i = start; i < raw.length; i++) {
       if (raw[i] === '{') depth++;
@@ -84,17 +80,13 @@ function parseToolArguments(raw) {
         depth--;
         if (depth === 0) {
           try {
-            const recovered = JSON.parse(raw.slice(start, i + 1));
-            console.log(`[DEBUG] parseToolArguments: Successfully recovered: ${JSON.stringify(recovered)}`);
-            return recovered;
+            return JSON.parse(raw.slice(start, i + 1));
           } catch (_) {
-            console.log(`[DEBUG] parseToolArguments: Recovery failed, returning {}`);
             return {};
           }
         }
       }
     }
-    console.log(`[DEBUG] parseToolArguments: No balanced braces found, returning {}`);
     return {};
   }
 }
@@ -180,7 +172,6 @@ class ChatHandler {
 
   async _runToolLoop(modelConfig, messages, mcpConfigs) {
     const { tools: rawTools, sessions } = await getAllTools(mcpConfigs);
-    console.log(`[DEBUG] _runToolLoop: received ${mcpConfigs.length} MCPs, got ${rawTools.length} tools`);
     const nameMap = new Map(); // sanitized name -> { mcpConfig, originalName }
     const mcpById = new Map(mcpConfigs.map((m) => [m.mcpId, m]));
     for (const tool of rawTools) {
@@ -191,28 +182,22 @@ class ChatHandler {
     let iterations = 0;
     while (iterations < MAX_TOOL_ITERATIONS) {
       iterations++;
-      console.log(`[DEBUG] _runToolLoop iteration ${iterations}: calling provider with ${rawTools.length} tools`);
       const result = await this._callProvider(modelConfig, messages, rawTools);
 
       if (result.toolCalls && result.toolCalls.length > 0) {
-        console.log(`[DEBUG] _runToolLoop: model made ${result.toolCalls.length} tool calls`);
         messages.push(result.assistantMessage);
         const toolResults = [];
         for (const call of result.toolCalls) {
-          console.log(`[DEBUG] _runToolLoop: executing tool "${call.name}"`);
           const mapping = nameMap.get(call.name);
           if (!mapping) {
-            console.log(`[DEBUG] _runToolLoop: tool "${call.name}" not found in nameMap`);
             toolResults.push({ id: call.id, name: call.name, output: { error: `Unknown tool: ${call.name}` } });
             continue;
           }
           try {
             const sessionId = sessions.get(mapping.mcpConfig.mcpId);
             const toolOutput = await executeTool(mapping.mcpConfig, mapping.originalName, call.input, sessionId);
-            console.log(`[DEBUG] _runToolLoop: tool "${call.name}" executed successfully`);
             toolResults.push({ id: call.id, name: call.name, output: toolOutput });
           } catch (err) {
-            console.error(`[DEBUG] _runToolLoop: tool "${call.name}" failed:`, err.message);
             toolResults.push({ id: call.id, name: call.name, output: { error: err.message } });
           }
         }
@@ -220,7 +205,6 @@ class ChatHandler {
         continue;
       }
 
-      console.log(`[DEBUG] _runToolLoop: final response: ${result.text.slice(0, 100)}`);
       return { text: result.text, messages: [...messages, { role: 'assistant', content: result.text }] };
     }
 
