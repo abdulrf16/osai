@@ -76,10 +76,16 @@
     conversationHistory = [];
   }
 
+  /** Drops drafted text into the chat box and focuses it - used by "Reply". */
+  function prefill(text) {
+    els.input.value = text;
+    els.input.focus();
+  }
+
   function init() {
     cacheEls();
     els.form.addEventListener('submit', handleSubmit);
   }
 
-  window.Chat = { init, resetConversation };
+  window.Chat = { init, resetConversation, prefill };
 })();

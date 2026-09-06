@@ -37,6 +37,11 @@
       return data.tools;
     },
 
+    async dashboardQuery(instruction, modelConfig, mcpConfigs) {
+      const data = await postJson('/api/dashboard/query', { instruction, modelConfig, mcpConfigs });
+      return data.data;
+    },
+
     async executeTool(mcp, toolName, toolInput) {
       const data = await postJson('/api/mcp/execute', { mcp, toolName, toolInput });
       return data.result;

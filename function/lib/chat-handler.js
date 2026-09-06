@@ -2,16 +2,74 @@
 
 const { getAllTools, executeTool } = require('./mcp-manager');
 
-const MAX_TOOL_ITERATIONS = 6;
+const MAX_TOOL_ITERATIONS = 10;
 
 const ANTHROPIC_API_URL = process.env.OSAI_ANTHROPIC_URL || 'https://api.anthropic.com/v1/messages';
 const ANTHROPIC_VERSION = '2023-06-01';
 const GEMINI_API_BASE = process.env.OSAI_GEMINI_BASE || 'https://generativelanguage.googleapis.com/v1beta/models';
 const OPENROUTER_API_URL = process.env.OSAI_OPENROUTER_URL || 'https://openrouter.ai/api/v1/chat/completions';
 
+/**
+ * Without this, the model has no reason to look up an id it could fetch
+ * itself, and no reason to call dependent tools in the order they actually
+ * depend on each other (account before folders, folders before messages,
+ * base before table before records) - it just asks the user, or guesses.
+ */
+const SYSTEM_PROMPT = `
+You manage a user's connected services through MCP tools - Zoho Mail and any
+other MCP server they have added (for example, an Airtable inventory base).
+Use the connected tools for anything about their actual data: mail messages,
+folders, contacts, inventory records, tables, or anything else a tool exposes.
+Never invent an id, record, message, table name, or base id - if a tool did
+not return it, you do not know it.
+
+Most tools need an identifier first - an account id, a folder id, a base id,
+a table name - before they can do what was actually asked. Resolve every one
+of these yourself with whichever tool lists or fetches them; never ask the
+user for something a tool can look up. Call tools in the order they depend on
+each other (get the account before listing folders, list folders before
+listing messages in one, list bases before listing tables, list tables before
+querying records) before ever answering or asking the user something a tool
+could have supplied. Reuse an id you already fetched earlier in this same
+request rather than re-fetching it.
+
+When a lookup returns exactly one result - one account, one base, one
+matching folder - use it directly without asking, since there is nothing to
+disambiguate. Only ask the user to choose when a lookup genuinely returns
+more than one plausible candidate and the request did not already say which.
+
+If a tool call fails, read the error before reacting: a generic or
+validation-shaped error (missing field, invalid input, not found) usually
+means a required identifier or argument is missing - get it from another
+tool or the error itself and retry once with it filled in, rather than
+giving up or asking the user. Only surface the failure if the retry also fails.
+
+Sending, deleting, and any other irreversible action needs the user's
+explicit confirmation first - state exactly what you are about to do and wait
+for a clear yes before calling that tool. Reading, listing, and searching
+need no confirmation.
+
+If asked to respond in a specific structured format (for example, JSON
+matching an exact shape), follow that format exactly: no prose, headings, or
+markdown code fences around it, and nothing before or after it.
+`.trim();
+
 function sanitizeToolName(mcpName, originalName) {
   const safe = `${mcpName}__${originalName}`.replace(/[^a-zA-Z0-9_-]/g, '_');
   return safe.slice(0, 128);
+}
+
+/** Strip an optional ```json fence before parsing a structured-query response. */
+function parseJsonLoose(text) {
+  if (!text) throw new Error('The model returned no data.');
+  let cleaned = text.trim();
+  const fenced = /```(?:json)?\s*([\s\S]*?)```/i.exec(cleaned);
+  if (fenced) cleaned = fenced[1].trim();
+  try {
+    return JSON.parse(cleaned);
+  } catch (err) {
+    throw new Error(`Could not parse a structured response: ${err.message}`);
+  }
 }
 
 /**
@@ -33,7 +91,25 @@ class ChatHandler {
     if (!modelConfig || !modelConfig.provider || !modelConfig.apiKey) {
       throw new Error('Model provider and API key are required');
     }
+    const messages = [...conversationHistory, { role: 'user', content: userMessage }];
+    const { text, messages: finalMessages } = await this._runToolLoop(modelConfig, messages, mcpConfigs);
+    return { text, conversationHistory: finalMessages };
+  }
 
+  /**
+   * One-shot, historyless query used by the dashboard panels: same tool loop
+   * as chat, but the instruction asks for an exact JSON shape and the result
+   * is parsed rather than shown as a conversational reply.
+   */
+  async processStructuredQuery(instruction, modelConfig, mcpConfigs = []) {
+    if (!modelConfig || !modelConfig.provider || !modelConfig.apiKey) {
+      throw new Error('Model provider and API key are required');
+    }
+    const { text } = await this._runToolLoop(modelConfig, [{ role: 'user', content: instruction }], mcpConfigs);
+    return parseJsonLoose(text);
+  }
+
+  async _runToolLoop(modelConfig, messages, mcpConfigs) {
     const { tools: rawTools, sessions } = await getAllTools(mcpConfigs);
     const nameMap = new Map(); // sanitized name -> { mcpConfig, originalName }
     const mcpById = new Map(mcpConfigs.map((m) => [m.mcpId, m]));
@@ -41,8 +117,6 @@ class ChatHandler {
       const sanitized = sanitizeToolName(tool.__mcpName, tool.name);
       nameMap.set(sanitized, { mcpConfig: mcpById.get(tool.__mcpId), originalName: tool.name });
     }
-
-    const messages = [...conversationHistory, { role: 'user', content: userMessage }];
 
     let iterations = 0;
     while (iterations < MAX_TOOL_ITERATIONS) {
@@ -70,7 +144,7 @@ class ChatHandler {
         continue;
       }
 
-      return { text: result.text, conversationHistory: [...messages, { role: 'assistant', content: result.text }] };
+      return { text: result.text, messages: [...messages, { role: 'assistant', content: result.text }] };
     }
 
     throw new Error('Tool call loop exceeded maximum iterations without a final answer');
@@ -128,6 +202,7 @@ class ChatHandler {
     const body = {
       model: modelConfig.modelName || 'claude-sonnet-4-5-20250929',
       max_tokens: 2048,
+      system: SYSTEM_PROMPT,
       messages: anthropicMessages,
       ...(tools.length ? { tools } : {})
     };
@@ -185,7 +260,11 @@ class ChatHandler {
     const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ contents, ...(tools ? { tools } : {}) })
+      body: JSON.stringify({
+        contents,
+        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+        ...(tools ? { tools } : {})
+      })
     });
 
     const data = await response.json();
@@ -232,7 +311,7 @@ class ChatHandler {
       },
       body: JSON.stringify({
         model: modelConfig.modelName || 'anthropic/claude-sonnet-4.5',
-        messages: orMessages,
+        messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...orMessages],
         ...(tools.length ? { tools } : {})
       })
     });

@@ -351,6 +351,17 @@ html, body {
 }
 .save-btn:hover { transform: translateY(-1px); }
 
+.mail-detail-body {
+  white-space: pre-wrap;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0 0 18px 0;
+  max-height: 40vh;
+  overflow-y: auto;
+}
+.mail-item { cursor: pointer; }
+
 @media (max-width: 980px) {
   .layout { grid-template-columns: 1fr; height: auto; overflow-y: auto; }
   html, body { overflow-y: auto; }

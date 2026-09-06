@@ -132,6 +132,20 @@
   }
 
   /**
+   * Connecting an MCP navigates the whole page away and back (see oauth.js).
+   * Anything only held in the form fields - the model provider/name/API key
+   * the user just typed in, but hasn't clicked Save yet - would otherwise be
+   * lost on that reload. Save it to state first so it survives.
+   */
+  function persistModelFields() {
+    state.provider = els.providerSelect.value;
+    state.modelName = els.modelNameInput.value.trim();
+    state.apiKey = els.apiKeyInput.value.trim();
+    state.apiBase = els.apiBaseInput.value.trim();
+    persist(state);
+  }
+
+  /**
    * Both "Connect via OAuth" buttons navigate the whole page away to the
    * provider's consent screen and back (see oauth.js) - the same approach
    * the voice assistant app uses, rather than a popup. That means nothing
@@ -148,6 +162,7 @@
 
     els.connectZohoBtn.disabled = true;
     els.connectZohoBtn.textContent = 'Connecting...';
+    persistModelFields();
     try {
       await window.OAuthFlow.begin(url, undefined, undefined, 'Inventory Bot for Zoho Mail', 'zoho', { url });
     } catch (err) {
@@ -169,6 +184,7 @@
 
     els.connectMcpBtn.disabled = true;
     els.connectMcpBtn.textContent = 'Connecting...';
+    persistModelFields();
     try {
       await window.OAuthFlow.begin(url, clientId, clientSecret, undefined, 'other', { name, url });
     } catch (err) {
@@ -279,11 +295,7 @@
   }
 
   function handleSave() {
-    state.provider = els.providerSelect.value;
-    state.modelName = els.modelNameInput.value.trim();
-    state.apiKey = els.apiKeyInput.value.trim();
-    state.apiBase = els.apiBaseInput.value.trim();
-    persist(state);
+    persistModelFields();
     renderTopStatus();
     closeModal();
   }

@@ -235,6 +235,18 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
+// One-shot, historyless tool-loop query that asks for an exact JSON shape -
+// what the dashboard panels use instead of guessing tool names/arguments.
+app.post('/api/dashboard/query', async (req, res) => {
+  try {
+    const { instruction, modelConfig, mcpConfigs } = req.body;
+    const data = await chatHandler.processStructuredQuery(instruction, modelConfig, mcpConfigs);
+    res.json({ ok: true, data });
+  } catch (err) {
+    fail(res, 500, err.message);
+  }
+});
+
 app.use((req, res) => fail(res, 404, `No such endpoint: ${req.method} ${req.path}`));
 
 module.exports = app;
