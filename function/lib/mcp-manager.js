@@ -184,7 +184,7 @@ async function getAllTools(mcps) {
 	const sessions = new Map();
 	console.log(`[DEBUG] getAllTools: starting with ${mcps.length} MCPs`);
 	for (const mcp of mcps) {
-		console.log(`[DEBUG] getAllTools: processing MCP "${mcp.name}" (${mcp.mcpId}) at ${mcp.url}`);
+		console.log(`[DEBUG] getAllTools: processing MCP "${mcp.name}" (${mcp.mcpId}) at ${mcp.url}, hasToken=${!!mcp.accessToken}`);
 		try {
 			const sessionId = await openSession(mcp);
 			console.log(`[DEBUG] getAllTools: opened session for "${mcp.name}", sessionId=${sessionId}`);
@@ -196,7 +196,7 @@ async function getAllTools(mcps) {
 				tools.push({ ...tool, __mcpId: mcp.mcpId, __mcpName: mcp.name });
 			}
 		} catch (err) {
-			console.error(`Failed to list tools for MCP "${mcp.name}":`, err.message);
+			console.error(`[DEBUG] getAllTools: Failed for MCP "${mcp.name}": ${err.message}`);
 		}
 	}
 	console.log(`[DEBUG] getAllTools: returning ${tools.length} total tools from ${sessions.size} sessions`);

@@ -70,9 +70,13 @@ function parseToolArguments(raw) {
   if (typeof raw === 'object') return raw;
   try {
     return JSON.parse(raw);
-  } catch (_) {
+  } catch (err) {
+    console.log(`[DEBUG] parseToolArguments: Failed to parse "${raw.slice(0, 100)}", attempting recovery: ${err.message}`);
     const start = raw.indexOf('{');
-    if (start === -1) return {};
+    if (start === -1) {
+      console.log(`[DEBUG] parseToolArguments: No opening brace found, returning {}`);
+      return {};
+    }
     let depth = 0;
     for (let i = start; i < raw.length; i++) {
       if (raw[i] === '{') depth++;
@@ -80,13 +84,17 @@ function parseToolArguments(raw) {
         depth--;
         if (depth === 0) {
           try {
-            return JSON.parse(raw.slice(start, i + 1));
+            const recovered = JSON.parse(raw.slice(start, i + 1));
+            console.log(`[DEBUG] parseToolArguments: Successfully recovered: ${JSON.stringify(recovered)}`);
+            return recovered;
           } catch (_) {
+            console.log(`[DEBUG] parseToolArguments: Recovery failed, returning {}`);
             return {};
           }
         }
       }
     }
+    console.log(`[DEBUG] parseToolArguments: No balanced braces found, returning {}`);
     return {};
   }
 }
