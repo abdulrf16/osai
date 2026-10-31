@@ -32,7 +32,7 @@ has() { $UI has "$@"; }
 adb wait-for-device
 adb shell input keyevent KEYCODE_WAKEUP; adb shell wm dismiss-keyguard >/dev/null 2>&1
 adb shell settings put global window_animation_scale 0; adb shell settings put global transition_animation_scale 0; adb shell settings put global animator_duration_scale 0
-adb shell settings put system accelerometer_rotation 0; adb shell settings put system user_rotation 1
+adb shell settings put system accelerometer_rotation 0; adb shell settings put system user_rotation 0
 adb shell wm size 1280x720; adb shell wm density 160; settle 2
 adb logcat -c
 
@@ -168,15 +168,21 @@ has "Applications"; record "Activity recreation preserves current screen (Applic
 shot 14-recreated
 adb shell settings put system font_scale 1.0; settle 2
 
-# 13. rotation behaviour: sensorLandscape must never go portrait
-adb shell settings put system user_rotation 0; settle 3; shot 15-rot-portrait-request
-SZ=$(png_size "$OUT/screenshots/15-rot-portrait-request.png"); W=${SZ% *}; H=${SZ#* }
-[ "$W" -gt "$H" ]; record "Stays landscape when portrait is requested" $? "screenshot=$SZ"
-adb shell settings put system user_rotation 3; settle 3; shot 16-rot-reverse-landscape
-SZ=$(png_size "$OUT/screenshots/16-rot-reverse-landscape.png"); W=${SZ% *}; H=${SZ#* }
-[ "$W" -gt "$H" ]; record "Reverse-landscape renders correctly" $? "screenshot=$SZ"
+# 13. rotation behaviour. This emulator's natural orientation is landscape, so user_rotation 0/2 are the two
+# landscape orientations and 1/3 are portrait. The app declares sensorLandscape.
+adb shell settings put system user_rotation 0; settle 3; shot 15-rot-0-landscape
+SZ=$(png_size "$OUT/screenshots/15-rot-0-landscape.png"); W=${SZ% *}; H=${SZ#* }
+[ "$W" -gt "$H" ]; record "Rotation 0 (landscape) renders at landscape size" $? "screenshot=$SZ"
+adb shell settings put system user_rotation 2; settle 3; shot 16-rot-180-reverse-landscape
+SZ=$(png_size "$OUT/screenshots/16-rot-180-reverse-landscape.png"); W=${SZ% *}; H=${SZ#* }
+[ "$W" -gt "$H" ]; record "Rotation 180 (reverse landscape) renders at landscape size" $? "screenshot=$SZ"
+has "Applications" || has "Home"; record "Reverse landscape: UI still present and usable" $? ""
+adb shell settings put system user_rotation 1; settle 3; shot 21-rot-portrait-display
+SZ=$(png_size "$OUT/screenshots/21-rot-portrait-display.png")
+alive; record "Portrait display forced (tablet-class screen letterboxes a landscape-only app): no crash" $? "screenshot=$SZ"
+adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1; adb shell cat /sdcard/ui.xml | grep -q 'text="Home"'; record "Portrait display forced: dock still rendered (degraded layout, not a failure)" $? ""
+adb shell settings put system user_rotation 0; settle 3
 alive; record "No crash across rotations" $? ""
-adb shell settings put system user_rotation 1; settle 2
 
 # 12. offline operation
 adb shell svc wifi disable >/dev/null 2>&1; adb shell svc data disable >/dev/null 2>&1; settle 3
