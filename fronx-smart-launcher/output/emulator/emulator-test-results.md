@@ -7,7 +7,7 @@ Device: Android emulator, API 33 (release 13), ABI x86_64
 | 1 | Runs on Android 13 (API 33) | PASS | sdk=33 |
 | 2 | Install debug APK | PASS | Success |
 | 3 | Launcher HOME intent resolves to Fronx (ACTION_MAIN + CATEGORY_HOME) | PASS | 10 HOME handlers listed |
-| 4 | Application startup (process alive after cold start) | PASS | TotalTime: 2127  |
+| 4 | Application startup (process alive after cold start) | PASS | TotalTime: 5130  |
 | 5 | Landscape rendering at 1280x720 | PASS | screenshot=1280 720 |
 | 6 | Clock displayed | PASS |  |
 | 7 | Day of week displayed | PASS |  |
@@ -18,7 +18,7 @@ Device: Android emulator, API 33 (release 13), ABI x86_64
 | 12 | Drawer lists installed apps | PASS | 59 text nodes |
 | 13 | Search 'settings' finds the Settings app in the grid | PASS |  |
 | 14 | Search with no result shows empty state | PASS |  |
-| 15 | Drawer launches an app via intent (Android Settings opened) | PASS |  topResumedActivity=ActivityRecord{958ff5 u0 com.android.settings/.Settings$NetworkDashboardActivity} t10} |
+| 15 | Drawer launches an app via intent (Android Settings opened) | PASS |  topResumedActivity=ActivityRecord{a7631bc u0 com.android.settings/.Settings$NetworkDashboardActivity} t10} |
 | 16 | Long-press app opens favourites menu | PASS |  |
 | 17 | Favourite (Chrome) persisted across force-stop and shows under Favourites | PASS |  |
 | 18 | DataStore file written (fronx_launcher.preferences_pb) | PASS | fronx_launcher.preferences_pb  |
@@ -32,7 +32,7 @@ Device: Android emulator, API 33 (release 13), ABI x86_64
 | 26 | Media: playback status shown | PASS |  |
 | 27 | Media: live progress position shown | PASS | position=0:49 |
 | 28 | Media: duration shown (3:20) | PASS |  |
-| 29 | Media: play/pause control reaches the media app (onPause received) | PASS | 10-31 13:38:26.349  7792  7792 I FronxTestMedia: onPause |
+| 29 | Media: play/pause control reaches the media app (onPause received) | PASS | 10-31 14:05:18.086  8044  8044 I FronxTestMedia: onPause |
 | 30 | Media: next control reaches the media app | PASS |  |
 | 31 | Media: previous control reaches the media app | PASS |  |
 | 32 | Settings screen opens from dock | PASS |  |

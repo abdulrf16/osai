@@ -1,0 +1,531 @@
+--------- beginning of main
+I/art     ( 1484): Explicit concurrent mark sweep GC freed 6394(499KB) AllocSpace objects, 1(16KB) LOS objects, 33% free, 6MB/10MB, paused 322us total 8.856ms
+D/AndroidRuntime( 2577): 
+D/AndroidRuntime( 2577): >>>>>> AndroidRuntime START com.android.internal.os.RuntimeInit <<<<<<
+D/AndroidRuntime( 2577): CheckJNI is ON
+E/memtrack( 2577): Couldn't load memtrack module (No such file or directory)
+E/android.os.Debug( 2577): failed to load memtrack module: -2
+D/AndroidRuntime( 2577): Calling main entry com.android.commands.pm.Pm
+--------- beginning of system
+I/ActivityManager( 1484): Start proc com.android.defcontainer for service com.android.defcontainer/.DefaultContainerService: pid=2588 uid=10003 gids={50003, 9997, 1028, 1015, 1023, 2001, 1035} abi=x86_64
+D/DefContainer( 2588): Copying /data/local/tmp/Fronx-Smart-Launcher-release.apk to base.apk
+E/StrictMode( 2301): A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.
+E/StrictMode( 2301): java.lang.Throwable: Explicit termination method 'close' not called
+E/StrictMode( 2301): 	at dalvik.system.CloseGuard.open(CloseGuard.java:184)
+E/StrictMode( 2301): 	at android.content.ContentResolver$CursorWrapperInner.<init>(ContentResolver.java:2447)
+E/StrictMode( 2301): 	at android.content.ContentResolver.query(ContentResolver.java:502)
+E/StrictMode( 2301): 	at android.content.CursorLoader.loadInBackground(CursorLoader.java:64)
+E/StrictMode( 2301): 	at android.content.CursorLoader.loadInBackground(CursorLoader.java:42)
+E/StrictMode( 2301): 	at android.content.AsyncTaskLoader.onLoadInBackground(AsyncTaskLoader.java:312)
+E/StrictMode( 2301): 	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:69)
+E/StrictMode( 2301): 	at android.content.AsyncTaskLoader$LoadTask.doInBackground(AsyncTaskLoader.java:57)
+E/StrictMode( 2301): 	at android.os.AsyncTask$2.call(AsyncTask.java:288)
+E/StrictMode( 2301): 	at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+E/StrictMode( 2301): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1112)
+E/StrictMode( 2301): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:587)
+E/StrictMode( 2301): 	at java.lang.Thread.run(Thread.java:818)
+W/CursorWrapperInner( 2301): Cursor finalized without prior close()
+W/PackageParser( 1484): Unknown element under <manifest>: queries at /data/app/vmdl1912222342.tmp/base.apk Binary XML file line #39
+D/PackageManager( 1484): Renaming /data/app/vmdl1912222342.tmp to /data/app/com.fronx.smartlauncher-1
+I/art     ( 1484): DexFile_isDexOptNeeded failed to open oat file '/data/dalvik-cache/x86_64/data@app@com.fronx.smartlauncher-1@base.apk@classes.dex' for file location '/data/app/com.fronx.smartlauncher-1/base.apk': Failed to open oat filename for reading: No such file or directory
+I/art     ( 1484): DexFile_isDexOptNeeded failed to open oat file '/data/app/com.fronx.smartlauncher-1/x86_64/base.odex' for file location '/data/app/com.fronx.smartlauncher-1/base.apk': Failed to open oat filename for reading: No such file or directory
+I/PackageManager( 1484): Running dexopt on: /data/app/com.fronx.smartlauncher-1/base.apk pkg=com.fronx.smartlauncher isa=x86_64 vmSafeMode=false
+E/cutils-trace( 2607): Error opening trace file: Permission denied (13)
+I/dex2oat ( 2607): /system/bin/dex2oat --zip-fd=5 --zip-location=/data/app/com.fronx.smartlauncher-1/base.apk --oat-fd=6 --oat-location=/data/dalvik-cache/x86_64/data@app@com.fronx.smartlauncher-1@base.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=default --runtime-arg -Xms64m --runtime-arg -Xmx512m
+E/SQLiteLog( 2320): (284) automatic index on view_events(_id)
+E/StrictMode( 2372): A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.
+E/StrictMode( 2372): java.lang.Throwable: Explicit termination method 'release' not called
+E/StrictMode( 2372): 	at dalvik.system.CloseGuard.open(CloseGuard.java:184)
+E/StrictMode( 2372): 	at android.drm.DrmManagerClient.<init>(DrmManagerClient.java:258)
+E/StrictMode( 2372): 	at com.google.android.mms.pdu.PduPersister.<init>(PduPersister.java:288)
+E/StrictMode( 2372): 	at com.google.android.mms.pdu.PduPersister.getPduPersister(PduPersister.java:299)
+E/StrictMode( 2372): 	at com.android.mms.transaction.TransactionService.onNewIntent(TransactionService.java:224)
+E/StrictMode( 2372): 	at com.android.mms.transaction.TransactionService$ServiceHandler.handleMessage(TransactionService.java:626)
+E/StrictMode( 2372): 	at android.os.Handler.dispatchMessage(Handler.java:102)
+E/StrictMode( 2372): 	at android.os.Looper.loop(Looper.java:135)
+E/StrictMode( 2372): 	at android.os.HandlerThread.run(HandlerThread.java:61)
+I/dex2oat ( 2607): dex2oat took 921.542ms (threads: 2)
+W/Settings( 1484): Setting install_non_market_apps has moved from android.provider.Settings.Global to android.provider.Settings.Secure, returning read-only value.
+I/InputReader( 1484): Reconfiguring input devices.  changes=0x00000010
+D/BackupManagerService( 1484): Received broadcast Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.fronx.smartlauncher flg=0x4000010 (has extras) }
+I/ActivityManager( 1484): Start proc com.svox.pico for broadcast com.svox.pico/.VoiceDataInstallerReceiver: pid=2613 uid=10038 gids={50038, 9997, 1028, 1015} abi=x86_64
+W/VoiceInteractionManagerService( 1484): no available voice recognition services found for user 0
+E/LauncherActivityInfo( 2095): Unable to create badged icon for ActivityInfo{37918f64 com.fronx.smartlauncher.launcher.MainActivity}
+I/art     ( 1484): Explicit concurrent mark sweep GC freed 19660(1677KB) AllocSpace objects, 11(168KB) LOS objects, 33% free, 6MB/10MB, paused 350us total 20.160ms
+D/AndroidRuntime( 2577): Shutting down VM
+I/GlobalDismissManager( 2301): no sender configured
+D/AlertService( 2301): Beginning updateAlertNotification
+D/AlertService( 2301): No fired or scheduled alerts
+D/AlertService( 2301): Scheduling next alarm with AlarmScheduler. sEventReminderReceived: null
+D/AlarmScheduler( 2301): No events found starting within 1 week.
+D/AndroidRuntime( 2632): 
+D/AndroidRuntime( 2632): >>>>>> AndroidRuntime START com.android.internal.os.RuntimeInit <<<<<<
+D/AndroidRuntime( 2632): CheckJNI is ON
+E/memtrack( 2632): Couldn't load memtrack module (No such file or directory)
+E/android.os.Debug( 2632): failed to load memtrack module: -2
+D/AndroidRuntime( 2632): Calling main entry com.android.commands.am.Am
+I/ActivityManager( 1484): START u0 {flg=0x10000000 cmp=com.fronx.smartlauncher/.launcher.MainActivity} from uid 0 on display 0
+I/ActivityManager( 1484): Start proc com.fronx.smartlauncher for activity com.fronx.smartlauncher/.launcher.MainActivity: pid=2644 uid=10053 gids={50053, 9997, 3003, 3002} abi=x86_64
+I/art     ( 1143): Explicit concurrent mark sweep GC freed 704(30KB) AllocSpace objects, 0(0B) LOS objects, 90% free, 110KB/1134KB, paused 260us total 2.434ms
+I/art     ( 1143): Explicit concurrent mark sweep GC freed 5(160B) AllocSpace objects, 0(0B) LOS objects, 90% free, 110KB/1134KB, paused 326us total 3.017ms
+I/art     ( 1143): Explicit concurrent mark sweep GC freed 5(160B) AllocSpace objects, 0(0B) LOS objects, 90% free, 110KB/1134KB, paused 320us total 2.361ms
+D/gralloc_ranchu( 1130): gralloc_alloc: Creating ashmem region of size 819200
+E/EGL_emulation( 1130): tid 1130: eglCreateSyncKHR(1865): error 0x3004 (EGL_BAD_ATTRIBUTE)
+V/ActivityManager( 1484): Display changed displayId=0
+I/ActivityManager( 1484): Config changes=480 {1.0 310mcc260mnc en_US ldltr sw640dp w720dp h615dp 160dpi lrg land finger -keyb/v/h tball/v s.9}
+I/InputReader( 1484): Reconfiguring input devices.  changes=0x00000004
+I/InputReader( 1484): Device reconfigured: id=0, name='qwerty2', size 640x1280, orientation 1, mode 1, display id 0
+D/gralloc_ranchu( 1130): gralloc_alloc: Creating ashmem region of size 1843200
+D/gralloc_ranchu( 1130): gralloc_alloc: Creating ashmem region of size 3072000
+D/EGL_emulation( 2095): eglMakeCurrent: 0x7faf66fdc200: ver 3 0
+D/EGL_emulation( 1794): eglMakeCurrent: 0x7faf67086200: ver 3 0
+E/BluetoothAdapter( 2644): Bluetooth binder is null
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.contacts: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.mms: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.settings: Resource ID #0x0
+D/OpenGLRenderer( 2644): Render dirty regions requested: true
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.browser: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.calendar: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.email: Resource ID #0x0
+D/        ( 2644): HostConnection::get() New Host Connection established 0x7faf67afab00, tid 2644
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.camera: Resource ID #0x0
+D/Atlas   ( 2644): Validating map...
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.music: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.example.android.apis: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.calculator2: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.customlocale2: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.development_settings: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.providers.downloads.ui: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.quicksearchbox: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.speechrecorder: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.speechrecorder: Resource ID #0x0
+I/art     ( 2644): Rejecting re-init on previously-failed class java.lang.Class<V.e>
+I/art     ( 2644): Rejecting re-init on previously-failed class java.lang.Class<V.e>
+I/art     ( 2644): Rejecting re-init on previously-failed class java.lang.Class<V.e>
+D/        ( 2644): HostConnection::get() New Host Connection established 0x7faf5bc410b0, tid 2668
+I/OpenGLRenderer( 2644): Initialized EGL, version 1.4
+D/EGL_emulation( 2644): eglCreateContext: 0x7faf67277740: maj 3 min 0 rcv 3
+D/EGL_emulation( 2644): eglMakeCurrent: 0x7faf67277740: ver 3 0
+E/eglCodecCommon( 2644): glUtilsParamSize: unknow param 0x00008cdf
+E/eglCodecCommon( 2644): glUtilsParamSize: unknow param 0x00008824
+D/OpenGLRenderer( 2644): Enabling debug mode 0
+D/EGL_emulation( 2644): eglMakeCurrent: 0x7faf67277740: ver 3 0
+D/ConnectivityService( 1484): listenForNetwork for NetworkRequest [ id=3, legacyType=-1, [ Capabilities: NOT_RESTRICTED&TRUSTED&NOT_VPN] ]
+D/ConnectivityService( 1484): handleRegisterNetworkRequest checking NetworkAgentInfo [MOBILE (LTE) - 100]
+D/ConnectivityService( 1484): apparently satisfied.  currentScore=50
+D/ConnectivityManager.CallbackHandler( 2644): CM callback handler got msg 524290
+I/ActivityManager( 1484): Displayed com.fronx.smartlauncher/.launcher.MainActivity: +905ms
+D/AndroidRuntime( 2632): Shutting down VM
+W/IInputConnectionWrapper( 2095): showStatusIcon on inactive InputConnection
+I/Choreographer( 2644): Skipped 37 frames!  The application may be doing too much work on its main thread.
+I/WindowManager( 1484): Screen frozen for +894ms due to Window{48b5feb u0 Starting com.fronx.smartlauncher}
+D/gralloc_ranchu( 1130): gralloc_alloc: Creating ashmem region of size 1843200
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.contacts: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.mms: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.settings: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.contacts: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.browser: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.calendar: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.mms: Resource ID #0x0
+I/InputReader( 1484): Reconfiguring input devices.  changes=0x00000010
+I/InputReader( 1484): Reconfiguring input devices.  changes=0x00000010
+D/BackupManagerService( 1484): Received broadcast Intent { act=android.intent.action.PACKAGE_CHANGED dat=package:com.android.calendar flg=0x4000010 (has extras) }
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.settings: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.browser: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.calendar: Resource ID #0x0
+D/BackupManagerService( 1484): Received broadcast Intent { act=android.intent.action.PACKAGE_CHANGED dat=package:com.android.email flg=0x4000010 (has extras) }
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.email: Resource ID #0x0
+D/BackupManagerService( 1484): Received broadcast Intent { act=android.intent.action.PACKAGE_CHANGED dat=package:com.android.settings flg=0x4000010 (has extras) }
+D/BackupManagerService( 1484): Received broadcast Intent { act=android.intent.action.PACKAGE_CHANGED dat=package:com.android.inputmethod.latin flg=0x4000010 (has extras) }
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.email: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.camera: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.camera: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.music: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.music: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.example.android.apis: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.calculator2: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.example.android.apis: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.customlocale2: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.calculator2: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.customlocale2: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.development_settings: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.development_settings: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.providers.downloads.ui: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.providers.downloads.ui: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.quicksearchbox: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.quicksearchbox: Resource ID #0x0
+I/Launcher( 2095): Deferring update until onResume
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.speechrecorder: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.speechrecorder: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.speechrecorder: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.speechrecorder: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.contacts: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.mms: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.settings: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.browser: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.calendar: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.email: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.camera: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.music: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.example.android.apis: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.calculator2: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.customlocale2: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.development_settings: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.providers.downloads.ui: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.quicksearchbox: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.speechrecorder: Resource ID #0x0
+W/ResourceType( 2644): No package identifier when getting value for resource number 0x00000000
+W/PackageManager( 2644): Failure retrieving resources for com.android.speechrecorder: Resource ID #0x0
+I/Launcher( 2095): Deferring update until onResume
+I/Launcher( 2095): Deferring update until onResume
+I/Launcher( 2095): Deferring update until onResume
+I/Launcher( 2095): Deferring update until onResume
+I/art     ( 1484): Explicit concurrent mark sweep GC freed 13203(739KB) AllocSpace objects, 1(13KB) LOS objects, 33% free, 6MB/10MB, paused 302us total 10.900ms
+D/gralloc_ranchu( 1130): gralloc_alloc: Creating ashmem region of size 819200
+D/        ( 2679): HostConnection::get() New Host Connection established 0x7ff7bec4e320, tid 2679
+E/EGL_emulation( 1130): tid 1130: eglCreateSyncKHR(1865): error 0x3004 (EGL_BAD_ATTRIBUTE)
+D/AndroidRuntime( 2682): 
+D/AndroidRuntime( 2682): >>>>>> AndroidRuntime START com.android.internal.os.RuntimeInit <<<<<<
+D/AndroidRuntime( 2682): CheckJNI is ON
+E/memtrack( 2682): Couldn't load memtrack module (No such file or directory)
+E/android.os.Debug( 2682): failed to load memtrack module: -2
+D/AndroidRuntime( 2682): Calling main entry com.android.commands.uiautomator.Launcher
+I/ActivityManager( 1484): Waited long enough for: ServiceRecord{25d257a u0 com.android.music/.MediaPlaybackService}
+E/AccessibilityNodeInfoDumper( 2682): failed to dump window to file
+E/AccessibilityNodeInfoDumper( 2682): java.io.FileNotFoundException: /sdcard/ui.xml: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2682): 	at libcore.io.IoBridge.open(IoBridge.java:456)
+E/AccessibilityNodeInfoDumper( 2682): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:87)
+E/AccessibilityNodeInfoDumper( 2682): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:72)
+E/AccessibilityNodeInfoDumper( 2682): 	at java.io.FileWriter.<init>(FileWriter.java:42)
+E/AccessibilityNodeInfoDumper( 2682): 	at com.android.uiautomator.core.AccessibilityNodeInfoDumper.dumpWindowToFile(AccessibilityNodeInfoDumper.java:82)
+E/AccessibilityNodeInfoDumper( 2682): 	at com.android.commands.uiautomator.DumpCommand.run(DumpCommand.java:99)
+E/AccessibilityNodeInfoDumper( 2682): 	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+E/AccessibilityNodeInfoDumper( 2682): 	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+E/AccessibilityNodeInfoDumper( 2682): 	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:249)
+E/AccessibilityNodeInfoDumper( 2682): Caused by: android.system.ErrnoException: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2682): 	at libcore.io.Posix.open(Native Method)
+E/AccessibilityNodeInfoDumper( 2682): 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:186)
+E/AccessibilityNodeInfoDumper( 2682): 	at libcore.io.IoBridge.open(IoBridge.java:442)
+E/AccessibilityNodeInfoDumper( 2682): 	... 8 more
+W/AccessibilityNodeInfoDumper( 2682): Fetch time: 0ms
+D/AndroidRuntime( 2682): Shutting down VM
+D/AndroidRuntime( 2699): 
+D/AndroidRuntime( 2699): >>>>>> AndroidRuntime START com.android.internal.os.RuntimeInit <<<<<<
+D/AndroidRuntime( 2699): CheckJNI is ON
+E/memtrack( 2699): Couldn't load memtrack module (No such file or directory)
+E/android.os.Debug( 2699): failed to load memtrack module: -2
+D/AndroidRuntime( 2699): Calling main entry com.android.commands.pm.Pm
+D/AndroidRuntime( 2699): Shutting down VM
+D/AndroidRuntime( 2713): 
+D/AndroidRuntime( 2713): >>>>>> AndroidRuntime START com.android.internal.os.RuntimeInit <<<<<<
+D/AndroidRuntime( 2713): CheckJNI is ON
+E/memtrack( 2713): Couldn't load memtrack module (No such file or directory)
+E/android.os.Debug( 2713): failed to load memtrack module: -2
+D/AndroidRuntime( 2713): Calling main entry com.android.commands.uiautomator.Launcher
+I/ActivityManager( 1484): Waited long enough for: ServiceRecord{de862f8 u0 com.android.calendar/.alerts.InitAlarmsService}
+E/AccessibilityNodeInfoDumper( 2713): failed to dump window to file
+E/AccessibilityNodeInfoDumper( 2713): java.io.FileNotFoundException: /sdcard/ui.xml: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2713): 	at libcore.io.IoBridge.open(IoBridge.java:456)
+E/AccessibilityNodeInfoDumper( 2713): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:87)
+E/AccessibilityNodeInfoDumper( 2713): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:72)
+E/AccessibilityNodeInfoDumper( 2713): 	at java.io.FileWriter.<init>(FileWriter.java:42)
+E/AccessibilityNodeInfoDumper( 2713): 	at com.android.uiautomator.core.AccessibilityNodeInfoDumper.dumpWindowToFile(AccessibilityNodeInfoDumper.java:82)
+E/AccessibilityNodeInfoDumper( 2713): 	at com.android.commands.uiautomator.DumpCommand.run(DumpCommand.java:99)
+E/AccessibilityNodeInfoDumper( 2713): 	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+E/AccessibilityNodeInfoDumper( 2713): 	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+E/AccessibilityNodeInfoDumper( 2713): 	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:249)
+E/AccessibilityNodeInfoDumper( 2713): Caused by: android.system.ErrnoException: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2713): 	at libcore.io.Posix.open(Native Method)
+E/AccessibilityNodeInfoDumper( 2713): 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:186)
+E/AccessibilityNodeInfoDumper( 2713): 	at libcore.io.IoBridge.open(IoBridge.java:442)
+E/AccessibilityNodeInfoDumper( 2713): 	... 8 more
+W/AccessibilityNodeInfoDumper( 2713): Fetch time: 0ms
+D/AndroidRuntime( 2713): Shutting down VM
+D/AndroidRuntime( 2728): 
+D/AndroidRuntime( 2728): >>>>>> AndroidRuntime START com.android.internal.os.RuntimeInit <<<<<<
+D/AndroidRuntime( 2728): CheckJNI is ON
+E/memtrack( 2728): Couldn't load memtrack module (No such file or directory)
+E/android.os.Debug( 2728): failed to load memtrack module: -2
+D/AndroidRuntime( 2728): Calling main entry com.android.commands.uiautomator.Launcher
+E/AccessibilityNodeInfoDumper( 2728): failed to dump window to file
+E/AccessibilityNodeInfoDumper( 2728): java.io.FileNotFoundException: /sdcard/ui.xml: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2728): 	at libcore.io.IoBridge.open(IoBridge.java:456)
+E/AccessibilityNodeInfoDumper( 2728): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:87)
+E/AccessibilityNodeInfoDumper( 2728): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:72)
+E/AccessibilityNodeInfoDumper( 2728): 	at java.io.FileWriter.<init>(FileWriter.java:42)
+E/AccessibilityNodeInfoDumper( 2728): 	at com.android.uiautomator.core.AccessibilityNodeInfoDumper.dumpWindowToFile(AccessibilityNodeInfoDumper.java:82)
+E/AccessibilityNodeInfoDumper( 2728): 	at com.android.commands.uiautomator.DumpCommand.run(DumpCommand.java:99)
+E/AccessibilityNodeInfoDumper( 2728): 	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+E/AccessibilityNodeInfoDumper( 2728): 	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+E/AccessibilityNodeInfoDumper( 2728): 	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:249)
+E/AccessibilityNodeInfoDumper( 2728): Caused by: android.system.ErrnoException: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2728): 	at libcore.io.Posix.open(Native Method)
+E/AccessibilityNodeInfoDumper( 2728): 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:186)
+E/AccessibilityNodeInfoDumper( 2728): 	at libcore.io.IoBridge.open(IoBridge.java:442)
+E/AccessibilityNodeInfoDumper( 2728): 	... 8 more
+W/AccessibilityNodeInfoDumper( 2728): Fetch time: 1ms
+D/AndroidRuntime( 2728): Shutting down VM
+D/AndroidRuntime( 2743): 
+D/AndroidRuntime( 2743): >>>>>> AndroidRuntime START com.android.internal.os.RuntimeInit <<<<<<
+D/AndroidRuntime( 2743): CheckJNI is ON
+E/memtrack( 2743): Couldn't load memtrack module (No such file or directory)
+E/android.os.Debug( 2743): failed to load memtrack module: -2
+D/AndroidRuntime( 2743): Calling main entry com.android.commands.uiautomator.Launcher
+D/AlarmManagerService( 1484): Kernel timezone updated to 0 minutes west of GMT
+D/AlarmManagerService( 1484): Setting time of day to sec=1793455348
+V/AlarmClock( 2149): AlarmInitReceiver android.intent.action.TIME_SET
+V/AlarmClock( 2149): AlarmInitReceiver finished
+E/AccessibilityNodeInfoDumper( 2743): failed to dump window to file
+E/AccessibilityNodeInfoDumper( 2743): java.io.FileNotFoundException: /sdcard/ui.xml: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2743): 	at libcore.io.IoBridge.open(IoBridge.java:456)
+E/AccessibilityNodeInfoDumper( 2743): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:87)
+E/AccessibilityNodeInfoDumper( 2743): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:72)
+E/AccessibilityNodeInfoDumper( 2743): 	at java.io.FileWriter.<init>(FileWriter.java:42)
+E/AccessibilityNodeInfoDumper( 2743): 	at com.android.uiautomator.core.AccessibilityNodeInfoDumper.dumpWindowToFile(AccessibilityNodeInfoDumper.java:82)
+E/AccessibilityNodeInfoDumper( 2743): 	at com.android.commands.uiautomator.DumpCommand.run(DumpCommand.java:99)
+E/AccessibilityNodeInfoDumper( 2743): 	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+E/AccessibilityNodeInfoDumper( 2743): 	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+E/AccessibilityNodeInfoDumper( 2743): 	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:249)
+E/AccessibilityNodeInfoDumper( 2743): Caused by: android.system.ErrnoException: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2743): 	at libcore.io.Posix.open(Native Method)
+E/AccessibilityNodeInfoDumper( 2743): 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:186)
+E/AccessibilityNodeInfoDumper( 2743): 	at libcore.io.IoBridge.open(IoBridge.java:442)
+E/AccessibilityNodeInfoDumper( 2743): 	... 8 more
+W/AccessibilityNodeInfoDumper( 2743): Fetch time: 0ms
+D/AndroidRuntime( 2743): Shutting down VM
+D/AndroidRuntime( 2759): 
+D/AndroidRuntime( 2759): >>>>>> AndroidRuntime START com.android.internal.os.RuntimeInit <<<<<<
+D/AndroidRuntime( 2759): CheckJNI is ON
+E/memtrack( 2759): Couldn't load memtrack module (No such file or directory)
+E/android.os.Debug( 2759): failed to load memtrack module: -2
+D/AndroidRuntime( 2759): Calling main entry com.android.commands.uiautomator.Launcher
+E/AccessibilityNodeInfoDumper( 2759): failed to dump window to file
+E/AccessibilityNodeInfoDumper( 2759): java.io.FileNotFoundException: /sdcard/ui.xml: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2759): 	at libcore.io.IoBridge.open(IoBridge.java:456)
+E/AccessibilityNodeInfoDumper( 2759): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:87)
+E/AccessibilityNodeInfoDumper( 2759): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:72)
+E/AccessibilityNodeInfoDumper( 2759): 	at java.io.FileWriter.<init>(FileWriter.java:42)
+E/AccessibilityNodeInfoDumper( 2759): 	at com.android.uiautomator.core.AccessibilityNodeInfoDumper.dumpWindowToFile(AccessibilityNodeInfoDumper.java:82)
+E/AccessibilityNodeInfoDumper( 2759): 	at com.android.commands.uiautomator.DumpCommand.run(DumpCommand.java:99)
+E/AccessibilityNodeInfoDumper( 2759): 	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+E/AccessibilityNodeInfoDumper( 2759): 	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+E/AccessibilityNodeInfoDumper( 2759): 	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:249)
+E/AccessibilityNodeInfoDumper( 2759): Caused by: android.system.ErrnoException: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2759): 	at libcore.io.Posix.open(Native Method)
+E/AccessibilityNodeInfoDumper( 2759): 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:186)
+E/AccessibilityNodeInfoDumper( 2759): 	at libcore.io.IoBridge.open(IoBridge.java:442)
+E/AccessibilityNodeInfoDumper( 2759): 	... 8 more
+W/AccessibilityNodeInfoDumper( 2759): Fetch time: 0ms
+D/AndroidRuntime( 2759): Shutting down VM
+D/AndroidRuntime( 2774): 
+D/AndroidRuntime( 2774): >>>>>> AndroidRuntime START com.android.internal.os.RuntimeInit <<<<<<
+D/AndroidRuntime( 2774): CheckJNI is ON
+E/memtrack( 2774): Couldn't load memtrack module (No such file or directory)
+E/android.os.Debug( 2774): failed to load memtrack module: -2
+D/AndroidRuntime( 2774): Calling main entry com.android.commands.uiautomator.Launcher
+E/AccessibilityNodeInfoDumper( 2774): failed to dump window to file
+E/AccessibilityNodeInfoDumper( 2774): java.io.FileNotFoundException: /sdcard/ui.xml: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2774): 	at libcore.io.IoBridge.open(IoBridge.java:456)
+E/AccessibilityNodeInfoDumper( 2774): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:87)
+E/AccessibilityNodeInfoDumper( 2774): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:72)
+E/AccessibilityNodeInfoDumper( 2774): 	at java.io.FileWriter.<init>(FileWriter.java:42)
+E/AccessibilityNodeInfoDumper( 2774): 	at com.android.uiautomator.core.AccessibilityNodeInfoDumper.dumpWindowToFile(AccessibilityNodeInfoDumper.java:82)
+E/AccessibilityNodeInfoDumper( 2774): 	at com.android.commands.uiautomator.DumpCommand.run(DumpCommand.java:99)
+E/AccessibilityNodeInfoDumper( 2774): 	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+E/AccessibilityNodeInfoDumper( 2774): 	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+E/AccessibilityNodeInfoDumper( 2774): 	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:249)
+E/AccessibilityNodeInfoDumper( 2774): Caused by: android.system.ErrnoException: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2774): 	at libcore.io.Posix.open(Native Method)
+E/AccessibilityNodeInfoDumper( 2774): 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:186)
+E/AccessibilityNodeInfoDumper( 2774): 	at libcore.io.IoBridge.open(IoBridge.java:442)
+E/AccessibilityNodeInfoDumper( 2774): 	... 8 more
+W/AccessibilityNodeInfoDumper( 2774): Fetch time: 1ms
+D/AndroidRuntime( 2774): Shutting down VM
+D/gralloc_ranchu( 1130): gralloc_alloc: Creating ashmem region of size 819200
+D/        ( 2792): HostConnection::get() New Host Connection established 0x7f89a884e320, tid 2792
+E/EGL_emulation( 1130): tid 1130: eglCreateSyncKHR(1865): error 0x3004 (EGL_BAD_ATTRIBUTE)
+D/AndroidRuntime( 2795): 
+D/AndroidRuntime( 2795): >>>>>> AndroidRuntime START com.android.internal.os.RuntimeInit <<<<<<
+D/AndroidRuntime( 2795): CheckJNI is ON
+E/memtrack( 2795): Couldn't load memtrack module (No such file or directory)
+E/android.os.Debug( 2795): failed to load memtrack module: -2
+D/AndroidRuntime( 2795): Calling main entry com.android.commands.uiautomator.Launcher
+D/InitAlarmsService( 2301): Clearing and rescheduling alarms.
+E/AccessibilityNodeInfoDumper( 2795): failed to dump window to file
+E/AccessibilityNodeInfoDumper( 2795): java.io.FileNotFoundException: /sdcard/ui.xml: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2795): 	at libcore.io.IoBridge.open(IoBridge.java:456)
+E/AccessibilityNodeInfoDumper( 2795): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:87)
+E/AccessibilityNodeInfoDumper( 2795): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:72)
+E/AccessibilityNodeInfoDumper( 2795): 	at java.io.FileWriter.<init>(FileWriter.java:42)
+E/AccessibilityNodeInfoDumper( 2795): 	at com.android.uiautomator.core.AccessibilityNodeInfoDumper.dumpWindowToFile(AccessibilityNodeInfoDumper.java:82)
+E/AccessibilityNodeInfoDumper( 2795): 	at com.android.commands.uiautomator.DumpCommand.run(DumpCommand.java:99)
+E/AccessibilityNodeInfoDumper( 2795): 	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+E/AccessibilityNodeInfoDumper( 2795): 	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+E/AccessibilityNodeInfoDumper( 2795): 	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:249)
+E/AccessibilityNodeInfoDumper( 2795): Caused by: android.system.ErrnoException: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2795): 	at libcore.io.Posix.open(Native Method)
+E/AccessibilityNodeInfoDumper( 2795): 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:186)
+E/AccessibilityNodeInfoDumper( 2795): 	at libcore.io.IoBridge.open(IoBridge.java:442)
+E/AccessibilityNodeInfoDumper( 2795): 	... 8 more
+W/AccessibilityNodeInfoDumper( 2795): Fetch time: 0ms
+D/AndroidRuntime( 2795): Shutting down VM
+D/AndroidRuntime( 2810): 
+D/AndroidRuntime( 2810): >>>>>> AndroidRuntime START com.android.internal.os.RuntimeInit <<<<<<
+D/AndroidRuntime( 2810): CheckJNI is ON
+E/memtrack( 2810): Couldn't load memtrack module (No such file or directory)
+E/android.os.Debug( 2810): failed to load memtrack module: -2
+D/AndroidRuntime( 2810): Calling main entry com.android.commands.uiautomator.Launcher
+E/AccessibilityNodeInfoDumper( 2810): failed to dump window to file
+E/AccessibilityNodeInfoDumper( 2810): java.io.FileNotFoundException: /sdcard/ui.xml: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2810): 	at libcore.io.IoBridge.open(IoBridge.java:456)
+E/AccessibilityNodeInfoDumper( 2810): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:87)
+E/AccessibilityNodeInfoDumper( 2810): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:72)
+E/AccessibilityNodeInfoDumper( 2810): 	at java.io.FileWriter.<init>(FileWriter.java:42)
+E/AccessibilityNodeInfoDumper( 2810): 	at com.android.uiautomator.core.AccessibilityNodeInfoDumper.dumpWindowToFile(AccessibilityNodeInfoDumper.java:82)
+E/AccessibilityNodeInfoDumper( 2810): 	at com.android.commands.uiautomator.DumpCommand.run(DumpCommand.java:99)
+E/AccessibilityNodeInfoDumper( 2810): 	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+E/AccessibilityNodeInfoDumper( 2810): 	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+E/AccessibilityNodeInfoDumper( 2810): 	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:249)
+E/AccessibilityNodeInfoDumper( 2810): Caused by: android.system.ErrnoException: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2810): 	at libcore.io.Posix.open(Native Method)
+E/AccessibilityNodeInfoDumper( 2810): 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:186)
+E/AccessibilityNodeInfoDumper( 2810): 	at libcore.io.IoBridge.open(IoBridge.java:442)
+E/AccessibilityNodeInfoDumper( 2810): 	... 8 more
+W/AccessibilityNodeInfoDumper( 2810): Fetch time: 0ms
+D/AndroidRuntime( 2810): Shutting down VM
+D/AndroidRuntime( 2825): 
+D/AndroidRuntime( 2825): >>>>>> AndroidRuntime START com.android.internal.os.RuntimeInit <<<<<<
+D/AndroidRuntime( 2825): CheckJNI is ON
+E/memtrack( 2825): Couldn't load memtrack module (No such file or directory)
+E/android.os.Debug( 2825): failed to load memtrack module: -2
+D/AndroidRuntime( 2825): Calling main entry com.android.commands.uiautomator.Launcher
+E/AccessibilityNodeInfoDumper( 2825): failed to dump window to file
+E/AccessibilityNodeInfoDumper( 2825): java.io.FileNotFoundException: /sdcard/ui.xml: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2825): 	at libcore.io.IoBridge.open(IoBridge.java:456)
+E/AccessibilityNodeInfoDumper( 2825): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:87)
+E/AccessibilityNodeInfoDumper( 2825): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:72)
+E/AccessibilityNodeInfoDumper( 2825): 	at java.io.FileWriter.<init>(FileWriter.java:42)
+E/AccessibilityNodeInfoDumper( 2825): 	at com.android.uiautomator.core.AccessibilityNodeInfoDumper.dumpWindowToFile(AccessibilityNodeInfoDumper.java:82)
+E/AccessibilityNodeInfoDumper( 2825): 	at com.android.commands.uiautomator.DumpCommand.run(DumpCommand.java:99)
+E/AccessibilityNodeInfoDumper( 2825): 	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+E/AccessibilityNodeInfoDumper( 2825): 	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+E/AccessibilityNodeInfoDumper( 2825): 	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:249)
+E/AccessibilityNodeInfoDumper( 2825): Caused by: android.system.ErrnoException: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2825): 	at libcore.io.Posix.open(Native Method)
+E/AccessibilityNodeInfoDumper( 2825): 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:186)
+E/AccessibilityNodeInfoDumper( 2825): 	at libcore.io.IoBridge.open(IoBridge.java:442)
+E/AccessibilityNodeInfoDumper( 2825): 	... 8 more
+W/AccessibilityNodeInfoDumper( 2825): Fetch time: 1ms
+D/AndroidRuntime( 2825): Shutting down VM
+D/AndroidRuntime( 2841): 
+D/AndroidRuntime( 2841): >>>>>> AndroidRuntime START com.android.internal.os.RuntimeInit <<<<<<
+D/AndroidRuntime( 2841): CheckJNI is ON
+E/memtrack( 2841): Couldn't load memtrack module (No such file or directory)
+E/android.os.Debug( 2841): failed to load memtrack module: -2
+D/AndroidRuntime( 2841): Calling main entry com.android.commands.uiautomator.Launcher
+E/AccessibilityNodeInfoDumper( 2841): failed to dump window to file
+E/AccessibilityNodeInfoDumper( 2841): java.io.FileNotFoundException: /sdcard/ui.xml: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2841): 	at libcore.io.IoBridge.open(IoBridge.java:456)
+E/AccessibilityNodeInfoDumper( 2841): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:87)
+E/AccessibilityNodeInfoDumper( 2841): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:72)
+E/AccessibilityNodeInfoDumper( 2841): 	at java.io.FileWriter.<init>(FileWriter.java:42)
+E/AccessibilityNodeInfoDumper( 2841): 	at com.android.uiautomator.core.AccessibilityNodeInfoDumper.dumpWindowToFile(AccessibilityNodeInfoDumper.java:82)
+E/AccessibilityNodeInfoDumper( 2841): 	at com.android.commands.uiautomator.DumpCommand.run(DumpCommand.java:99)
+E/AccessibilityNodeInfoDumper( 2841): 	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+E/AccessibilityNodeInfoDumper( 2841): 	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+E/AccessibilityNodeInfoDumper( 2841): 	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:249)
+E/AccessibilityNodeInfoDumper( 2841): Caused by: android.system.ErrnoException: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2841): 	at libcore.io.Posix.open(Native Method)
+E/AccessibilityNodeInfoDumper( 2841): 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:186)
+E/AccessibilityNodeInfoDumper( 2841): 	at libcore.io.IoBridge.open(IoBridge.java:442)
+E/AccessibilityNodeInfoDumper( 2841): 	... 8 more
+W/AccessibilityNodeInfoDumper( 2841): Fetch time: 1ms
+D/AndroidRuntime( 2841): Shutting down VM
+D/AndroidRuntime( 2856): 
+D/AndroidRuntime( 2856): >>>>>> AndroidRuntime START com.android.internal.os.RuntimeInit <<<<<<
+D/AndroidRuntime( 2856): CheckJNI is ON
+E/memtrack( 2856): Couldn't load memtrack module (No such file or directory)
+E/android.os.Debug( 2856): failed to load memtrack module: -2
+D/AndroidRuntime( 2856): Calling main entry com.android.commands.uiautomator.Launcher
+I/art     ( 1484): Explicit concurrent mark sweep GC freed 7986(479KB) AllocSpace objects, 3(48KB) LOS objects, 33% free, 6MB/10MB, paused 336us total 10.389ms
+E/AccessibilityNodeInfoDumper( 2856): failed to dump window to file
+E/AccessibilityNodeInfoDumper( 2856): java.io.FileNotFoundException: /sdcard/ui.xml: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2856): 	at libcore.io.IoBridge.open(IoBridge.java:456)
+E/AccessibilityNodeInfoDumper( 2856): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:87)
+E/AccessibilityNodeInfoDumper( 2856): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:72)
+E/AccessibilityNodeInfoDumper( 2856): 	at java.io.FileWriter.<init>(FileWriter.java:42)
+E/AccessibilityNodeInfoDumper( 2856): 	at com.android.uiautomator.core.AccessibilityNodeInfoDumper.dumpWindowToFile(AccessibilityNodeInfoDumper.java:82)
+E/AccessibilityNodeInfoDumper( 2856): 	at com.android.commands.uiautomator.DumpCommand.run(DumpCommand.java:99)
+E/AccessibilityNodeInfoDumper( 2856): 	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+E/AccessibilityNodeInfoDumper( 2856): 	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+E/AccessibilityNodeInfoDumper( 2856): 	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:249)
+E/AccessibilityNodeInfoDumper( 2856): Caused by: android.system.ErrnoException: open failed: EROFS (Read-only file system)
+E/AccessibilityNodeInfoDumper( 2856): 	at libcore.io.Posix.open(Native Method)
+E/AccessibilityNodeInfoDumper( 2856): 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:186)
+E/AccessibilityNodeInfoDumper( 2856): 	at libcore.io.IoBridge.open(IoBridge.java:442)
+E/AccessibilityNodeInfoDumper( 2856): 	... 8 more
+W/AccessibilityNodeInfoDumper( 2856): Fetch time: 1ms
+D/AndroidRuntime( 2856): Shutting down VM

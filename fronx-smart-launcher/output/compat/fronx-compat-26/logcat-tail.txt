@@ -1,0 +1,248 @@
+--------- beginning of main
+10-31 14:02:04.068  1624  1673 I zygote64: Explicit concurrent copying GC freed 20385(1434KB) AllocSpace objects, 16(484KB) LOS objects, 42% free, 4MB/8MB, paused 514us total 10.263ms
+10-31 14:02:06.645  2752  2766 I zygote64: Waiting for a blocking GC ProfileSaver
+10-31 14:02:06.895  2811  2825 I zygote64: Waiting for a blocking GC ProfileSaver
+10-31 14:02:07.674  1624  1732 I InputReader: Reconfiguring input devices.  changes=0x00000010
+--------- beginning of system
+10-31 14:02:07.685  1624  1624 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AFI
+10-31 14:02:07.693  1624  1732 I chatty  : uid=1000(system) InputReader identical 5 lines
+10-31 14:02:07.695  1624  1732 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-31 14:02:07.696  1938  1938 D CarrierSvcBindHelper: No carrier app for: 0
+10-31 14:02:07.696  1938  1938 D ImsResolver: maybeAddedImsService, packageName: com.android.messaging
+10-31 14:02:07.697  1624  1624 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AFM
+10-31 14:02:07.699  1624  1624 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AFQ
+10-31 14:02:07.700  1624  1624 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AFU
+10-31 14:02:07.701  1624  1624 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AFY
+10-31 14:02:07.702  1624  1624 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AFc
+10-31 14:02:07.708  1624  1624 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AFg
+10-31 14:02:07.714  1938  1938 D CarrierSvcBindHelper: No carrier app for: 0
+10-31 14:02:07.726  1624  1660 W VoiceInteractionManagerService: no available voice interaction services found for user 0
+10-31 14:02:07.743  1938  1938 I chatty  : uid=1001(radio) com.android.phone identical 2 lines
+10-31 14:02:07.773  1938  1938 D CarrierSvcBindHelper: No carrier app for: 0
+10-31 14:02:07.784  2270  2283 I zygote64: Do partial code cache collection, code=56KB, data=50KB
+10-31 14:02:07.786  2270  2283 I zygote64: After code cache collection, code=56KB, data=50KB
+10-31 14:02:07.786  2270  2283 I zygote64: Increasing code cache capacity to 256KB
+10-31 14:02:07.799  1938  1938 D CarrierSvcBindHelper: No carrier app for: 0
+10-31 14:02:07.822  1624  1660 W ResourceType: No known package when getting value for resource number 0x7f080128
+10-31 14:02:07.822  1624  1660 W ResourceType: No known package when getting value for resource number 0x7f120dcc
+10-31 14:02:07.822  1624  1660 W ResourceType: No known package when getting value for resource number 0x7f080127
+10-31 14:02:07.823  1624  1660 W ResourceType: No known package when getting value for resource number 0x7f1203c5
+10-31 14:02:07.825  1624  1660 W ResourceType: No known package when getting value for resource number 0x7f080126
+10-31 14:02:07.825  1624  1660 W ResourceType: No known package when getting value for resource number 0x7f12084e
+10-31 14:02:07.827  1792  1792 I InputAttributes: InputType.TYPE_NULL is specified
+10-31 14:02:07.829  1624  1660 I chatty  : uid=1000(system) android.bg identical 5 lines
+10-31 14:02:07.832  1938  1938 D ImsResolver: maybeAddedImsService, packageName: com.android.camera2
+10-31 14:02:07.836  1624  1660 W VoiceInteractionManagerService: no available voice interaction services found for user 0
+10-31 14:02:07.842  1938  1938 D CarrierSvcBindHelper: No carrier app for: 0
+10-31 14:02:07.842  1938  1938 D ImsResolver: maybeAddedImsService, packageName: com.android.calendar
+10-31 14:02:07.842  1938  1938 D ImsResolver: maybeAddedImsService, packageName: com.android.gallery3d
+10-31 14:02:07.843  1938  1938 D ImsResolver: maybeAddedImsService, packageName: com.android.inputmethod.latin
+10-31 14:02:07.843  1938  1938 D ImsResolver: maybeAddedImsService, packageName: com.android.settings
+10-31 14:02:07.843  1938  1938 D ImsResolver: maybeAddedImsService, packageName: com.android.email
+10-31 14:02:07.855  2270  2270 I zygote64: Deoptimizing void com.android.launcher3.ShortcutAndWidgetContainer.measureChild(android.view.View) due to JIT inline cache
+10-31 14:02:07.927  2270  2283 I zygote64: Do full code cache collection, code=122KB, data=89KB
+10-31 14:02:07.927  2270  2283 I zygote64: After code cache collection, code=100KB, data=66KB
+10-31 14:02:09.831  1792  1792 I LatinIME: Timeout waiting for dictionary load
+10-31 14:02:10.241  2880  2880 W zygote64: Unexpected CPU variant for X86 using defaults: x86_64
+10-31 14:02:10.248  1624  1678 I ActivityManager: Start proc 2880:com.android.defcontainer/u0a7 for service com.android.defcontainer/.DefaultContainerService
+10-31 14:02:10.250  1624  1660 E memtrack: Couldn't load memtrack module
+10-31 14:02:10.250  1624  1660 W android.os.Debug: failed to get memory consumption info: -1
+10-31 14:02:10.265  1624  1678 W PackageParser: Unknown element under <manifest>: queries at /data/app/vmdl1411290022.tmp/base.apk Binary XML file line #39
+10-31 14:02:10.266  1624  1678 I PackageManager.DexOptimizer: Running dexopt (dexoptNeeded=1) on: /data/app/vmdl1411290022.tmp/base.apk pkg=com.fronx.smartlauncher isa=x86_64 dexoptFlags=boot_complete,public target-filter=quicken oatDir=/data/app/vmdl1411290022.tmp/oat sharedLibraries=null
+10-31 14:02:10.271  2898  2898 W dex2oat : Unexpected CPU variant for X86 using defaults: x86_64
+10-31 14:02:10.271  2898  2898 I dex2oat : /system/bin/dex2oat --input-vdex-fd=-1 --output-vdex-fd=10 --compiler-filter=quicken --classpath-dir=/data/app/vmdl1411290022.tmp
+10-31 14:02:10.629  1624  1669 E BatteryStatsService: modem info is invalid: ModemActivityInfo{ mTimestamp=0 mSleepTimeMs=0 mIdleTimeMs=0 mTxTimeMs[]=[0, 0, 0, 0, 0] mRxTimeMs=0 mEnergyUsed=0}
+10-31 14:02:11.000  2898  2898 I dex2oat : dex2oat took 728.667ms (1.298s cpu) (threads: 2) arena alloc=4KB (5024B) java alloc=2MB (2167552B) native alloc=4MB (4433736B) free=2MB (2382008B)
+10-31 14:02:11.026  1515  1719 D installd: Applied hard quotas for 10065
+10-31 14:02:11.026  1624  1678 D PackageManager: Ephemeral installer not found with new action; try old one
+10-31 14:02:11.026  1624  1678 D PackageManager: Clear ephemeral installer activity
+10-31 14:02:11.027  1515  1719 E         : Couldn't opendir /data/app/vmdl1411290022.tmp: No such file or directory
+10-31 14:02:11.027  1515  1719 E installd: Failed to delete /data/app/vmdl1411290022.tmp: No such file or directory
+10-31 14:02:11.034  1624  1732 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-31 14:02:11.043  1624  1901 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.fronx.smartlauncher flg=0x4000010 (has extras) } to com.svox.pico/.VoiceDataInstallerReceiver
+10-31 14:02:11.043  1624  1624 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AFk
+10-31 14:02:11.057  1938  1938 D CarrierSvcBindHelper: No carrier app for: 0
+10-31 14:02:11.059  1624  2355 I ActivityManager: START u0 {flg=0x10000000 cmp=com.fronx.smartlauncher/.launcher.MainActivity} from uid 2000
+10-31 14:02:11.060  1938  1938 D ImsResolver: maybeAddedImsService, packageName: com.fronx.smartlauncher
+10-31 14:02:11.060  1938  1938 D CarrierConfigLoader: mHandler: 9 phoneId: 0
+10-31 14:02:11.074  2915  2915 W zygote64: Unexpected CPU variant for X86 using defaults: x86_64
+10-31 14:02:11.080  1624  1832 I ActivityManager: Start proc 2915:com.fronx.smartlauncher/u0a65 for activity com.fronx.smartlauncher/.launcher.MainActivity
+10-31 14:02:11.084  1624  1660 W VoiceInteractionManagerService: no available voice recognition services found for user 0
+10-31 14:02:11.084  1389  1389 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 823296
+10-31 14:02:11.091  1624  1649 W LocalDisplayAdapter: Unable to find color mode 0, ignoring request.
+10-31 14:02:11.099  1624  1649 I ActivityManager: Config changes=480 {1.0 310mcc260mnc [en_US] ldltr sw640dp w720dp h616dp 160dpi lrg land finger -keyb/v/h tball/v appBounds=Rect(0, 0 - 720, 640) s.9}
+10-31 14:02:11.101  1389  1389 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 1847296
+10-31 14:02:11.105  1624  1649 I ActivityManager: Override config changes=480 {1.0 310mcc260mnc [en_US] ldltr sw640dp w720dp h616dp 160dpi lrg land finger -keyb/v/h tball/v appBounds=Rect(0, 0 - 720, 640) s.9} for displayId=0
+10-31 14:02:11.122  1624  1732 I InputReader: Reconfiguring input devices.  changes=0x00000004
+10-31 14:02:11.122  1624  1732 I InputReader: Device reconfigured: id=0, name='qwerty2', size 640x1280, orientation 1, mode 1, display id 0
+10-31 14:02:11.146  2270  2395 D EGL_emulation: eglMakeCurrent: 0x76d4e103ad20: ver 3 0 (tinfo 0x76d4e100d6c0)
+10-31 14:02:11.146  2915  2915 E BluetoothAdapter: Bluetooth binder is null
+10-31 14:02:11.150  1817  2030 D EGL_emulation: eglMakeCurrent: 0x76d4e10555a0: ver 3 0 (tinfo 0x76d4e100d560)
+10-31 14:02:11.153  1389  1389 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 69632
+10-31 14:02:11.156  1817  2030 D EGL_emulation: eglMakeCurrent: 0x76d4e10555a0: ver 3 0 (tinfo 0x76d4e100d560)
+10-31 14:02:11.160  1389  1389 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 69632
+10-31 14:02:11.184  1389  1389 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 69632
+10-31 14:02:11.189  1399  2011 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 14:02:11.190  2915  2940 D OpenGLRenderer: HWUI GL Pipeline
+10-31 14:02:11.225  2915  2940 D         : HostConnection::get() New Host Connection established 0x76d4dea2df80, tid 2940
+10-31 14:02:11.226  1389  1389 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 1847296
+10-31 14:02:11.227  1389  1389 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 1847296
+10-31 14:02:11.227  2915  2940 I OpenGLRenderer: Initialized EGL, version 1.4
+10-31 14:02:11.227  2915  2940 D OpenGLRenderer: Swap behavior 1
+10-31 14:02:11.227  1389  1389 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 1847296
+10-31 14:02:11.229  2915  2940 D EGL_emulation: eglCreateContext: 0x76d4ea8a6de0: maj 3 min 0 rcv 3
+10-31 14:02:11.230  2915  2940 D EGL_emulation: eglMakeCurrent: 0x76d4ea8a6de0: ver 3 0 (tinfo 0x76d4dea1dda0)
+10-31 14:02:11.265  2915  2920 I zygote64: Do partial code cache collection, code=13KB, data=20KB
+10-31 14:02:11.265  2915  2920 I zygote64: After code cache collection, code=13KB, data=20KB
+10-31 14:02:11.265  2915  2920 I zygote64: Increasing code cache capacity to 128KB
+10-31 14:02:11.266  2915  2920 I zygote64: Compiler allocated 5MB to compile void I.p.p(boolean)
+10-31 14:02:11.291  2915  2920 I zygote64: Do partial code cache collection, code=54KB, data=60KB
+10-31 14:02:11.292  2915  2920 I zygote64: After code cache collection, code=54KB, data=60KB
+10-31 14:02:11.292  2915  2920 I zygote64: Increasing code cache capacity to 256KB
+10-31 14:02:11.335  2915  2920 I zygote64: Do full code cache collection, code=118KB, data=116KB
+10-31 14:02:11.335  2915  2920 I zygote64: After code cache collection, code=107KB, data=67KB
+10-31 14:02:11.337  2915  2940 D EGL_emulation: eglMakeCurrent: 0x76d4ea8a6de0: ver 3 0 (tinfo 0x76d4dea1dda0)
+10-31 14:02:11.950  1624  1713 E WindowManager: Performed 6 layouts in a row. Skipping
+10-31 14:02:11.957  1624  1901 D ConnectivityService: requestNetwork for uid/pid:10065/2915 NetworkRequest [ TRACK_DEFAULT id=6, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN] ]
+10-31 14:02:11.959  1624  1765 D WIFI_UT : got request NetworkRequest [ TRACK_DEFAULT id=6, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN] ] with score 50
+10-31 14:02:11.959  1624  1765 D WIFI    : got request NetworkRequest [ TRACK_DEFAULT id=6, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN] ] with score 50
+10-31 14:02:11.959  1938  1938 D PhoneSwitcherNetworkRequstListener: got request NetworkRequest [ TRACK_DEFAULT id=6, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN] ] with score 50
+10-31 14:02:11.960  1624  1673 I ActivityManager: Displayed com.fronx.smartlauncher/.launcher.MainActivity: +890ms
+10-31 14:02:11.964  2915  2915 I Choreographer: Skipped 40 frames!  The application may be doing too much work on its main thread.
+10-31 14:02:11.979  1624  1713 I WindowManager: Screen frozen for +896ms due to Window{e9aae96 u0 Splash Screen com.fronx.smartlauncher}
+10-31 14:02:11.989  2915  2920 I zygote64: Do partial code cache collection, code=123KB, data=78KB
+10-31 14:02:11.989  2915  2920 I zygote64: After code cache collection, code=109KB, data=72KB
+10-31 14:02:11.990  2915  2920 I zygote64: Increasing code cache capacity to 512KB
+10-31 14:02:13.999  1624  1673 I zygote64: Explicit concurrent copying GC freed 18650(1613KB) AllocSpace objects, 7(140KB) LOS objects, 42% free, 4MB/8MB, paused 508us total 10.290ms
+10-31 14:02:14.571  1624  1789 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-31 14:02:16.554  1624  1662 I ActivityManager: Waited long enough for: ServiceRecord{a17265 u0 com.android.calendar/.alerts.InitAlarmsService}
+10-31 14:02:16.917  2915  2946 D ProfileInstaller: Installing profile for com.fronx.smartlauncher
+10-31 14:02:18.043  1399  1426 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 14:02:18.043  1399  1426 D PermissionCache: checking android.permission.READ_FRAME_BUFFER for uid=2000 => granted (292 us)
+10-31 14:02:18.049  1389  1389 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 823296
+10-31 14:02:18.051  2952  2952 D         : HostConnection::get() New Host Connection established 0x7a8fcf42f780, tid 2952
+10-31 14:02:18.195  2955  2955 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-31 14:02:18.197  2955  2955 I app_process: RelocateImage: /system/bin/patchoat --input-image-location=/system/framework/boot.art --output-image-file=/data/local/tmp/dalvik-cache/x86_64/system@framework@boot.art --instruction-set=x86_64 --base-offset-delta=1073152
+10-31 14:02:18.334  1624  1971 D AlarmManagerService: Kernel timezone updated to 0 minutes west of GMT
+10-31 14:02:18.337  1624  1971 D AlarmManagerService: Setting time of day to sec=1793455342
+10-31 14:02:22.004  1624  1971 W AlarmManagerService: Unable to set rtc to 1793455342: No such device
+10-31 14:02:22.005  1624  1624 D ConditionProviders.SCP: onReceive android.intent.action.TIME_SET
+10-31 14:02:22.008  1624  1624 D ConditionProviders.SCP: notifyCondition condition://android/schedule?days=6.7&start=23.30&end=10.0&exitAtAlarm=false STATE_FALSE reason=!meetsSchedule
+10-31 14:02:22.008  1624  1624 D ConditionProviders.SCP: notifyCondition condition://android/schedule?days=1.2.3.4.5&start=22.0&end=7.0&exitAtAlarm=false STATE_FALSE reason=!meetsSchedule
+10-31 14:02:22.009  1624  1624 D ConditionProviders.SCP: Scheduling evaluate for Sat Oct 31 22:00:00 UTC 2026 (1793484000000), in +7h57m37s995ms, now=Sat Oct 31 14:02:22 UTC 2026 (1793455342005)
+10-31 14:02:22.011  1624  1660 E memtrack: Couldn't load memtrack module
+10-31 14:02:22.011  1624  1660 W android.os.Debug: failed to get memory consumption info: -1
+10-31 14:02:22.018  2093  2093 I AlarmClock: AlarmInitReceiver android.intent.action.TIME_SET
+10-31 14:02:22.022  2093  2119 I AlarmClock: Fixing alarm instances
+10-31 14:02:22.028  2093  2119 V AlarmClock: AlarmInitReceiver finished
+10-31 14:02:22.031  2093  2093 I DigitalWidgetProvider: onReceive: Intent { act=android.intent.action.TIME_SET flg=0x25200010 cmp=com.android.deskclock/com.android.alarmclock.DigitalAppWidgetProvider }
+10-31 14:02:22.045  1624  1660 I UsageStatsService: Time changed in UsageStats by 3 seconds
+10-31 14:02:22.045  1624  1660 I UsageStatsService: User[0] Flushing usage stats to disk
+10-31 14:02:22.055  1624  1660 I UsageStatsDatabase: Time changed by +3s666ms. files deleted: 0 files moved: 4
+10-31 14:02:22.056  1624  1660 I UsageStatsService: User[0] Rollover scheduled @ 2026-11-01 14:01:59(1793541719565)
+10-31 14:02:22.059  2955  2955 W app_process: Unexpected CPU variant for X86 using defaults: x86_64
+10-31 14:02:22.075  2955  2955 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+10-31 14:02:22.630  1624  1761 D SntpClient: round trip: 10ms, clock offset: 92ms
+10-31 14:02:23.130  2955  2955 W AccessibilityNodeInfoDumper: Fetch time: 23ms
+10-31 14:02:23.131  1624  1971 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@33e3485
+10-31 14:02:23.135  2955  2955 D AndroidRuntime: Shutting down VM
+10-31 14:02:23.154  2915  2920 I zygote64: Compiler allocated 8MB to compile a1.h B.z.t(int)
+10-31 14:02:23.299  2980  2980 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-31 14:02:23.328  2980  2980 W app_process: Unexpected CPU variant for X86 using defaults: x86_64
+10-31 14:02:23.339  2980  2980 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+10-31 14:02:23.974  1624  2356 I ActivityManager: Killing 2138:android.ext.services/u0a12 (adj 906): empty #17
+10-31 14:02:24.374  2980  2980 W AccessibilityNodeInfoDumper: Fetch time: 13ms
+10-31 14:02:24.374  1624  2355 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@e782a6
+10-31 14:02:24.377  2980  2980 D AndroidRuntime: Shutting down VM
+10-31 14:02:24.498  2995  2995 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-31 14:02:24.522  2995  2995 W app_process: Unexpected CPU variant for X86 using defaults: x86_64
+10-31 14:02:24.531  2995  2995 D AndroidRuntime: Calling main entry com.android.commands.input.Input
+10-31 14:02:24.533  2995  2995 I Input   : injectMotionEvent: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=187.0, y[0]=613.0, toolType[0]=TOOL_TYPE_UNKNOWN, buttonState=0, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=51559, downTime=51559, deviceId=0, source=0x1002 }
+10-31 14:02:24.539  2995  2995 I Input   : injectMotionEvent: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=187.0, y[0]=613.0, toolType[0]=TOOL_TYPE_UNKNOWN, buttonState=0, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=51559, downTime=51559, deviceId=0, source=0x1002 }
+10-31 14:02:24.541  2995  2995 D AndroidRuntime: Shutting down VM
+10-31 14:02:24.553  2915  2920 I zygote64: Do full code cache collection, code=253KB, data=165KB
+10-31 14:02:24.554  2915  2920 I zygote64: After code cache collection, code=202KB, data=128KB
+10-31 14:02:24.572  2915  2915 I zygote64: Deoptimizing S.y S.o.u(S.y, S.w) due to JIT same target
+10-31 14:02:24.574  2915  2915 I zygote64: Deoptimizing java.lang.Object I.F.getValue() due to JIT inline cache
+10-31 14:02:24.574  2915  2915 I zygote64: Deoptimizing int j.u.c(java.lang.Object) due to JIT inline cache
+10-31 14:02:24.574  2915  2915 I zygote64: Deoptimizing I.E I.F.g(I.E, S.h, boolean, S1.a) due to JIT inline cache
+10-31 14:02:24.574  2915  2915 I zygote64: Deoptimizing int D.m.j(float, M0.b) due to JIT inline cache
+10-31 14:02:24.592  2915  2920 I zygote64: Do partial code cache collection, code=246KB, data=193KB
+10-31 14:02:24.592  2915  2920 I zygote64: After code cache collection, code=237KB, data=189KB
+10-31 14:02:24.592  2915  2920 I zygote64: Increasing code cache capacity to 1024KB
+10-31 14:02:24.642  2915  2920 I zygote64: Compiler allocated 4MB to compile void I0.d.<init>(java.lang.String, A0.M, java.util.List, java.util.List, F0.e, M0.b)
+10-31 14:02:24.749  2915  2920 I zygote64: Do full code cache collection, code=507KB, data=320KB
+10-31 14:02:24.750  2915  2920 I zygote64: After code cache collection, code=379KB, data=208KB
+10-31 14:02:25.563  1624  2356 D WificondControl: Scan result ready event
+10-31 14:02:25.565  1624  1765 W WifiConfigManager: Looking up network with invalid networkId -1
+10-31 14:02:25.565  1624  1765 W WifiConfigManager: Looking up network with invalid networkId -1
+10-31 14:02:25.565  1624  1765 D WifiStateMachine: CMD_START_CONNECT sup state UninitializedState my state DisconnectedState nid=0 roam=false
+10-31 14:02:25.566  1552  1552 W wificond: Scan is not started. Ignore abort request
+10-31 14:02:25.566  1624  1765 D SupplicantStaIfaceHal: connectToNetwork "AndroidWifi"NONE
+10-31 14:02:25.566  1624  1765 I SupplicantStaIfaceHal: addSupplicantStaNetwork via HIDL
+10-31 14:02:25.570  1996  1996 I wpa_supplicant: wlan0: SME: Trying to authenticate with 02:00:00:00:01:00 (SSID='AndroidWifi' freq=2447 MHz)
+10-31 14:02:25.574  1690  1690 I hostapd : wlan1: STA 02:00:00:44:55:66 IEEE 802.11: authenticated
+10-31 14:02:25.574  1690  1690 I hostapd : wlan1: STA 02:00:00:44:55:66 IEEE 802.11: authenticated
+10-31 14:02:25.575  1996  1996 I wpa_supplicant: wlan0: Trying to associate with 02:00:00:00:01:00 (SSID='AndroidWifi' freq=2447 MHz)
+10-31 14:02:25.584  1690  1690 I hostapd : wlan1: STA 02:00:00:44:55:66 IEEE 802.11: associated (aid 1)
+10-31 14:02:25.584  1690  1690 I hostapd : wlan1: STA 02:00:00:44:55:66 IEEE 802.11: associated (aid 1)
+10-31 14:02:25.584  1690  1690 I hostapd : wlan1: AP-STA-CONNECTED 02:00:00:44:55:66
+10-31 14:02:25.587  1996  1996 I wpa_supplicant: wlan0: Associated with 02:00:00:00:01:00
+10-31 14:02:25.587  1996  1996 I wpa_supplicant: wlan0: CTRL-EVENT-CONNECTED - Connection to 02:00:00:00:01:00 completed [id=0 id_str=%7B%22configKey%22%3A%22%5C%22AndroidWifi%5C%22NONE%22%2C%22creatorUid%22%3A%22-1%22%7D]
+10-31 14:02:25.587  1996  1996 I wpa_supplicant: wlan0: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+10-31 14:02:25.589  1624  1765 D ConnectivityService: registerNetworkAgent NetworkAgentInfo{ ni{[type: WIFI[], state: CONNECTING/CONNECTING, reason: (unspecified), extra: "AndroidWifi", failover: false, available: true, roaming: false, metered: false]}  network{101}  nethandle{433808132830}  lp{{LinkAddresses: []  Routes: [] DnsAddresses: [] Domains: null MTU: 0}}  nc{[ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN LinkUpBandwidth>=1048576Kbps LinkDnBandwidth>=1048576Kbps]}  Score{20}  everValidated{false}  lastValidated{false}  created{false} lingering{false} explicitlySelected{false} acceptUnvalidated{false} everCaptivePortalDetected{false} lastCaptivePortalDetected{false} }
+10-31 14:02:25.590  1624  1769 D ConnectivityService: NetworkAgentInfo [WIFI () - 101] EVENT_NETWORK_INFO_CHANGED, going from null to CONNECTING
+10-31 14:02:25.623  1624  3009 D DhcpClient: Receive thread started
+10-31 14:02:25.625  1624  3007 D DhcpClient: Broadcasting DHCPDISCOVER
+10-31 14:02:25.625  1624  3009 D DhcpClient: Received packet: 02:00:00:44:55:66 OFFER, ip /192.168.232.2, mask /255.255.248.0, DNS servers: /10.0.2.3 , gateways [/192.168.232.1] lease time 1476526080, domain null
+10-31 14:02:25.625  1624  3007 D DhcpClient: Got pending lease: IP address 192.168.232.2/21 Gateway 192.168.232.1  DNS servers: [ 10.0.2.3 ] Domains  DHCP server /192.168.232.1 Vendor info null lease 1476526080 seconds
+10-31 14:02:25.626  1624  3007 D DhcpClient: Broadcasting DHCPREQUEST ciaddr=0.0.0.0 request=192.168.232.2 serverid=192.168.232.1
+10-31 14:02:25.626  1624  3009 D DhcpClient: Received packet: 02:00:00:44:55:66 ACK: your new IP /192.168.232.2, netmask /255.255.248.0, gateways [/192.168.232.1] DNS servers: /10.0.2.3 , lease time 1476526080
+10-31 14:02:25.626  1624  3007 D DhcpClient: Confirmed lease: IP address 192.168.232.2/21 Gateway 192.168.232.1  DNS servers: [ 10.0.2.3 ] Domains  DHCP server /192.168.232.1 Vendor info null lease 1476526080 seconds
+10-31 14:02:25.628  1548  1622 D CommandListener: Setting iface cfg
+10-31 14:02:25.629  1624  3007 D DhcpClient: Scheduling renewal in 738263039s
+10-31 14:02:25.629  1624  3007 D DhcpClient: Scheduling rebind in 1291960319s
+10-31 14:02:25.629  1624  3007 D DhcpClient: Scheduling expiry in 1476526079s
+10-31 14:02:25.630  1624  1769 D ConnectivityService: NetworkAgentInfo [WIFI () - 101] EVENT_NETWORK_INFO_CHANGED, going from CONNECTING to CONNECTED
+10-31 14:02:25.630  1624  1769 D ConnectivityService: Adding iface wlan0 to network 101
+10-31 14:02:25.631  1624  1765 E WifiStateMachine: Did not find remoteAddress {192.168.232.1} in /proc/net/arp
+10-31 14:02:25.632  1624  1765 E WifiStateMachine: Did not find remoteAddress {192.168.232.1} in /proc/net/arp
+10-31 14:02:25.634  1624  1769 D ConnectivityService: Setting DNS servers for network 101 to [/10.0.2.3]
+10-31 14:02:25.640  1624  1765 D WifiNetworkAgent: NetworkAgent: Received signal strength thresholds: []
+10-31 14:02:25.640  1624  1765 E WifiVendorHal: stopRssiMonitoring(l.2115) failed {.code = ERROR_NOT_AVAILABLE, .description = }
+10-31 14:02:25.643  1624  1779 I GnssLocationProvider: WakeLock acquired by sendMessage(DOWNLOAD_XTRA_DATA, 0, null)
+10-31 14:02:25.643  1624  1779 I GnssLocationProvider: WakeLock acquired by sendMessage(UPDATE_NETWORK_STATE, 0, 101)
+10-31 14:02:25.643  1624  1660 D GnssLocationProvider: handleDownloadXtraData() called when Xtra not supported
+10-31 14:02:25.643  1624  1660 I GnssLocationProvider: WakeLock released by handleMessage(DOWNLOAD_XTRA_DATA, 0, null)
+10-31 14:02:25.644  1624  1660 I GnssLocationProvider: WakeLock released by handleMessage(UPDATE_NETWORK_STATE, 0, 101)
+10-31 14:02:25.650  1624  3011 D NetworkMonitor/NetworkAgentInfo [WIFI () - 101]: PROBE_DNS connectivitycheck.gstatic.com 2ms OK 172.253.62.94
+10-31 14:02:25.684  1624  3010 D NetworkMonitor/NetworkAgentInfo [WIFI () - 101]: PROBE_DNS www.google.com 36ms OK 142.251.151.119,142.251.154.119,142.251.155.119,142.251.156.119,142.251.152.119,142.251.157.119,142.251.150.119,142.251.153.119
+10-31 14:02:25.689  1624  3011 D NetworkMonitor/NetworkAgentInfo [WIFI () - 101]: PROBE_HTTP http://connectivitycheck.gstatic.com/generate_204 time=39ms ret=204 request={User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36]} headers={null=[HTTP/1.1 204 No Content], Content-Length=[0], Cross-Origin-Resource-Policy=[cross-origin], Date=[Sat, 31 Oct 2026 14:02:25 GMT], X-Android-Received-Millis=[1793455345689], X-Android-Response-Source=[NETWORK 204], X-Android-Selected-Protocol=[http/1.1], X-Android-Sent-Millis=[1793455345686]}
+10-31 14:02:25.699  1624  3010 D NetworkMonitor/NetworkAgentInfo [WIFI () - 101]: PROBE_HTTPS https://www.google.com/generate_204 time=16ms ret=204 request={User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36]} headers={null=[HTTP/1.1 204 No Content], Alt-Svc=[h3=":443"; ma=2592000,h3-29=":443"; ma=2592000], Content-Length=[0], Cross-Origin-Resource-Policy=[cross-origin], Date=[Sat, 31 Oct 2026 14:02:25 GMT], X-Android-Received-Millis=[1793455345699], X-Android-Response-Source=[NETWORK 204], X-Android-Selected-Protocol=[http/1.1], X-Android-Sent-Millis=[1793455345696]}
+10-31 14:02:25.700  1624  1769 D ConnectivityService: NetworkAgentInfo [WIFI () - 101] validation passed
+10-31 14:02:25.700  1624  1769 D ConnectivityService: Switching to new default network: NetworkAgentInfo{ ni{[type: WIFI[], state: CONNECTED/CONNECTED, reason: (unspecified), extra: "AndroidWifi", failover: false, available: true, roaming: false, metered: false]}  network{101}  nethandle{433808132830}  lp{{InterfaceName: wlan0 LinkAddresses: [fe80::ff:fe44:5566/64,192.168.232.2/21,]  Routes: [fe80::/64 -> :: wlan0,192.168.232.0/21 -> 0.0.0.0 wlan0,0.0.0.0/0 -> 192.168.232.1 wlan0,] DnsAddresses: [10.0.2.3,] Domains: null MTU: 0 TcpBufferSizes: 524288,1048576,2097152,262144,524288,1048576}}  nc{[ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&FOREGROUND LinkUpBandwidth>=1048576Kbps LinkDnBandwidth>=1048576Kbps SignalStrength: -50]}  Score{57}  everValidated{true}  lastValidated{true}  created{true} lingering{false} explicitlySelected{false} acceptUnvalidated{false} everCaptivePortalDetected{false} lastCaptivePortalDetected{false} }
+10-31 14:02:25.705  1548  1622 V IdletimerController: runCmd(/system/bin/ip6tables -w -t raw -A idletimer_raw_PREROUTING -i wlan0 -j IDLETIMER --timeout 15 --label 1 --send_nl_msg 1) res_ipv4=0, res_ipv6=0
+10-31 14:02:25.709  1548  1622 V IdletimerController: runCmd(/system/bin/ip6tables -w -t mangle -A idletimer_mangle_POSTROUTING -o wlan0 -j IDLETIMER --timeout 15 --label 1 --send_nl_msg 1) res_ipv4=0, res_ipv6=0
+10-31 14:02:25.711  1624  1769 D ConnectivityService: Lingering NetworkAgentInfo [MOBILE (LTE) - 100] for 30000ms
+10-31 14:02:25.711  1624  1769 D ConnectivityService: Sending DISCONNECTED broadcast for type 0 NetworkAgentInfo [MOBILE (LTE) - 100] isDefaultNetwork=true
+10-31 14:02:25.712  1624  1769 D ConnectivityService: Sending CONNECTED broadcast for type 1 NetworkAgentInfo [WIFI () - 101] isDefaultNetwork=true
+10-31 14:02:26.596  1548  1622 E Netd    : Error adding route ::/0 -> fe80::ff:fe00:100 wlan0 to table 1003: File exists
+10-31 14:02:27.011  1624  1662 I ActivityManager: Killing 2374:com.android.launcher3:wallpaper_chooser/u0a13 (adj 906): empty #17
+10-31 14:02:27.011  1624  1662 I ActivityManager: Killing 2294:com.android.keychain/1000 (adj 906): empty #18
+10-31 14:02:27.013  1624  1660 E memtrack: Couldn't load memtrack module
+10-31 14:02:27.013  1624  1660 W android.os.Debug: failed to get memory consumption info: -1
+10-31 14:02:27.018  1624  1660 E memtrack: Couldn't load memtrack module
+10-31 14:02:27.018  1624  1660 W android.os.Debug: failed to get memory consumption info: -1
+10-31 14:02:27.023  1624  1660 E memtrack: Couldn't load memtrack module
+10-31 14:02:27.024  1624  1660 W android.os.Debug: failed to get memory consumption info: -1
+10-31 14:02:27.585  1399  1426 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 14:02:27.591  1389  1389 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 823296
+10-31 14:02:27.592  3084  3084 D         : HostConnection::get() New Host Connection established 0x72f69da2f780, tid 3084
+10-31 14:02:27.755  3087  3087 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-31 14:02:27.782  3087  3087 W app_process: Unexpected CPU variant for X86 using defaults: x86_64
+10-31 14:02:27.793  3087  3087 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+10-31 14:02:28.805  2915  2915 I zygote64: Deoptimizing void s0.N.o(android.graphics.Region, y0.m, j.p, y0.m, android.graphics.Region) due to JIT inline cache
+10-31 14:02:28.838  3087  3087 W AccessibilityNodeInfoDumper: Fetch time: 17ms
+10-31 14:02:28.839  1624  1971 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@f777a8d
+10-31 14:02:28.842  3087  3087 D AndroidRuntime: Shutting down VM
+10-31 14:02:28.868  2915  2920 I zygote64: Compiler allocated 8MB to compile a1.h B.z.t(int)

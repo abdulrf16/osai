@@ -1,0 +1,600 @@
+10-31 14:02:06.708  2429  3052 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:258)
+10-31 14:02:06.708  2429  3052 E SQLiteDatabase: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 14:02:06.708  2429  3052 E SQLiteDatabase: 	at android.os.Looper.loop(Looper.java:193)
+10-31 14:02:06.708  2429  3052 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:162)
+10-31 14:02:06.708  2429  3052 E SQLiteDatabase: 	at java.lang.Thread.run(Thread.java:764)
+10-31 14:02:06.723  1935  1935 V SettingsProvider: Notifying for 0: content://settings/secure/sync_parent_sounds
+10-31 14:02:06.724  1935  1935 V SettingsProvider: Notifying for 0: content://settings/system/notification_sound
+10-31 14:02:06.756  1935  1935 V SettingsProvider: Notifying for 0: content://settings/system/notification_sound_set
+10-31 14:02:06.757  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/SpaceSeed.ogg since build fingerprint changed
+10-31 14:02:06.760  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/Cobalt.ogg since build fingerprint changed
+10-31 14:02:06.762  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/Electra.ogg since build fingerprint changed
+10-31 14:02:06.764  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/Adara.ogg since build fingerprint changed
+10-31 14:02:06.767  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/Antimony.ogg since build fingerprint changed
+10-31 14:02:06.771  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/Canopus.ogg since build fingerprint changed
+10-31 14:02:06.774  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/moonbeam.ogg since build fingerprint changed
+10-31 14:02:06.776  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/Procyon.ogg since build fingerprint changed
+10-31 14:02:06.778  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/Helium.ogg since build fingerprint changed
+10-31 14:02:06.780  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/Plastic_Pipe.ogg since build fingerprint changed
+10-31 14:02:06.782  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/DontPanic.ogg since build fingerprint changed
+10-31 14:02:06.785  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/OnTheHunt.ogg since build fingerprint changed
+10-31 14:02:06.788  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/pizzicato.ogg since build fingerprint changed
+10-31 14:02:06.790  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/Spica.ogg since build fingerprint changed
+10-31 14:02:06.792  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/vega.ogg since build fingerprint changed
+10-31 14:02:06.812  3105  3107 W dex2oat : Accessing hidden method Landroid/view/accessibility/AccessibilityNodeInfo$RangeInfo;-><init>(IFFF)V (dark greylist, linking)
+10-31 14:02:06.817  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/F1_New_SMS.ogg since build fingerprint changed
+10-31 14:02:06.828  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/Iridium.ogg since build fingerprint changed
+10-31 14:02:06.841  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/KzurbSonar.ogg since build fingerprint changed
+10-31 14:02:06.848  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/Hojus.ogg since build fingerprint changed
+10-31 14:02:06.856  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/F1_New_MMS.ogg since build fingerprint changed
+10-31 14:02:06.861  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/Tinkerbell.ogg since build fingerprint changed
+10-31 14:02:06.865  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/tweeters.ogg since build fingerprint changed
+10-31 14:02:06.875  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/Fomalhaut.ogg since build fingerprint changed
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getScaleX()F (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setScaleX(F)Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getScaleY()F (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setScaleY(F)Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getTranslationX()F (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setTranslationX(F)Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getTranslationY()F (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setTranslationY(F)Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getElevation()F (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setElevation(F)Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getRotation()F (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotation(F)Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getRotationX()F (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotationX(F)Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getRotationY()F (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotationY(F)Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getCameraDistance()F (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setCameraDistance(F)Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getPivotX()F (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getPivotY()F (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotY(F)Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getClipToOutline()Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setClipToOutline(Z)Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getAlpha()F (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setAlpha(F)Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->offsetTopAndBottom(I)Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->hasOverlappingRendering()Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-31 14:02:06.881  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->hasOverlappingRendering()Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setOutline(Landroid/graphics/Outline;)Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotY(F)Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotY(F)Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotationY(F)Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setTranslationX(F)Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setAlpha(F)Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setScaleY(F)Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setClipToOutline(Z)Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setClipToOutline(Z)Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerPaint(Landroid/graphics/Paint;)Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerPaint(Landroid/graphics/Paint;)Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerPaint(Landroid/graphics/Paint;)Z (dark greylist, linking)
+10-31 14:02:06.882  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotation(F)Z (dark greylist, linking)
+10-31 14:02:06.883  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setTranslationY(F)Z (dark greylist, linking)
+10-31 14:02:06.883  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setCameraDistance(F)Z (dark greylist, linking)
+10-31 14:02:06.883  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setScaleX(F)Z (dark greylist, linking)
+10-31 14:02:06.883  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotationX(F)Z (dark greylist, linking)
+10-31 14:02:06.883  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getMatrix(Landroid/graphics/Matrix;)V (dark greylist, linking)
+10-31 14:02:06.883  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setElevation(F)Z (dark greylist, linking)
+10-31 14:02:06.883  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-31 14:02:06.883  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotY(F)Z (dark greylist, linking)
+10-31 14:02:06.884  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getAmbientShadowColor()I (dark greylist, linking)
+10-31 14:02:06.884  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getSpotShadowColor()I (dark greylist, linking)
+10-31 14:02:06.884  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setAmbientShadowColor(I)Z (dark greylist, linking)
+10-31 14:02:06.884  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setSpotShadowColor(I)Z (dark greylist, linking)
+10-31 14:02:06.889  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/Selenium.ogg since build fingerprint changed
+10-31 14:02:06.898  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/notifications/CetiAlpha.ogg since build fingerprint changed
+10-31 14:02:06.908  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Alarm_Beep_01.ogg since build fingerprint changed
+10-31 14:02:06.911  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Neon.ogg since build fingerprint changed
+10-31 14:02:06.921  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Alarm_Beep_03.ogg since build fingerprint changed
+10-31 14:02:06.927  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Alarm_Beep_02.ogg since build fingerprint changed
+10-31 14:02:06.932  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Fermium.ogg since build fingerprint changed
+10-31 14:02:06.957  1935  1958 I system_server: Explicit concurrent copying GC freed 44851(2MB) AllocSpace objects, 16(768KB) LOS objects, 42% free, 5MB/9MB, paused 465us total 13.093ms
+10-31 14:02:06.962  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Carbon.ogg since build fingerprint changed
+10-31 14:02:06.979  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Platinum.ogg since build fingerprint changed
+10-31 14:02:06.988  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getScaleX()F (dark greylist, linking)
+10-31 14:02:06.988  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setScaleX(F)Z (dark greylist, linking)
+10-31 14:02:06.988  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getScaleY()F (dark greylist, linking)
+10-31 14:02:06.988  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setScaleY(F)Z (dark greylist, linking)
+10-31 14:02:06.988  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getTranslationX()F (dark greylist, linking)
+10-31 14:02:06.988  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setTranslationX(F)Z (dark greylist, linking)
+10-31 14:02:06.988  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getTranslationY()F (dark greylist, linking)
+10-31 14:02:06.988  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setTranslationY(F)Z (dark greylist, linking)
+10-31 14:02:06.988  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getElevation()F (dark greylist, linking)
+10-31 14:02:06.988  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setElevation(F)Z (dark greylist, linking)
+10-31 14:02:06.988  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getRotation()F (dark greylist, linking)
+10-31 14:02:06.988  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotation(F)Z (dark greylist, linking)
+10-31 14:02:06.988  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getRotationX()F (dark greylist, linking)
+10-31 14:02:06.988  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotationX(F)Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getRotationY()F (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotationY(F)Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getCameraDistance()F (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setCameraDistance(F)Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getPivotX()F (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getPivotY()F (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotY(F)Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getClipToOutline()Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setClipToOutline(Z)Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getAlpha()F (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setAlpha(F)Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->offsetTopAndBottom(I)Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->hasOverlappingRendering()Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->hasOverlappingRendering()Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setClipToOutline(Z)Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 I chatty  : uid=50067(com.fronx.smartlauncher) /system/bin/dex2oat identical 1 line
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setOutline(Landroid/graphics/Outline;)Z (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getMatrix(Landroid/graphics/Matrix;)V (dark greylist, linking)
+10-31 14:02:06.989  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getElevation()F (dark greylist, linking)
+10-31 14:02:06.990  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getAlpha()F (dark greylist, linking)
+10-31 14:02:06.990  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotationY(F)Z (dark greylist, linking)
+10-31 14:02:06.990  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setTranslationX(F)Z (dark greylist, linking)
+10-31 14:02:06.990  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setAlpha(F)Z (dark greylist, linking)
+10-31 14:02:06.990  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setScaleY(F)Z (dark greylist, linking)
+10-31 14:02:06.990  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotation(F)Z (dark greylist, linking)
+10-31 14:02:06.990  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setTranslationY(F)Z (dark greylist, linking)
+10-31 14:02:06.990  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setCameraDistance(F)Z (dark greylist, linking)
+10-31 14:02:06.990  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setScaleX(F)Z (dark greylist, linking)
+10-31 14:02:06.990  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotationX(F)Z (dark greylist, linking)
+10-31 14:02:06.990  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotY(F)Z (dark greylist, linking)
+10-31 14:02:06.990  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setElevation(F)Z (dark greylist, linking)
+10-31 14:02:06.990  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getClipToOutline()Z (dark greylist, linking)
+10-31 14:02:06.990  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->offsetTopAndBottom(I)Z (dark greylist, linking)
+10-31 14:02:06.995  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Alarm_Buzzer.ogg since build fingerprint changed
+10-31 14:02:06.997  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getAmbientShadowColor()I (dark greylist, linking)
+10-31 14:02:06.997  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getSpotShadowColor()I (dark greylist, linking)
+10-31 14:02:06.997  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setAmbientShadowColor(I)Z (dark greylist, linking)
+10-31 14:02:06.998  3105  3107 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setSpotShadowColor(I)Z (dark greylist, linking)
+10-31 14:02:07.028  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Barium.ogg since build fingerprint changed
+10-31 14:02:07.047  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Scandium.ogg since build fingerprint changed
+10-31 14:02:07.050  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Alarm_Rooster_02.ogg since build fingerprint changed
+10-31 14:02:07.052  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Plutonium.ogg since build fingerprint changed
+10-31 14:02:07.056  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Krypton.ogg since build fingerprint changed
+10-31 14:02:07.059  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Hassium.ogg since build fingerprint changed
+10-31 14:02:07.064  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Argon.ogg since build fingerprint changed
+10-31 14:02:07.068  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Nobelium.ogg since build fingerprint changed
+10-31 14:02:07.072  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Osmium.ogg since build fingerprint changed
+10-31 14:02:07.074  2429  3052 W MediaScanner: forcing rescan of /system/media/audio/alarms/Alarm_Classic.oggsince ringtone setting didn't finish
+10-31 14:02:07.090  1903  2219 E MetadataRetrieverClient: failed to extract an album art
+10-31 14:02:07.130  1935  1935 V SettingsProvider: Notifying for 0: content://settings/system/alarm_alert
+10-31 14:02:07.132  1935  1935 V SettingsProvider: Notifying for 0: content://settings/system/alarm_alert_set
+10-31 14:02:07.133  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Cesium.ogg since build fingerprint changed
+10-31 14:02:07.139  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Neptunium.ogg since build fingerprint changed
+10-31 14:02:07.160  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Promethium.ogg since build fingerprint changed
+10-31 14:02:07.175  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Helium.ogg since build fingerprint changed
+10-31 14:02:07.192  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/alarms/Oxygen.ogg since build fingerprint changed
+10-31 14:02:07.194  1935  1935 V SettingsProvider: Notifying for 0: content://settings/system/accelerometer_rotation
+10-31 14:02:07.490  3105  3105 W dex2oat : Accessing hidden method Landroid/graphics/Canvas;->drawPatch(Landroid/graphics/NinePatch;Landroid/graphics/Rect;Landroid/graphics/Paint;)V (dark greylist, linking)
+10-31 14:02:07.490  3105  3105 W dex2oat : Accessing hidden method Landroid/graphics/Canvas;->drawPatch(Landroid/graphics/NinePatch;Landroid/graphics/RectF;Landroid/graphics/Paint;)V (dark greylist, linking)
+10-31 14:02:07.490  3105  3105 W dex2oat : Accessing hidden method Landroid/graphics/Paint;->getTextBounds(Ljava/lang/CharSequence;IILandroid/graphics/Rect;)V (dark greylist, linking)
+10-31 14:02:07.491  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getAlpha()F (dark greylist, linking)
+10-31 14:02:07.491  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getAmbientShadowColor()I (dark greylist, linking)
+10-31 14:02:07.491  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getCameraDistance()F (dark greylist, linking)
+10-31 14:02:07.491  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getClipToOutline()Z (dark greylist, linking)
+10-31 14:02:07.491  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getElevation()F (dark greylist, linking)
+10-31 14:02:07.491  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getMatrix(Landroid/graphics/Matrix;)V (dark greylist, linking)
+10-31 14:02:07.491  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getPivotX()F (dark greylist, linking)
+10-31 14:02:07.491  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getPivotY()F (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getRotation()F (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getRotationX()F (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getRotationY()F (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getScaleX()F (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getScaleY()F (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getSpotShadowColor()I (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getTranslationX()F (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->getTranslationY()F (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->hasOverlappingRendering()Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->offsetTopAndBottom(I)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setAlpha(F)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setAmbientShadowColor(I)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setCameraDistance(F)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setClipToOutline(Z)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setElevation(F)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerPaint(Landroid/graphics/Paint;)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setOutline(Landroid/graphics/Outline;)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setPivotY(F)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotation(F)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotationX(F)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setRotationY(F)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setScaleX(F)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setScaleY(F)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setSpotShadowColor(I)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setTranslationX(F)Z (dark greylist, linking)
+10-31 14:02:07.492  3105  3105 W dex2oat : Accessing hidden method Landroid/view/RenderNode;->setTranslationY(F)Z (dark greylist, linking)
+10-31 14:02:07.493  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/BirdLoop.ogg since build fingerprint changed
+10-31 14:02:07.501  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/MidEvilJaunt.ogg since build fingerprint changed
+10-31 14:02:07.503  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Perseus.ogg since build fingerprint changed
+10-31 14:02:07.503  3105  3105 I dex2oat : Explicit concurrent copying GC freed 14114(2MB) AllocSpace objects, 0(0B) LOS objects, 99% free, 728B/1536KB, paused 516us total 2.902ms
+10-31 14:02:07.508  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CrazyDream.ogg since build fingerprint changed
+10-31 14:02:07.512  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CrayonRock.ogg since build fingerprint changed
+10-31 14:02:07.515  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/BussaMove.ogg since build fingerprint changed
+10-31 14:02:07.518  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/SitarVsSitar.ogg since build fingerprint changed
+10-31 14:02:07.521  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/NewPlayer.ogg since build fingerprint changed
+10-31 14:02:07.523  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/RomancingTheTone.ogg since build fingerprint changed
+10-31 14:02:07.526  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Andromeda.ogg since build fingerprint changed
+10-31 14:02:07.537  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/PERSEUS.ogg since build fingerprint changed
+10-31 14:02:07.552  3105  3105 I dex2oat : dex2oat took 1.009s (1.435s cpu) (threads: 2) arena alloc=110KB (113128B) java alloc=16KB (17112B) native alloc=3MB (4133704B) free=2MB (2682040B)
+10-31 14:02:07.554  1720  2011 V installed: DexInv: --- END '/data/app/com.fronx.smartlauncher-rHuc4BKUBJ8LCpx2DXg6xg==/base.apk' (success) ---
+10-31 14:02:07.555  1935  1965 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-31 14:02:07.555  1935  1965 D PackageManager: Clear ephemeral installer activity
+10-31 14:02:07.557  1720  2011 E         : Couldn't opendir /data/app/vmdl1334365461.tmp: No such file or directory
+10-31 14:02:07.557  1720  2011 E installd: Failed to delete /data/app/vmdl1334365461.tmp: No such file or directory
+10-31 14:02:07.570  1935  2009 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-31 14:02:07.573  1935  2999 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.fronx.smartlauncher flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+10-31 14:02:07.573  1935  1935 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AGk
+10-31 14:02:07.584  1935  2320 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@5feb00f)
+10-31 14:02:07.587  2176  2176 D CarrierSvcBindHelper: No carrier app for: 0
+10-31 14:02:07.589  2176  2176 D CarrierConfigLoader: mHandler: 9 phoneId: 0
+10-31 14:02:07.596  1935  2233 I ActivityManager: START u0 {flg=0x10000000 cmp=com.fronx.smartlauncher/.launcher.MainActivity} from uid 2000
+10-31 14:02:07.596  1935  1949 D AutofillManagerServiceImpl: Reset component for user 0 ()
+10-31 14:02:07.596  1935  1951 D AutofillUI: destroySaveUiUiThread(): already destroyed
+10-31 14:02:07.596  1935  1949 D AutofillManagerServiceImpl: Reset component for user 0 ()
+10-31 14:02:07.596  1935  1949 D FieldClassificationStrategy: reset(): service is not bound. Do nothing.
+10-31 14:02:07.597  1935  1949 W VoiceInteractionManagerService: no available voice recognition services found for user 0
+10-31 14:02:07.598  1935  1949 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@5feb00f)
+10-31 14:02:07.603  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Safari.ogg since build fingerprint changed
+10-31 14:02:07.638  1568  1612 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 1847296
+10-31 14:02:07.648  1935  1952 I ActivityManager: Start proc 3119:com.fronx.smartlauncher/u0a67 for activity com.fronx.smartlauncher/.launcher.MainActivity
+10-31 14:02:07.650  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Aquila.ogg since build fingerprint changed
+10-31 14:02:07.650  3119  3119 W x.smartlaunche: Unexpected CPU variant for X86 using defaults: x86_64
+10-31 14:02:07.652  1568  1612 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 1847296
+10-31 14:02:07.662  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/InsertCoin.ogg since build fingerprint changed
+10-31 14:02:07.664  1568  1612 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 823296
+10-31 14:02:07.670  1935  2554 D         : HostConnection::get() New Host Connection established 0x73c99c7623a0, tid 2554
+10-31 14:02:07.676  1935  2554 W LocalDisplayAdapter: Unable to find color mode 0, ignoring request.
+10-31 14:02:07.676  1935  2554 I ActivityManager: Config changes=20000480 {1.0 310mcc260mnc [en_US] ldltr sw640dp w720dp h616dp 160dpi lrg land finger -keyb/v/h tball/v winConfig={ mBounds=Rect(0, 0 - 0, 0) mAppBounds=Rect(0, 0 - 720, 640) mWindowingMode=fullscreen mActivityType=undefined} s.9}
+10-31 14:02:07.679  1935  2554 I ActivityManager: Override config changes=20000480 {1.0 310mcc260mnc [en_US] ldltr sw640dp w720dp h616dp 160dpi lrg land finger -keyb/v/h tball/v winConfig={ mBounds=Rect(0, 0 - 640, 720) mAppBounds=Rect(0, 0 - 720, 640) mWindowingMode=fullscreen mActivityType=undefined} s.9} for displayId=0
+10-31 14:02:07.685  1890  1890 E SurfaceFlinger: [ScreenshotSurface#0] rejecting buffer: bufWidth=320, bufHeight=640, front.active.{w=640, h=720}
+10-31 14:02:07.709  1935  2009 I InputReader: Reconfiguring input devices.  changes=0x00000004
+10-31 14:02:07.709  1935  2009 I InputReader: Device reconfigured: id=0, name='qwerty2', size 640x1280, orientation 1, mode 1, display id 0
+10-31 14:02:07.709  1935  2009 I InputReader: Reconfiguring input devices.  changes=0x00000004
+10-31 14:02:07.709  1935  2009 I InputReader: Reconfiguring input devices.  changes=0x00000004
+10-31 14:02:07.715  2448  2597 D EGL_emulation: eglMakeCurrent: 0x73c9b663cdc0: ver 3 0 (tinfo 0x73c9b660d980)
+10-31 14:02:07.721  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Noises3.ogg since build fingerprint changed
+10-31 14:02:07.729  2068  2068 D StatusBar: disable<e i a s b h r c s > disable2<q i n >
+10-31 14:02:07.746  3119  3119 E BluetoothAdapter: Bluetooth binder is null
+10-31 14:02:07.748  2068  2068 I ImageWallpaper: Redrawing in rect: RectF(0.0, 0.0, 1243.0, 1024.0) with surface size: 1243x1024
+10-31 14:02:07.756  2068  2323 D EGL_emulation: eglMakeCurrent: 0x73c9b663d220: ver 3 0 (tinfo 0x73c9b660d880)
+10-31 14:02:07.759  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/HalfwayHome.ogg since build fingerprint changed
+10-31 14:02:07.768  3119  3119 D OpenGLRenderer: Skia GL Pipeline
+10-31 14:02:07.783  1890  2277 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 14:02:07.796  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Kuma.ogg since build fingerprint changed
+10-31 14:02:07.806  1568  1612 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 69632
+10-31 14:02:07.809  1935  3134 D AutofillManagerServiceImpl: Reset component for user 0 ()
+10-31 14:02:07.811  2068  2323 D EGL_emulation: eglMakeCurrent: 0x73c9b663d220: ver 3 0 (tinfo 0x73c9b660d880)
+10-31 14:02:07.814  1568  1612 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 69632
+10-31 14:02:07.825  3119  3146 D         : HostConnection::get() New Host Connection established 0x73c9b6641600, tid 3146
+10-31 14:02:07.826  1568  1612 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 1847296
+10-31 14:02:07.827  1568  1611 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 1847296
+10-31 14:02:07.827  3119  3146 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasWideColorDisplay retrieved: 0
+10-31 14:02:07.828  3119  3146 I ConfigStore: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasHDRDisplay retrieved: 0
+10-31 14:02:07.828  3119  3146 I OpenGLRenderer: Initialized EGL, version 1.4
+10-31 14:02:07.828  3119  3146 D OpenGLRenderer: Swap behavior 1
+10-31 14:02:07.828  1568  1611 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 1847296
+10-31 14:02:07.829  1890  2467 W SurfaceFlinger: Attempting to destroy on removed layer: fbfa4cd DockedStackDivider#0
+10-31 14:02:07.830  3119  3146 D EGL_emulation: eglCreateContext: 0x73c9b663d9a0: maj 3 min 0 rcv 3
+10-31 14:02:07.831  3119  3146 D EGL_emulation: eglMakeCurrent: 0x73c9b663d9a0: ver 3 0 (tinfo 0x73c9b66a00c0)
+10-31 14:02:07.831  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->getScaleX()F (dark greylist, linking)
+10-31 14:02:07.831  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->setClipToOutline(Z)Z (dark greylist, linking)
+10-31 14:02:07.831  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-31 14:02:07.831  3119  3119 I chatty  : uid=10067(com.fronx.smartlauncher) identical 1 line
+10-31 14:02:07.831  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->setLayerType(I)Z (dark greylist, linking)
+10-31 14:02:07.831  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->setPivotX(F)Z (dark greylist, linking)
+10-31 14:02:07.832  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->setOutline(Landroid/graphics/Outline;)Z (dark greylist, linking)
+10-31 14:02:07.832  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->getMatrix(Landroid/graphics/Matrix;)V (dark greylist, linking)
+10-31 14:02:07.832  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->getElevation()F (dark greylist, linking)
+10-31 14:02:07.832  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->getAlpha()F (dark greylist, linking)
+10-31 14:02:07.832  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->setRotationY(F)Z (dark greylist, linking)
+10-31 14:02:07.832  1890  2277 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 14:02:07.832  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->setTranslationX(F)Z (dark greylist, linking)
+10-31 14:02:07.833  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->setAlpha(F)Z (dark greylist, linking)
+10-31 14:02:07.833  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->setScaleY(F)Z (dark greylist, linking)
+10-31 14:02:07.833  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->setRotation(F)Z (dark greylist, linking)
+10-31 14:02:07.833  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->setTranslationY(F)Z (dark greylist, linking)
+10-31 14:02:07.833  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->setCameraDistance(F)Z (dark greylist, linking)
+10-31 14:02:07.833  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->setScaleX(F)Z (dark greylist, linking)
+10-31 14:02:07.834  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->setRotationX(F)Z (dark greylist, linking)
+10-31 14:02:07.834  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->setPivotY(F)Z (dark greylist, linking)
+10-31 14:02:07.834  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->setElevation(F)Z (dark greylist, linking)
+10-31 14:02:07.834  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->getClipToOutline()Z (dark greylist, linking)
+10-31 14:02:07.834  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->offsetTopAndBottom(I)Z (dark greylist, linking)
+10-31 14:02:07.835  3119  3119 W x.smartlaunche: Accessing hidden method Landroid/view/RenderNode;->getScaleX()F (dark greylist, linking)
+10-31 14:02:07.848  1568  1611 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 69632
+10-31 14:02:07.872  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Eastern_Sky.ogg since build fingerprint changed
+10-31 14:02:07.904  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/BOOTES.ogg since build fingerprint changed
+10-31 14:02:07.940  3119  3146 D EGL_emulation: eglMakeCurrent: 0x73c9b663d9a0: ver 3 0 (tinfo 0x73c9b66a00c0)
+10-31 14:02:07.950  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Eridani.ogg since build fingerprint changed
+10-31 14:02:07.962  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Nassau.ogg since build fingerprint changed
+10-31 14:02:07.969  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Funk_Yall.ogg since build fingerprint changed
+10-31 14:02:07.982  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CANISMAJOR.ogg since build fingerprint changed
+10-31 14:02:07.993  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Noises2.ogg since build fingerprint changed
+10-31 14:02:08.005  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Zeta.ogg since build fingerprint changed
+10-31 14:02:08.023  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Ding.ogg since build fingerprint changed
+10-31 14:02:08.032  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/EtherShake.ogg since build fingerprint changed
+10-31 14:02:08.047  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Centaurus.ogg since build fingerprint changed
+10-31 14:02:08.060  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/TwirlAway.ogg since build fingerprint changed
+10-31 14:02:08.070  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Third_Eye.ogg since build fingerprint changed
+10-31 14:02:08.082  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/ArgoNavis.ogg since build fingerprint changed
+10-31 14:02:08.108  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Pegasus.ogg since build fingerprint changed
+10-31 14:02:08.125  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Ring_Synth_02.ogg since build fingerprint changed
+10-31 14:02:08.140  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/DancinFool.ogg since build fingerprint changed
+10-31 14:02:08.170  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Cairo.ogg since build fingerprint changed
+10-31 14:02:08.182  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Revelation.ogg since build fingerprint changed
+10-31 14:02:08.202  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/BeatPlucker.ogg since build fingerprint changed
+10-31 14:02:08.214  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Rigel.ogg since build fingerprint changed
+10-31 14:02:08.226  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Orion.ogg since build fingerprint changed
+10-31 14:02:08.242  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Gimme_Mo_Town.ogg since build fingerprint changed
+10-31 14:02:08.255  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Sceptrum.ogg since build fingerprint changed
+10-31 14:02:08.278  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/UrsaMinor.ogg since build fingerprint changed
+10-31 14:02:08.306  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/FreeFlight.ogg since build fingerprint changed
+10-31 14:02:08.329  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/DonMessWivIt.ogg since build fingerprint changed
+10-31 14:02:08.343  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Girtab.ogg since build fingerprint changed
+10-31 14:02:08.357  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Glacial_Groove.ogg since build fingerprint changed
+10-31 14:02:08.372  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/OrganDub.ogg since build fingerprint changed
+10-31 14:02:08.385  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Paradise_Island.ogg since build fingerprint changed
+10-31 14:02:08.398  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CaribbeanIce.ogg since build fingerprint changed
+10-31 14:02:08.412  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Cygnus.ogg since build fingerprint changed
+10-31 14:02:08.424  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Road_Trip.ogg since build fingerprint changed
+10-31 14:02:08.438  2429  3052 W MediaScanner: forcing rescan of /system/media/audio/ringtones/Ring_Synth_04.oggsince ringtone setting didn't finish
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: Error inserting title_key=G1KM1QM parent=98 is_music=false title=Perseus _size=112981 duration=10214 bucket_id=293500348 is_alarm=false album_artist=null media_type=2 is_notification=false track=0 bucket_display_name=ringtones _data=/system/media/audio/ringtones/PERSEUS.ogg is_drm=false _display_name=PERSEUS.ogg composer=null format=47362 title_resource_uri=null is_ringtone=true artist_id=3 is_podcast=false date_added=1793455328 date_modified=1533059818 mime_type=application/ogg album_id=6
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: files._data (code 2067 SQLITE_CONSTRAINT_UNIQUE)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at android.database.sqlite.SQLiteConnection.nativeExecuteForLastInsertedRowId(Native Method)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at android.database.sqlite.SQLiteConnection.executeForLastInsertedRowId(SQLiteConnection.java:796)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at android.database.sqlite.SQLiteSession.executeForLastInsertedRowId(SQLiteSession.java:788)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at android.database.sqlite.SQLiteStatement.executeInsert(SQLiteStatement.java:86)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at android.database.sqlite.SQLiteDatabase.insertWithOnConflict(SQLiteDatabase.java:1564)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at android.database.sqlite.SQLiteDatabase.insert(SQLiteDatabase.java:1433)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.insertFile(MediaProvider.java:2359)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.insertInternal(MediaProvider.java:2592)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.bulkInsert(MediaProvider.java:1853)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at android.content.ContentProvider$Transport.bulkInsert(ContentProvider.java:280)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at android.content.ContentProviderClient.bulkInsert(ContentProviderClient.java:299)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at android.media.MediaInserter.flush(MediaInserter.java:91)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at android.media.MediaInserter.flushAll(MediaInserter.java:74)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at android.media.MediaScanner$MyMediaScannerClient.endFile(MediaScanner.java:1062)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at android.media.MediaScanner$MyMediaScannerClient.doScanFile(MediaScanner.java:655)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at android.media.MediaScanner$MyMediaScannerClient.scanFile(MediaScanner.java:581)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at android.media.MediaScanner.processDirectory(Native Method)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at android.media.MediaScanner.scanDirectories(MediaScanner.java:1365)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.scan(MediaScannerService.java:83)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.access$300(MediaScannerService.java:47)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:258)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at android.os.Looper.loop(Looper.java:193)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:162)
+10-31 14:02:08.476  2429  3052 E SQLiteDatabase: 	at java.lang.Thread.run(Thread.java:764)
+10-31 14:02:08.490  1903  2219 E MetadataRetrieverClient: failed to extract an album art
+10-31 14:02:08.505  1935  1935 V SettingsProvider: Notifying for 0: content://settings/system/ringtone
+10-31 14:02:08.509  1935  1935 V SettingsProvider: Notifying for 0: content://settings/system/ringtone_set
+10-31 14:02:08.509  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CASSIOPEIA.ogg since build fingerprint changed
+10-31 14:02:08.522  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Seville.ogg since build fingerprint changed
+10-31 14:02:08.522  1903  1903 E MetadataRetrieverClient: failed to extract an album art
+10-31 14:02:08.534  1903  3144 E MetadataRetrieverClient: failed to extract an album art
+10-31 14:02:08.538  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Ring_Digital_02.ogg since build fingerprint changed
+10-31 14:02:08.548  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/BentleyDubs.ogg since build fingerprint changed
+10-31 14:02:08.558  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Rasalas.ogg since build fingerprint changed
+10-31 14:02:08.579  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Solarium.ogg since build fingerprint changed
+10-31 14:02:08.584  1935  2320 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@ef3a794)
+10-31 14:02:08.585  1935  1949 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@ef3a794)
+10-31 14:02:08.597  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Draco.ogg since build fingerprint changed
+10-31 14:02:08.608  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CurveBall.ogg since build fingerprint changed
+10-31 14:02:08.619  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/No_Limits.ogg since build fingerprint changed
+10-31 14:02:08.630  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Terminated.ogg since build fingerprint changed
+10-31 14:02:08.641  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/LoopyLounge.ogg since build fingerprint changed
+10-31 14:02:08.654  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/ANDROMEDA.ogg since build fingerprint changed
+10-31 14:02:08.667  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/hydra.ogg since build fingerprint changed
+10-31 14:02:08.677  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CanisMajor.ogg since build fingerprint changed
+10-31 14:02:08.689  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Nairobi.ogg since build fingerprint changed
+10-31 14:02:08.702  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/LoveFlute.ogg since build fingerprint changed
+10-31 14:02:08.714  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Savannah.ogg since build fingerprint changed
+10-31 14:02:08.726  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/VeryAlarmed.ogg since build fingerprint changed
+10-31 14:02:08.736  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Bollywood.ogg since build fingerprint changed
+10-31 14:02:08.749  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Hydra.ogg since build fingerprint changed
+10-31 14:02:08.759  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Champagne_Edition.ogg since build fingerprint changed
+10-31 14:02:08.770  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Lyra.ogg since build fingerprint changed
+10-31 14:02:08.783  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Backroad.ogg since build fingerprint changed
+10-31 14:02:08.793  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Themos.ogg since build fingerprint changed
+10-31 14:02:08.816  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Club_Cubano.ogg since build fingerprint changed
+10-31 14:02:08.828  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/SilkyWay.ogg since build fingerprint changed
+10-31 14:02:08.841  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Steppin_Out.ogg since build fingerprint changed
+10-31 14:02:08.853  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Carina.ogg since build fingerprint changed
+10-31 14:02:08.860  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Big_Easy.ogg since build fingerprint changed
+10-31 14:02:08.868  3119  3146 I OpenGLRenderer: Davey! duration=1065ms; Flags=0, IntendedVsync=40535100129, Vsync=40568433461, OldestInputEvent=9223372036854775807, NewestInputEvent=0, HandleInputStart=40583554090, AnimationStart=40583584210, PerformTraversalsStart=40614077480, DrawStart=40661797930, SyncQueued=40673206200, SyncStart=40674007810, IssueDrawCommandsStart=40674086420, SwapBuffers=41416781130, FrameCompleted=41601087390, DequeueBufferDuration=119000, QueueBufferDuration=25271000, 
+10-31 14:02:08.871  1935  1988 E WindowManager: Performed 6 layouts in a row. Skipping
+10-31 14:02:08.877  1935  2146 D ConnectivityService: requestNetwork for uid/pid:10067/3119 NetworkRequest [ TRACK_DEFAULT id=11, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Unwanted:  Uid: 10067] ]
+10-31 14:02:08.878  1935  2029 D WIFI_UT : got request NetworkRequest [ TRACK_DEFAULT id=11, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Unwanted:  Uid: 10067] ] with score 60
+10-31 14:02:08.878  1935  2029 D WIFI    : got request NetworkRequest [ TRACK_DEFAULT id=11, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Unwanted:  Uid: 10067] ] with score 60
+10-31 14:02:08.878  2176  2176 D PhoneSwitcherNetworkRequstListener: got request NetworkRequest [ TRACK_DEFAULT id=11, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Unwanted:  Uid: 10067] ] with score 60
+10-31 14:02:08.879  3119  3119 I Choreographer: Skipped 59 frames!  The application may be doing too much work on its main thread.
+10-31 14:02:08.884  1935  1958 I ActivityManager: Displayed com.fronx.smartlauncher/.launcher.MainActivity: +1s255ms
+10-31 14:02:08.898  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Enter_the_Nexus.ogg since build fingerprint changed
+10-31 14:02:08.905  1935  1988 I WindowManager: Screen frozen for +1s242ms due to Window{92080cc u0 Splash Screen com.fronx.smartlauncher}
+10-31 14:02:08.919  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/MildlyAlarming.ogg since build fingerprint changed
+10-31 14:02:08.931  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/URSAMINOR.ogg since build fingerprint changed
+10-31 14:02:08.961  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Testudo.ogg since build fingerprint changed
+10-31 14:02:08.980  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Machina.ogg since build fingerprint changed
+10-31 14:02:08.999  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Vespa.ogg since build fingerprint changed
+10-31 14:02:09.022  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/World.ogg since build fingerprint changed
+10-31 14:02:09.034  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Ring_Classic_02.ogg since build fingerprint changed
+10-31 14:02:09.050  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Playa.ogg since build fingerprint changed
+10-31 14:02:09.066  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Shes_All_That.ogg since build fingerprint changed
+10-31 14:02:09.080  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/DreamTheme.ogg since build fingerprint changed
+10-31 14:02:09.095  3119  3146 I OpenGLRenderer: Davey! duration=1209ms; Flags=0, IntendedVsync=40619186456, Vsync=41602519750, OldestInputEvent=9223372036854775807, NewestInputEvent=0, HandleInputStart=41612227940, AnimationStart=41612255040, PerformTraversalsStart=41622405660, DrawStart=41622642540, SyncQueued=41627275830, SyncStart=41627332660, IssueDrawCommandsStart=41627935120, SwapBuffers=41642305090, FrameCompleted=41828273790, DequeueBufferDuration=154000, QueueBufferDuration=383000, 
+10-31 14:02:09.128  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/FriendlyGhost.ogg since build fingerprint changed
+10-31 14:02:09.139  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Growl.ogg since build fingerprint changed
+10-31 14:02:09.150  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Calypso_Steel.ogg since build fingerprint changed
+10-31 14:02:09.160  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Pyxis.ogg since build fingerprint changed
+10-31 14:02:09.168  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Thunderfoot.ogg since build fingerprint changed
+10-31 14:02:09.178  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/SpringyJalopy.ogg since build fingerprint changed
+10-31 14:02:09.186  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Scarabaeus.ogg since build fingerprint changed
+10-31 14:02:09.203  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Atria.ogg since build fingerprint changed
+10-31 14:02:09.217  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/GameOverGuitar.ogg since build fingerprint changed
+10-31 14:02:09.227  2429  3052 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Noises1.ogg since build fingerprint changed
+10-31 14:02:09.236  2429  3052 W MediaScanner: Error opening directory '/oem/media/', skipping: No such file or directory.
+10-31 14:02:09.237  2429  3052 W MediaScanner: Error opening directory '/product/media/', skipping: No such file or directory.
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: Error inserting title_key=7Y/K) parent=98 is_music=false title=Hydra _size=22924 duration=5000 bucket_id=293500348 is_alarm=false album_artist=null media_type=2 is_notification=false track=0 bucket_display_name=ringtones _data=/system/media/audio/ringtones/Hydra.ogg is_drm=false _display_name=Hydra.ogg composer=null format=47362 title_resource_uri=null is_ringtone=true artist_id=1 is_podcast=false date_added=1793455329 date_modified=1533059818 mime_type=application/ogg album_id=5
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: files._data (code 2067 SQLITE_CONSTRAINT_UNIQUE)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at android.database.sqlite.SQLiteConnection.nativeExecuteForLastInsertedRowId(Native Method)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at android.database.sqlite.SQLiteConnection.executeForLastInsertedRowId(SQLiteConnection.java:796)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at android.database.sqlite.SQLiteSession.executeForLastInsertedRowId(SQLiteSession.java:788)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at android.database.sqlite.SQLiteStatement.executeInsert(SQLiteStatement.java:86)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at android.database.sqlite.SQLiteDatabase.insertWithOnConflict(SQLiteDatabase.java:1564)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at android.database.sqlite.SQLiteDatabase.insert(SQLiteDatabase.java:1433)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.insertFile(MediaProvider.java:2359)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.insertInternal(MediaProvider.java:2592)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.bulkInsert(MediaProvider.java:1853)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at android.content.ContentProvider$Transport.bulkInsert(ContentProvider.java:280)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at android.content.ContentProviderClient.bulkInsert(ContentProviderClient.java:299)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at android.media.MediaInserter.flush(MediaInserter.java:91)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at android.media.MediaInserter.flushAll(MediaInserter.java:74)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at android.media.MediaScanner.scanDirectories(MediaScanner.java:1370)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.scan(MediaScannerService.java:83)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.access$300(MediaScannerService.java:47)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:258)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at android.os.Looper.loop(Looper.java:193)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:162)
+10-31 14:02:09.243  2429  3052 E SQLiteDatabase: 	at java.lang.Thread.run(Thread.java:764)
+10-31 14:02:09.256  2429  3052 V MediaProvider: pruneThumbnails 
+10-31 14:02:09.257  2429  3052 V MediaProvider: /pruneDeadThumbnailFiles... 
+10-31 14:02:09.585  1935  2320 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8379818)
+10-31 14:02:09.585  1935  1949 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8379818)
+10-31 14:02:10.585  1935  2320 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@a934271)
+10-31 14:02:10.585  1935  1949 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@a934271)
+10-31 14:02:10.692  2930  2944 I ndroid.contact: Waiting for a blocking GC ProfileSaver
+10-31 14:02:10.893  1935  2009 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-31 14:02:10.894  1935  1935 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AG0
+10-31 14:02:10.899  1935  1935 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AG4
+10-31 14:02:10.900  1935  1935 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AG8
+10-31 14:02:10.902  1935  1935 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AHA
+10-31 14:02:10.905  1935  2009 I chatty  : uid=1000(system) InputReader identical 3 lines
+10-31 14:02:10.908  1935  2009 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-31 14:02:10.917  2981  2997 I droid.gallery3: Waiting for a blocking GC ProfileSaver
+10-31 14:02:10.921  1935  1935 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AHE
+10-31 14:02:10.925  1935  1949 W VoiceInteractionManagerService: no available voice interaction services found for user 0
+10-31 14:02:10.926  1935  1935 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AHI
+10-31 14:02:10.938  2176  2176 D CarrierSvcBindHelper: No carrier app for: 0
+10-31 14:02:10.948  1935  1935 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AHM
+10-31 14:02:10.957  1935  1935 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AHQ
+10-31 14:02:10.948  2176  2176 D CarrierSvcBindHelper: No carrier app for: 0
+10-31 14:02:10.958  1935  1958 I system_server: Explicit concurrent copying GC freed 39181(2MB) AllocSpace objects, 40(1568KB) LOS objects, 42% free, 5MB/9MB, paused 1.908ms total 47.249ms
+10-31 14:02:10.958  1935  2009 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-31 14:02:10.958  1935  2009 I chatty  : uid=1000(system) InputReader identical 1 line
+10-31 14:02:10.958  1935  2009 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-31 14:02:10.965  2176  2176 D CarrierSvcBindHelper: No carrier app for: 0
+10-31 14:02:10.984  1935  1935 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: DDC.oR@AHU
+10-31 14:02:10.996  1935  1949 W VoiceInteractionManagerService: no available voice interaction services found for user 0
+10-31 14:02:11.013  1935  1949 I chatty  : uid=1000(system) android.bg identical 2 lines
+10-31 14:02:11.022  1935  1949 W VoiceInteractionManagerService: no available voice interaction services found for user 0
+10-31 14:02:11.032  1935  1935 V SettingsProvider: Notifying for 0: content://settings/secure/input_methods_subtype_history
+10-31 14:02:11.033  1935  1949 W VoiceInteractionManagerService: no available voice interaction services found for user 0
+10-31 14:02:11.015  2176  2176 I chatty  : uid=1001(radio) com.android.phone identical 5 lines
+10-31 14:02:11.030  2176  2176 D CarrierSvcBindHelper: No carrier app for: 0
+10-31 14:02:11.035  2056  2056 I InputAttributes: InputType.TYPE_NULL is specified
+10-31 14:02:11.037  1935  1949 E system_server: No package ID 7f found for ID 0x7f08017c.
+10-31 14:02:11.037  1935  1949 E system_server: No package ID 7f found for ID 0x7f120f74.
+10-31 14:02:11.037  1935  1949 E system_server: No package ID 7f found for ID 0x7f08017b.
+10-31 14:02:11.037  1935  1949 E system_server: No package ID 7f found for ID 0x7f120480.
+10-31 14:02:11.037  1935  1949 E system_server: No package ID 7f found for ID 0x7f08017a.
+10-31 14:02:11.037  1935  1949 E system_server: No package ID 7f found for ID 0x7f12099f.
+10-31 14:02:11.077  3035  3050 I ackageinstalle: Waiting for a blocking GC ProfileSaver
+10-31 14:02:11.046  1935  1949 I chatty  : uid=1000(system) android.bg identical 2 lines
+10-31 14:02:11.048  1935  1949 W VoiceInteractionManagerService: no available voice interaction services found for user 0
+10-31 14:02:11.170  1935  2055 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-31 14:02:11.235  3055  3071 I android.traceu: Waiting for a blocking GC ProfileSaver
+10-31 14:02:11.585  1935  2320 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@3591306)
+10-31 14:02:11.585  1935  1949 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@3591306)
+10-31 14:02:12.585  1935  2320 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@d5d1dc7)
+10-31 14:02:12.586  1935  1949 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@d5d1dc7)
+10-31 14:02:13.062  2056  2056 I LatinIME: Timeout waiting for dictionary load
+10-31 14:02:13.398  3119  3165 D ProfileInstaller: Installing profile for com.fronx.smartlauncher
+10-31 14:02:13.585  1935  2320 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@ea27ff4)
+10-31 14:02:13.586  1935  1949 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@ea27ff4)
+10-31 14:02:14.586  1935  2320 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8e5031d)
+10-31 14:02:14.586  1935  1949 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@8e5031d)
+10-31 14:02:14.954  1890  1898 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 14:02:14.955  1890  1898 D PermissionCache: checking android.permission.READ_FRAME_BUFFER for uid=2000 => granted (230 us)
+10-31 14:02:14.955  1568  1611 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 823296
+10-31 14:02:14.962  3171  3171 D         : HostConnection::get() New Host Connection established 0x7b95fa42ee40, tid 3171
+10-31 14:02:15.048  3173  3173 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-31 14:02:15.051  3173  3173 I app_process: RelocateImage: /system/bin/patchoat --input-image-location=/system/framework/boot.art --output-image-directory=/data/local/tmp/dalvik-cache/x86_64 --instruction-set=x86_64 --base-offset-delta=7917568
+10-31 14:02:15.213  3173  3173 W app_process: Unexpected CPU variant for X86 using defaults: x86_64
+10-31 14:02:15.214  3173  3173 I app_process: The ClassLoaderContext is a special shared library.
+10-31 14:02:15.215  3173  3173 I app_process: The ClassLoaderContext is a special shared library.
+10-31 14:02:15.227  3173  3173 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+10-31 14:02:15.232  1935  1935 V SettingsProvider: Notifying for 0: content://settings/secure/accessibility_enabled
+10-31 14:02:15.237  1788  3187 D         : HostConnection::get() New Host Connection established 0x72d405e3c180, tid 3187
+10-31 14:02:15.586  1935  2320 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@461a760)
+10-31 14:02:15.586  1935  1949 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@461a760)
+10-31 14:02:16.305  3173  3173 W AccessibilityNodeInfoDumper: Fetch time: 25ms
+10-31 14:02:16.305  1935  2554 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@5e35992
+10-31 14:02:16.306  1935  1935 V SettingsProvider: Notifying for 0: content://settings/secure/accessibility_enabled
+10-31 14:02:16.307  1935  1935 V SettingsProvider: Notifying for 0: content://settings/system/accelerometer_rotation
+10-31 14:02:16.310  3173  3173 D AndroidRuntime: Shutting down VM
+10-31 14:02:16.435  3194  3194 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-31 14:02:16.461  3194  3194 W app_process: Unexpected CPU variant for X86 using defaults: x86_64
+10-31 14:02:16.462  3194  3194 I app_process: The ClassLoaderContext is a special shared library.
+10-31 14:02:16.463  3194  3194 I app_process: The ClassLoaderContext is a special shared library.
+10-31 14:02:16.475  3194  3194 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+10-31 14:02:16.481  1935  1935 V SettingsProvider: Notifying for 0: content://settings/secure/accessibility_enabled
+10-31 14:02:16.549  1935  1947 I ActivityManager: Killing 2656:com.android.quicksearchbox/u0a63 (adj 906): empty #17
+10-31 14:02:16.551  1935  1953 W libprocessgroup: kill(-2656, 9) failed: No such process
+10-31 14:02:16.586  1935  2320 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@f29d98c)
+10-31 14:02:16.586  1935  1949 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@f29d98c)
+10-31 14:02:16.587  1935  1953 W libprocessgroup: kill(-2656, 9) failed: No such process
+10-31 14:02:16.597  1891  1891 I Zygote  : Process 2656 exited due to signal (9)
+10-31 14:02:16.627  1935  1953 W libprocessgroup: kill(-2656, 9) failed: No such process
+10-31 14:02:16.627  1935  1953 I libprocessgroup: Successfully killed process cgroup uid 10063 pid 2656 in 76ms
+10-31 14:02:17.519  3194  3194 W AccessibilityNodeInfoDumper: Fetch time: 15ms
+10-31 14:02:17.519  1935  2554 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@9597cde
+10-31 14:02:17.520  1935  1935 V SettingsProvider: Notifying for 0: content://settings/secure/accessibility_enabled
+10-31 14:02:17.526  3194  3194 D AndroidRuntime: Shutting down VM
+10-31 14:02:17.586  1935  2320 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@b7c88ea)
+10-31 14:02:17.587  1935  1949 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@b7c88ea)
+10-31 14:02:17.611  3210  3210 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-31 14:02:17.637  3210  3210 W app_process: Unexpected CPU variant for X86 using defaults: x86_64
+10-31 14:02:17.638  3210  3210 I app_process: The ClassLoaderContext is a special shared library.
+10-31 14:02:17.651  3210  3210 D AndroidRuntime: Calling main entry com.android.commands.input.Input
+10-31 14:02:17.654  3210  3210 I Input   : injectMotionEvent: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=187.0, y[0]=613.0, toolType[0]=TOOL_TYPE_UNKNOWN, buttonState=0, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=50384, downTime=50384, deviceId=0, source=0x1002 }
+10-31 14:02:17.659  3210  3210 I Input   : injectMotionEvent: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=187.0, y[0]=613.0, toolType[0]=TOOL_TYPE_UNKNOWN, buttonState=0, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=50384, downTime=50384, deviceId=0, source=0x1002 }
+10-31 14:02:17.661  3210  3210 D AndroidRuntime: Shutting down VM
+10-31 14:02:18.586  1935  2320 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@4b9c7db)
+10-31 14:02:18.586  1935  1949 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@4b9c7db)
+10-31 14:02:19.586  1935  2320 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@c610278)
+10-31 14:02:19.587  1935  1949 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@c610278)
+10-31 14:02:20.586  1935  2320 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@4decd51)
+10-31 14:02:20.587  1935  1949 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@4decd51)
+10-31 14:02:20.587  1935  1950 I ActivityManager: Waited long enough for: ServiceRecord{70d9c43 u0 com.android.calendar/.alerts.InitAlarmsService}
+10-31 14:02:20.719  1890  1898 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-31 14:02:20.719  1568  1611 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 823296
+10-31 14:02:20.726  3223  3223 D         : HostConnection::get() New Host Connection established 0x7b4e64e2ee40, tid 3223
+10-31 14:02:20.832  3225  3225 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-31 14:02:20.865  3225  3225 W app_process: Unexpected CPU variant for X86 using defaults: x86_64
+10-31 14:02:20.866  3225  3225 I app_process: The ClassLoaderContext is a special shared library.
+10-31 14:02:20.866  3225  3225 I app_process: The ClassLoaderContext is a special shared library.
+10-31 14:02:20.879  3225  3225 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+10-31 14:02:20.883  1935  1935 V SettingsProvider: Notifying for 0: content://settings/secure/accessibility_enabled
+10-31 14:02:21.586  1935  2320 I GnssLocationProvider: WakeLock acquired by sendMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@7dfce24)
+10-31 14:02:21.587  1935  1949 I GnssLocationProvider: WakeLock released by handleMessage(REPORT_SV_STATUS, 0, com.android.server.location.GnssLocationProvider$SvStatusInfo@7dfce24)
+10-31 14:02:21.910  1935  2029 W AlarmManager: Unrecognized alarm listener com.android.server.wifi.WifiConfigStore$1@228f02
+10-31 14:02:21.915  1935  2029 D WifiConfigStore: Writing to stores completed in 5 ms.
+10-31 14:02:21.918  3225  3225 W AccessibilityNodeInfoDumper: Fetch time: 14ms
+10-31 14:02:21.918  1935  2561 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@31249b6
+10-31 14:02:21.919  1935  1935 V SettingsProvider: Notifying for 0: content://settings/secure/accessibility_enabled
+10-31 14:02:21.922  3225  3225 D AndroidRuntime: Shutting down VM

@@ -1,1 +1,1 @@
-      topResumedActivity=ActivityRecord{e3b945 u0 com.fronx.smartlauncher/.launcher.MainActivity} t17}
+      topResumedActivity=ActivityRecord{a6315c6 u0 com.fronx.smartlauncher/.launcher.MainActivity} t17}

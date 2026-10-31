@@ -1,0 +1,7 @@
+Starting: Intent { cmp=com.fronx.smartlauncher/.launcher.MainActivity }
+Status: ok
+Activity: com.fronx.smartlauncher/.launcher.MainActivity
+ThisTime: 890
+TotalTime: 890
+WaitTime: 902
+Complete

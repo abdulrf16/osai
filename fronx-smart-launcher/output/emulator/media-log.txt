@@ -1,4 +1,4 @@
 --------- beginning of main
-10-31 13:38:26.349  7792  7792 I FronxTestMedia: onPause
-10-31 13:38:30.585  7792  7792 I FronxTestMedia: onSkipToNext
-10-31 13:38:34.664  7792  7792 I FronxTestMedia: onSkipToPrevious
+10-31 14:05:18.086  8044  8044 I FronxTestMedia: onPause
+10-31 14:05:22.493  8044  8044 I FronxTestMedia: onSkipToNext
+10-31 14:05:26.994  8044  8044 I FronxTestMedia: onSkipToPrevious

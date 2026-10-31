@@ -1,1 +1,1 @@
-    topResumedActivity=ActivityRecord{4effb46 u0 com.android.settings/.Settings$ConnectedDeviceDashboardActivity} t14}
+    topResumedActivity=ActivityRecord{d394caf u0 com.android.settings/.Settings$ConnectedDeviceDashboardActivity} t14}
