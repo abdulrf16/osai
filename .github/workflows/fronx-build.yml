@@ -27,10 +27,10 @@ jobs:
       - run: chmod +x gradlew
 
       - name: Unit tests
-        run: ./gradlew :app:testDebugUnitTest --stacktrace
+        run: ./gradlew :app:testDebugUnitTest --console=plain
 
       - name: Debug APK (+ CI media-session helper)
-        run: ./gradlew :app:assembleDebug :testmedia:assembleDebug --stacktrace
+        run: ./gradlew :app:assembleDebug :testmedia:assembleDebug --console=plain
 
       - name: Release signing key
         # Uses repository secrets when present. Otherwise a one-off project key is generated for this run
@@ -55,7 +55,7 @@ jobs:
           { echo "FRONX_KEYSTORE_FILE=$KS"; echo "FRONX_KEYSTORE_PASSWORD=$SP"; echo "FRONX_KEY_ALIAS=$ALIAS"; echo "FRONX_KEY_PASSWORD=$KP"; } >> "$GITHUB_ENV"
 
       - name: Release APK
-        run: ./gradlew :app:assembleRelease --stacktrace
+        run: ./gradlew :app:assembleRelease --console=plain
 
       - name: Collect and verify artifacts
         run: |
