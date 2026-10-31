@@ -48,7 +48,7 @@ class ConnectivityMonitor(context: Context) {
         }
         val wifi = when {
             wm == null -> RadioState.UNAVAILABLE
-            !runCatching { wm.isWifiEnabled }.getOrDefault(false) -> RadioState.OFF
+            !runCatching { wm?.isWifiEnabled == true }.getOrDefault(false) -> RadioState.OFF
             onWifiTransport -> RadioState.CONNECTED
             else -> RadioState.ON
         }
