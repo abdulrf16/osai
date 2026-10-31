@@ -36,6 +36,11 @@ if __name__ == "__main__":
     exact = (sys.argv[4] != "contains") if len(sys.argv) > 4 else True
     root = dump()
     hits = find(root, text, exact)
+    if cmd == "textof":     # print the text of the node whose content-desc equals the argument
+        for n in root.iter("node"):
+            if n.get("content-desc") == text:
+                print(n.get("text") or ""); sys.exit(0)
+        sys.exit(1)
     if cmd == "hasabove":   # node with this text whose centre is above y (excludes the dock)
         ymax = int(sys.argv[3])
         sys.exit(0 if any(c[1] < ymax for c, b in hits) else 1)

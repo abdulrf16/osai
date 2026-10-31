@@ -30,6 +30,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
@@ -158,9 +160,11 @@ private fun Progress(s: MediaUiState.Active) {
         }
         Spacer(Modifier.height(4.dp))
         Row(Modifier.fillMaxWidth()) {
-            Text(Format.duration(pos), style = MaterialTheme.typography.labelSmall, color = c.textMuted)
+            Text(Format.duration(pos), style = MaterialTheme.typography.labelSmall, color = c.textMuted,
+                modifier = Modifier.semantics { contentDescription = "Playback position" })
             Spacer(Modifier.weight(1f))
-            Text(Format.duration(s.durationMs), style = MaterialTheme.typography.labelSmall, color = c.textMuted)
+            Text(Format.duration(s.durationMs), style = MaterialTheme.typography.labelSmall, color = c.textMuted,
+                modifier = Modifier.semantics { contentDescription = "Track length" })
         }
     }
 }

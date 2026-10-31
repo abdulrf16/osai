@@ -82,24 +82,36 @@ adb shell input keyevent KEYCODE_MOVE_END; for i in $(seq 1 8); do adb shell inp
 has 'No apps match' "first" contains; record "Search with no result shows empty state" $? ""
 for i in $(seq 1 8); do adb shell input keyevent KEYCODE_DEL; done; adb shell input keyevent KEYCODE_BACK; settle 1
 
-# 7. shortcuts: launch an app from the drawer (Settings app)
+# 7. shortcuts: filter the drawer to one app, launch it through the drawer
+filter_apps() { adb shell input tap 640 70; settle 1; for i in $(seq 1 12); do adb shell input keyevent KEYCODE_DEL; done; adb shell input text "$1"; settle 2; adb shell input keyevent KEYCODE_BACK; settle 1; }
+for i in $(seq 1 8); do adb shell input keyevent KEYCODE_DEL; done
+filter_apps settings
 $UI tap "Settings" first; settle 3
 adb shell dumpsys activity activities | grep -E "topResumedActivity|mResumedActivity" | head -2 > "$OUT/top-activity.txt"
-grep -q "settings" "$OUT/top-activity.txt"; record "Drawer launches an app via intent (Android Settings opened)" $? "$(head -1 "$OUT/top-activity.txt" | tr -s ' ' | cut -c1-120)"
+grep -q "com.android.settings" "$OUT/top-activity.txt"; record "Drawer launches an app via intent (Android Settings opened)" $? "$(head -1 "$OUT/top-activity.txt" | tr -s ' ' | cut -c1-120)"
 shot 05-launched-settings
 adb shell input keyevent KEYCODE_BACK; settle 2; adb shell am start -n "$ACT" >/dev/null; settle 2
 
-# 8. favourites persistence
+# 8. favourites persistence (Chrome is not a default favourite, so this is a real change)
 tap "Apps" lowest
-$UI hold "Settings" first; settle 2
-has "Add to favourites" || has "Remove from favourites"; record "Long-press app opens favourites menu" $? ""
+filter_apps chrome
+$UI hold "Chrome" first; settle 2
 shot 06-fav-menu
+has "Add to favourites"; record "Long-press app opens favourites menu" $? ""
 $UI tap "Add to favourites" first; settle 2
 adb shell am force-stop $PKG; start; tap "Apps" lowest; tap "Favourites" first
-$UI hasabove "Settings" 600; record "Favourite persisted across force-stop (shown under Favourites)" $? ""
 shot 07-favourites
+$UI hasabove "Chrome" 600; record "Favourite (Chrome) persisted across force-stop and shows under Favourites" $? ""
 adb shell run-as $PKG ls files/datastore 2>/dev/null | tr -d '\r' > "$OUT/datastore-files.txt"
 grep -q "fronx_launcher" "$OUT/datastore-files.txt"; record "DataStore file written (fronx_launcher.preferences_pb)" $? "$(cat "$OUT/datastore-files.txt" | tr '\n' ' ')"
+adb shell run-as $PKG cat files/datastore/fronx_launcher.preferences_pb 2>/dev/null | strings -n 3 > "$OUT/fav-prefs-strings.txt"
+grep -q "com.android.chrome" "$OUT/fav-prefs-strings.txt"; record "Chrome package stored in persisted favourites" $? ""
+
+# remaining dock screens (screenshots + presence checks)
+tap "Navigation" lowest; shot 18-navigation; has "Favourite destinations"; record "Navigation screen opens from dock" $? ""
+tap "Music" lowest; shot 19-music; has "Music apps"; record "Music screen opens from dock" $? ""
+tap "Phone" lowest; shot 20-phone; has "Phone & connectivity"; record "Phone screen opens from dock" $? ""
+tap "Home" lowest
 
 # 9. media session handling
 adb shell cmd notification allow_listener $PKG/com.fronx.smartlauncher.media.MediaNotificationListener >/dev/null 2>&1   # test harness stands in for the user's grant
@@ -113,7 +125,7 @@ has "Test Track"; record "Media: track title from a real MediaSession" $? ""
 has "Fronx Test Artist"; record "Media: artist shown" $? ""
 has "Test Media Player"; record "Media: media app name shown" $? ""
 has "Playing"; record "Media: playback status shown" $? ""
-has "0:30" || has "0:31" || has "0:32" || has "0:33"; record "Media: progress position shown" $? ""
+POS=$($UI textof "Playback position"); echo "$POS" | grep -Eq '^[0-9]+:[0-9]{2}$' && [ "$POS" != "3:20" ]; record "Media: live progress position shown" $? "position=$POS"
 has "3:20"; record "Media: duration shown (3:20)" $? ""
 adb logcat -c
 # controls are found by their accessibility labels
@@ -142,7 +154,7 @@ tap "Settings" lowest; tap "Customize launcher" first
 shot 12-customize
 tap "24-hour" first
 adb shell am force-stop $PKG; start
-adb shell run-as $PKG cat files/datastore/fronx_launcher.preferences_pb 2>/dev/null | strings | tr -d '\r' > "$OUT/prefs-strings.txt"
+adb shell run-as $PKG cat files/datastore/fronx_launcher.preferences_pb 2>/dev/null | strings -n 3 | tr -d '\r' > "$OUT/prefs-strings.txt"
 grep -q "H24" "$OUT/prefs-strings.txt"; record "Clock-format preference persisted to DataStore (H24)" $? ""
 adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1; adb shell cat /sdcard/ui.xml | tr -d '\r' > "$OUT/home-ui24.xml"
 grep -Eq 'text="[0-9]{2}:[0-9]{2}"' "$OUT/home-ui24.xml"; record "24-hour clock applied after restart" $? ""
