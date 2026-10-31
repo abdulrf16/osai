@@ -1,0 +1,148 @@
+name: Fronx Smart Launcher - build, test, package
+
+on:
+  push:
+    branches: [claude/compassionate-cori-nhkbiv]
+    paths: ['fronx-smart-launcher/**', '.github/workflows/fronx-build.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fronx-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: fronx-smart-launcher
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+      - uses: gradle/actions/setup-gradle@v4
+      - run: chmod +x gradlew
+
+      - name: Unit tests
+        run: ./gradlew :app:testDebugUnitTest --stacktrace
+
+      - name: Debug APK (+ CI media-session helper)
+        run: ./gradlew :app:assembleDebug :testmedia:assembleDebug --stacktrace
+
+      - name: Release signing key
+        # Uses repository secrets when present. Otherwise a one-off project key is generated for this run
+        # with a random password that is never written to the repo. Passwords are never in source control.
+        env:
+          KS_B64: ${{ secrets.FRONX_KEYSTORE_B64 }}
+          KS_PASS: ${{ secrets.FRONX_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.FRONX_KEY_ALIAS }}
+          KEY_PASS: ${{ secrets.FRONX_KEY_PASSWORD }}
+        run: |
+          KS="$RUNNER_TEMP/fronx-release.jks"
+          if [ -n "$KS_B64" ]; then
+            echo "$KS_B64" | base64 -d > "$KS"; ALIAS="$KEY_ALIAS"; SP="$KS_PASS"; KP="$KEY_PASS"; echo "SIGNING=repository-secrets" >> "$GITHUB_ENV"
+          else
+            SP=$(openssl rand -hex 16); KP="$SP"; ALIAS=fronx-release
+            echo "::add-mask::$SP"
+            keytool -genkeypair -v -keystore "$KS" -storetype PKCS12 -alias "$ALIAS" -keyalg RSA -keysize 3072 -validity 9125 \
+              -storepass "$SP" -keypass "$KP" -dname "CN=Fronx Smart Launcher, O=Fronx, C=IN" >/dev/null 2>&1
+            echo "SIGNING=ephemeral-generated-key" >> "$GITHUB_ENV"
+          fi
+          echo "::add-mask::$SP"
+          { echo "FRONX_KEYSTORE_FILE=$KS"; echo "FRONX_KEYSTORE_PASSWORD=$SP"; echo "FRONX_KEY_ALIAS=$ALIAS"; echo "FRONX_KEY_PASSWORD=$KP"; } >> "$GITHUB_ENV"
+
+      - name: Release APK
+        run: ./gradlew :app:assembleRelease --stacktrace
+
+      - name: Collect and verify artifacts
+        run: |
+          set -e
+          mkdir -p output/_ci
+          cp app/build/outputs/apk/debug/app-debug.apk output/Fronx-Smart-Launcher-debug.apk
+          cp app/build/outputs/apk/release/app-release.apk output/Fronx-Smart-Launcher-release.apk
+          cp testmedia/build/outputs/apk/debug/testmedia-debug.apk output/_ci/testmedia-debug.apk
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+          {
+            echo "# Build info"; echo
+            echo "Build status: **SUCCESS** (all Gradle tasks completed)"
+            echo "Built: $(date -u +'%Y-%m-%d %H:%M UTC') from commit \`${GITHUB_SHA::10}\` by GitHub Actions"
+            echo "Release signing: $SIGNING"; echo
+            for v in debug release; do
+              f=output/Fronx-Smart-Launcher-$v.apk
+              echo "## $v APK"
+              echo '```'
+              echo "file:     $(basename $f)"
+              echo "size:     $(stat -c %s $f) bytes ($(du -h $f | cut -f1))"
+              echo "sha256:   $(sha256sum $f | cut -d' ' -f1)"
+              "$BT/aapt2" dump badging $f | grep -E "^package:|^sdkVersion|^targetSdkVersion|^application-label:" | sed 's/^/aapt2:    /'
+              echo '--- apksigner verify ---'
+              "$BT/apksigner" verify --verbose --print-certs $f 2>&1 | grep -E "Verifies|Verified using|certificate DN|certificate SHA-256" || true
+              echo '```'; echo
+            done
+          } > output/BUILD-INFO.md
+          cat output/BUILD-INFO.md
+          "$BT/apksigner" verify output/Fronx-Smart-Launcher-release.apk
+          "$BT/apksigner" verify output/Fronx-Smart-Launcher-debug.apk
+          ( cd output && sha256sum Fronx-Smart-Launcher-*.apk > SHA256SUMS.txt )
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fronx-apks
+          path: fronx-smart-launcher/output
+          retention-days: 30
+
+  emulator:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { name: fronx-apks, path: apks }
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
+      - name: Android 13 emulator tests (1280x720 landscape)
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 33
+          target: google_apis
+          arch: x86_64
+          profile: pixel_tablet
+          disable-animations: true
+          emulator-options: -no-snapshot -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          script: bash fronx-smart-launcher/tools/emulator-test.sh apks/Fronx-Smart-Launcher-debug.apk apks/_ci/testmedia-debug.apk emulator-out
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fronx-emulator
+          path: emulator-out
+          retention-days: 30
+
+  publish:
+    needs: [build, emulator]
+    if: always() && needs.build.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: '${{ github.ref_name }}' }
+      - uses: actions/download-artifact@v4
+        with: { name: fronx-apks, path: fronx-smart-launcher/output }
+      - uses: actions/download-artifact@v4
+        if: needs.emulator.result != 'skipped'
+        continue-on-error: true
+        with: { name: fronx-emulator, path: fronx-smart-launcher/output/emulator }
+      - name: Commit verified outputs back to the branch
+        run: |
+          cd fronx-smart-launcher/output
+          rm -rf _ci
+          cd ../..
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f fronx-smart-launcher/output
+          git diff --cached --quiet && { echo "no changes"; exit 0; }
+          git commit -m "ci: build outputs, checksums and emulator results [skip ci]"
+          for i in 1 2 3 4; do git pull --rebase origin "${{ github.ref_name }}" && git push origin "HEAD:${{ github.ref_name }}" && break; sleep $((i*3)); done

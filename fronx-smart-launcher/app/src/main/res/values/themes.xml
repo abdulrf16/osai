@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.FronxLauncher" parent="android:Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowBackground">@color/fronx_bg</item>
+        <item name="android:statusBarColor">@color/fronx_bg</item>
+        <item name="android:navigationBarColor">@color/fronx_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:colorAccent">#2589F4</item>
+    </style>
+</resources>
