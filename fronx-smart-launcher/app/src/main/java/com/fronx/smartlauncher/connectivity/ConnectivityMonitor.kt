@@ -9,7 +9,10 @@ import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
+import android.net.NetworkRequest
 import android.net.wifi.WifiManager
+import android.os.Build
+import androidx.core.content.ContextCompat
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -26,13 +29,23 @@ data class ConnectivityState(
 
 class ConnectivityMonitor(context: Context) {
     private val app = context.applicationContext
-    private val cm = app.getSystemService(ConnectivityManager::class.java)
-    private val wm = app.getSystemService(WifiManager::class.java)
-    private val bt: BluetoothAdapter? = app.getSystemService(BluetoothManager::class.java)?.adapter
+    private val cm = ContextCompat.getSystemService(app, ConnectivityManager::class.java)
+    private val wm = ContextCompat.getSystemService(app, WifiManager::class.java)
+    private val bt: BluetoothAdapter? = ContextCompat.getSystemService(app, BluetoothManager::class.java)?.adapter
 
+    @Suppress("DEPRECATION")
     fun snapshot(): ConnectivityState {
-        val caps = runCatching { cm?.getNetworkCapabilities(cm.activeNetwork) }.getOrNull()
-        val onWifiTransport = caps?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) == true
+        var onWifiTransport = false
+        var internet = false
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val caps = runCatching { cm?.getNetworkCapabilities(cm.activeNetwork) }.getOrNull()
+            onWifiTransport = caps?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) == true
+            internet = caps?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
+        } else {
+            val info = runCatching { cm?.activeNetworkInfo }.getOrNull()
+            internet = info?.isConnected == true
+            onWifiTransport = internet && info?.type == ConnectivityManager.TYPE_WIFI
+        }
         val wifi = when {
             wm == null -> RadioState.UNAVAILABLE
             !runCatching { wm.isWifiEnabled }.getOrDefault(false) -> RadioState.OFF
@@ -44,7 +57,7 @@ class ConnectivityMonitor(context: Context) {
             runCatching { bt?.isEnabled == true }.getOrDefault(false) -> RadioState.ON
             else -> RadioState.OFF
         }
-        return ConnectivityState(btState, wifi, caps?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true)
+        return ConnectivityState(btState, wifi, internet)
     }
 
     fun isOnline(): Boolean = snapshot().hasInternet
@@ -64,7 +77,10 @@ class ConnectivityMonitor(context: Context) {
             override fun onLost(network: Network) { trySend(snapshot()) }
             override fun onCapabilitiesChanged(network: Network, nc: NetworkCapabilities) { trySend(snapshot()) }
         }
-        runCatching { cm?.registerDefaultNetworkCallback(cb) }
+        runCatching {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) cm?.registerDefaultNetworkCallback(cb)
+            else cm?.registerNetworkCallback(NetworkRequest.Builder().build(), cb)
+        }
         awaitClose {
             runCatching { app.unregisterReceiver(receiver) }
             runCatching { cm?.unregisterNetworkCallback(cb) }

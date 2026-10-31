@@ -47,7 +47,7 @@ sealed interface MediaUiState {
  */
 class MediaRepository(context: Context) {
     private val appContext = context.applicationContext
-    private val manager: MediaSessionManager? = appContext.getSystemService(MediaSessionManager::class.java)
+    private val manager: MediaSessionManager? = androidx.core.content.ContextCompat.getSystemService(appContext, MediaSessionManager::class.java)
     private val component = ComponentName(appContext, MediaNotificationListener::class.java)
 
     private val _state = MutableStateFlow<MediaUiState>(MediaUiState.NoSession)

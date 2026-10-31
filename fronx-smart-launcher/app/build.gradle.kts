@@ -29,7 +29,7 @@ android {
 
     defaultConfig {
         applicationId = "com.fronx.smartlauncher"
-        minSdk = 29
+        minSdk = 21
         targetSdk = 33 // head unit reports Android 13
         versionCode = 1
         versionName = "1.0.0"

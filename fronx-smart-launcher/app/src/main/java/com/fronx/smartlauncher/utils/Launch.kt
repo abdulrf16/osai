@@ -75,7 +75,7 @@ object Launch {
     /** Role-request intent when the OS supports ROLE_HOME and this app doesn't hold it yet. */
     fun homeRoleRequest(context: Context): Intent? {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) return null
-        val rm = context.getSystemService(RoleManager::class.java) ?: return null
+        val rm = androidx.core.content.ContextCompat.getSystemService(context, RoleManager::class.java) ?: return null
         return if (rm.isRoleAvailable(RoleManager.ROLE_HOME) && !rm.isRoleHeld(RoleManager.ROLE_HOME))
             rm.createRequestRoleIntent(RoleManager.ROLE_HOME) else null
     }
