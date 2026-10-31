@@ -1,0 +1,16 @@
+clock_format
+dark_theme
+accent
+BLUE
+	wallpaper
+CARBON
+show_weather
+show_media
+show_quick_apps
+layout
+STANDARD
+grid_columns
+	temp_unit
+CELSIUS
+weather_city
+destinations

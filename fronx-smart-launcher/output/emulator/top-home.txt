@@ -1,0 +1,1 @@
+      topResumedActivity=ActivityRecord{2148174 u0 com.fronx.smartlauncher/.launcher.MainActivity} t17}

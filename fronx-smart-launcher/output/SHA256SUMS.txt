@@ -1,0 +1,2 @@
+ed002a4f48055a7e7f686e5584320155ad4ec7e82c2732050eff8a5ca37dbadd  Fronx-Smart-Launcher-debug.apk
+2ac8b57fc78cd186ae3b6b3db96904305dd1d0b490d824908f99e24b40643e91  Fronx-Smart-Launcher-release.apk
