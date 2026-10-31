@@ -41,7 +41,7 @@ class ConnectivityMonitor(context: Context) {
         }
         val btState = when {
             bt == null -> RadioState.UNAVAILABLE
-            runCatching { bt.isEnabled }.getOrDefault(false) -> RadioState.ON
+            runCatching { bt?.isEnabled == true }.getOrDefault(false) -> RadioState.ON
             else -> RadioState.OFF
         }
         return ConnectivityState(btState, wifi, caps?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true)

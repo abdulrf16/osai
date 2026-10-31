@@ -36,7 +36,7 @@ sealed interface MediaUiState {
         val canPlayPause: Boolean,
         val canPrevious: Boolean,
         val canNext: Boolean
-    ) {
+    ) : MediaUiState {
         val hasProgress get() = durationMs > 0 && positionMs >= 0
     }
 }
