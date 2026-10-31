@@ -9,10 +9,16 @@ Premium Dark automotive home launcher for the Maruti Suzuki Fronx Delta Plus AGS
 
 ## Honest status
 * Built and tested with GitHub Actions on an **Android 13 (API 33) x86_64 emulator forced to 1280x720 @160dpi**.
-  The results table in `emulator/emulator-test-results.md` lists every check and whether it passed.
-* **Not tested on the real head unit.** Chipset, CPU ABI, USB-install support and Home-app switching on that unit are
-  unverified. The APK contains no native code, so it is not tied to a CPU architecture, but compatibility with the actual
-  unit is unproven until you try it.
+  The results table in `emulator/emulator-test-results.md` lists every check and whether it passed (final run: 49 passed, 0 failed).
+  Caveat: the emulator uses a tablet profile with its own taskbar, and the test harness grants notification access and sets the
+  default Home app through `adb` to stand in for the user's choices. Earlier runs found and fixed bugs in the *tests* (not the app);
+  one run showed that on a tablet-size screen forced into portrait, Android letterboxes this landscape-only app and the dashboard is cramped.
+* **Not tested on the real head unit.** Chipset, USB-install support and Home-app switching on that unit are unverified.
+  The APK has no app-specific native code, only small AndroidX libraries, which are bundled for arm64-v8a, armeabi-v7a, x86 and
+  x86_64, so it should install on any common head-unit CPU. "Should" is not "tested": compatibility is unproven until you try it.
+* **Android Auto / phone projection: not tested.** When Android Auto is projecting, Google's app draws the screen with its own
+  theme; Fronx has no influence over it. Which launcher the unit's Home button returns to afterwards is firmware behaviour that
+  has not been verified. Media playing on the phone through Android Auto will most likely not appear in Fronx's media card.
 * The release APK in this folder is signed with a key generated for that CI run (random password, never stored).
   Its signature therefore differs from any later build; to ship updates that install over each other, use your own key (below).
 

@@ -41,6 +41,7 @@
    * Open Maps / a music app from the Quick Apps grid; start music and check the media card.
    * Tap the Bluetooth tile and confirm the head unit's own Bluetooth screen opens.
    * Check the reverse camera and the unit's physical buttons still behave exactly as before.
+   * If you use Android Auto / phone projection: start it, then press Home and note which launcher comes back. This is **untested**; Android Auto draws its own screen and Fronx cannot change it.
 8. **Switch back to the original launcher if needed.** Any of these works:
    * Fronx **Settings > Choose default Home app** and select the original launcher.
    * Press Home; if you chose *Just once*, Android asks again every time.
