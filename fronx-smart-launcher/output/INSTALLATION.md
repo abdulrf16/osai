@@ -7,6 +7,9 @@
 
 ## Before you start
 
+* **Check the copy:** after copying, the release APK must be exactly **1,234,310 bytes**. A smaller file is a truncated copy and
+  gives "There was a problem parsing the package". Expected SHA-256 is in `SHA256SUMS.txt`.
+
 * Use `Fronx-Smart-Launcher-release.apk` (signed, optimised). `Fronx-Smart-Launcher-debug.apk` is the same
   app with debug info - use it only if the release build misbehaves.
 * Both builds share package name `com.fronx.smartlauncher`, so you can only have one installed at a time.

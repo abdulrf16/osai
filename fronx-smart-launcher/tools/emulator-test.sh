@@ -58,7 +58,7 @@ shot 01-home
 SZ=$(png_size "$OUT/screenshots/01-home.png"); [ "$SZ" = "1280 720" ]; record "Landscape rendering at 1280x720" $? "screenshot=$SZ"
 
 # 4. clock/date
-adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1; adb shell cat /sdcard/ui.xml | tr -d '\r' > "$OUT/home-ui.xml"
+adb shell uiautomator dump /data/local/tmp/ui.xml >/dev/null 2>&1; adb shell cat /data/local/tmp/ui.xml | tr -d '\r' > "$OUT/home-ui.xml"
 grep -Eq 'text="[0-9]{1,2}:[0-9]{2}( ?(AM|PM))?"' "$OUT/home-ui.xml"; record "Clock displayed" $? ""
 grep -Eq 'text="(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)"' "$OUT/home-ui.xml"; record "Day of week displayed" $? ""
 
@@ -74,7 +74,7 @@ grep -q "Open notification access" "$OUT/home-ui.xml"; record "Media card explai
 # 5/6. drawer + search
 tap "Apps" lowest; shot 02-drawer
 has "Applications"; record "Application drawer opens" $? ""
-APPS_ROWS=$(adb shell cat /sdcard/ui.xml | grep -o 'text="[^"]*"' | wc -l)
+APPS_ROWS=$(adb shell cat /data/local/tmp/ui.xml | grep -o 'text="[^"]*"' | wc -l)
 record "Drawer lists installed apps" $([ "$APPS_ROWS" -gt 8 ] && echo 0 || echo 1) "$APPS_ROWS text nodes"
 adb shell input tap 640 80; settle 1; adb shell input text "settings"; settle 2; shot 03-search
 $UI hasabove "Settings" 600; record "Search 'settings' finds the Settings app in the grid" $? ""
@@ -156,7 +156,7 @@ tap "24-hour" first
 adb shell am force-stop $PKG; start
 adb shell run-as $PKG cat files/datastore/fronx_launcher.preferences_pb 2>/dev/null | strings -n 3 | tr -d '\r' > "$OUT/prefs-strings.txt"
 grep -q "H24" "$OUT/prefs-strings.txt"; record "Clock-format preference persisted to DataStore (H24)" $? ""
-adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1; adb shell cat /sdcard/ui.xml | tr -d '\r' > "$OUT/home-ui24.xml"
+adb shell uiautomator dump /data/local/tmp/ui.xml >/dev/null 2>&1; adb shell cat /data/local/tmp/ui.xml | tr -d '\r' > "$OUT/home-ui24.xml"
 grep -Eq 'text="[0-9]{2}:[0-9]{2}"' "$OUT/home-ui24.xml"; record "24-hour clock applied after restart" $? ""
 shot 13-home-24h
 
@@ -180,7 +180,7 @@ has "Applications" || has "Home"; record "Reverse landscape: UI still present an
 adb shell settings put system user_rotation 1; settle 3; shot 21-rot-portrait-display
 SZ=$(png_size "$OUT/screenshots/21-rot-portrait-display.png")
 alive; record "Portrait display forced (tablet-class screen letterboxes a landscape-only app): no crash" $? "screenshot=$SZ"
-adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1; adb shell cat /sdcard/ui.xml | grep -q 'text="Home"'; record "Portrait display forced: dock still rendered (degraded layout, not a failure)" $? ""
+adb shell uiautomator dump /data/local/tmp/ui.xml >/dev/null 2>&1; adb shell cat /data/local/tmp/ui.xml | grep -q 'text="Home"'; record "Portrait display forced: dock still rendered (degraded layout, not a failure)" $? ""
 adb shell settings put system user_rotation 0; settle 3
 alive; record "No crash across rotations" $? ""
 
@@ -188,7 +188,7 @@ alive; record "No crash across rotations" $? ""
 adb shell svc wifi disable >/dev/null 2>&1; adb shell svc data disable >/dev/null 2>&1; settle 3
 adb shell am force-stop $PKG; start; shot 17-offline
 alive; record "Offline: launcher starts and stays alive with Wi-Fi and data off" $? ""
-adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1; adb shell cat /sdcard/ui.xml | tr -d '\r' > "$OUT/offline-ui.xml"
+adb shell uiautomator dump /data/local/tmp/ui.xml >/dev/null 2>&1; adb shell cat /data/local/tmp/ui.xml | tr -d '\r' > "$OUT/offline-ui.xml"
 grep -Eq 'text="[0-9]{2}:[0-9]{2}"' "$OUT/offline-ui.xml"; record "Offline: dashboard content rendered" $? ""
 adb shell svc wifi enable >/dev/null 2>&1; adb shell svc data enable >/dev/null 2>&1
 

@@ -7,8 +7,8 @@ def adb(*a, check=True):
 
 def dump():
     for _ in range(5):
-        adb("shell", "uiautomator", "dump", "/sdcard/ui.xml")
-        r = adb("shell", "cat", "/sdcard/ui.xml")
+        adb("shell", "uiautomator", "dump", "/data/local/tmp/ui.xml")
+        r = adb("shell", "cat", "/data/local/tmp/ui.xml")
         if "<hierarchy" in r.stdout:
             return ET.fromstring(r.stdout[r.stdout.index("<hierarchy"):])
         time.sleep(1)

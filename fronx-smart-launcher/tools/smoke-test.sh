@@ -10,7 +10,7 @@ echo "# Compatibility smoke test - Android API $SDK (release $(adb shell getprop
 echo "" >> "$R"; echo "| # | Check | Result | Detail |" >> "$R"; echo "|---|---|---|---|" >> "$R"
 N=0; PASS=0; FAIL=0
 record() { N=$((N+1)); local r=FAIL; [ "$2" = "0" ] && { r=PASS; PASS=$((PASS+1)); } || FAIL=$((FAIL+1)); echo "| $N | $1 | $r | ${3:-} |" >> "$R"; echo "[$r] $1 ${3:-}"; }
-alive() { adb shell "ps -A 2>/dev/null || ps" | tr -d '\r' | grep -q "$PKG"; }
+alive() { adb shell dumpsys activity processes | tr -d '\r' | grep -E "ProcessRecord\{.*$PKG" | grep -qv dead; }
 adb shell input keyevent KEYCODE_WAKEUP; adb shell wm dismiss-keyguard >/dev/null 2>&1
 adb shell wm size 1280x720; adb shell wm density 160; sleep 2
 adb logcat -c
@@ -18,7 +18,7 @@ OUTI=$(adb install -r "$APK" 2>&1); echo "$OUTI" | grep -q Success; record "Inst
 adb shell am start -W -n "$ACT" > "$OUT/start.txt" 2>&1; sleep 6
 alive; record "App process alive after launch" $? "$(grep -E 'TotalTime' "$OUT/start.txt" | tr -d '\r')"
 adb exec-out screencap -p > "$OUT/screenshots/home-api$SDK.png"
-adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1; adb shell cat /sdcard/ui.xml | tr -d '\r' > "$OUT/ui.xml"
+adb shell uiautomator dump /data/local/tmp/ui.xml >/dev/null 2>&1; adb shell cat /data/local/tmp/ui.xml | tr -d '\r' > "$OUT/ui.xml"
 grep -q 'text="Home"' "$OUT/ui.xml" && grep -q 'text="Settings"' "$OUT/ui.xml"; record "Dock rendered (Home ... Settings)" $? ""
 grep -Eq 'text="[0-9]{1,2}:[0-9]{2}' "$OUT/ui.xml"; record "Clock rendered" $? ""
 adb shell cmd package query-activities --brief -a android.intent.action.MAIN -c android.intent.category.HOME 2>/dev/null | grep -q "$PKG" || adb shell pm resolve-activity -a android.intent.action.MAIN -c android.intent.category.HOME 2>/dev/null | grep -q "$PKG" || adb shell dumpsys package "$PKG" | grep -q "android.intent.category.HOME"

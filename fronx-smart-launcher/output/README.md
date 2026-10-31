@@ -16,6 +16,11 @@ Premium Dark automotive home launcher for the Maruti Suzuki Fronx Delta Plus AGS
 * **Not tested on the real head unit.** Chipset, USB-install support and Home-app switching on that unit are unverified.
   The APK has no app-specific native code, only small AndroidX libraries, which are bundled for arm64-v8a, armeabi-v7a, x86 and
   x86_64, so it should install on any common head-unit CPU. "Should" is not "tested": compatibility is unproven until you try it.
+* **Older Android (the first release APK failed to install on the head unit with "problem parsing the package"):** the app now
+  supports Android 5.0+ (`minSdk 21`) and is signed with both v1 and v2 schemes. Emulator smoke tests on API 26 and 28 passed 8/8.
+  On API 21 the app launched and rendered (see `compat/fronx-compat-21/screenshots/`), but 4 of 8 automated checks failed because
+  the *test harness* could not read processes/UI on Android 5 (fixed in `tools/`, not re-run to keep this APK unchanged). Whether this
+  APK installs on the real unit is **still unverified**.
 * **Android Auto / phone projection: not tested.** When Android Auto is projecting, Google's app draws the screen with its own
   theme; Fronx has no influence over it. Which launcher the unit's Home button returns to afterwards is firmware behaviour that
   has not been verified. Media playing on the phone through Android Auto will most likely not appear in Fronx's media card.
