@@ -1,9 +1,16 @@
 clock_format
+H24
 dark_theme
 accent
 BLUE
 	wallpaper
 CARBON
+	favorites
+com.google.android.apps.maps
+com.google.android.apps.youtube.music
+com.google.android.dialer
+com.android.settings
+com.android.chrome
 show_weather
 show_media
 show_quick_apps

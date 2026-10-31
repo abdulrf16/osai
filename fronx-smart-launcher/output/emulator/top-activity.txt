@@ -1,1 +1,1 @@
-    topResumedActivity=ActivityRecord{3b216d3 u0 com.fronx.smartlauncher/.launcher.MainActivity} t9}
+    topResumedActivity=ActivityRecord{d42862a u0 com.android.settings/.Settings$NetworkDashboardActivity} t10}
